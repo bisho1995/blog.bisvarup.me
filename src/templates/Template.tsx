@@ -1,10 +1,13 @@
 import React from "react";
 import { Helmet } from "react-helmet";
-import "../styles/index.css";
 
-export default function Index() {
+export default function Template({
+  pageContext: { content },
+}: {
+  pageContext: { content: string };
+}) {
   return (
-    <main>
+    <div>
       <Helmet>
         <meta
           name='viewport'
@@ -13,11 +16,9 @@ export default function Index() {
         <link
           rel='stylesheet'
           href='https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css'
-          integrity='sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu'
-          crossorigin='anonymous'
         ></link>
       </Helmet>
-      <h1>bisvarup's blog</h1>
-    </main>
+      <div className="container" dangerouslySetInnerHTML={{ __html: content }}></div>;
+    </div>
   );
 }

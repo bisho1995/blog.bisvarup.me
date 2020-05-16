@@ -1,29 +1,48 @@
-/**
- * Implement Gatsby's Node APIs in this file.
- *
- * See: https://www.gatsbyjs.org/docs/node-apis/
- */
+const axios = require("axios");
+var convert = require("xml-js");
+const idx = require("idx");
+const fs = require("fs-extra");
 
-// You can delete this file if you're not using it
+const blogspotUrls = [
+  "https://ps-and-ds.blogspot.com/feeds/posts/default",
+  "https://frontend-bytes.blogspot.com/feeds/posts/default",
+];
 
-exports.createPages = ({ actions }) => {
-    const { createPage } = actions
-  
-    const dogData = [
-      {
-        name: "Fido",
-        breed: "Sheltie",
-      },
-      {
-        name: "Sparky",
-        breed: "Corgi",
-      },
-    ]
-    dogData.forEach(dog => {
-      createPage({
-        path: `/${dog.name}`,
-        component: require.resolve(`./src/templates/DogTemplate.js`),
-        context: { dog },
-      })
-    })
-  }
+const getBlogSpotFeeds = (url) =>
+  axios
+    .get(url)
+    .then((xml) => convert.xml2json(xml.data, { compact: true, spaces: 4 }))
+    .then((r) => JSON.parse(r))
+    .then((json) => {
+      const feeds = (idx(json, (_) => _.feed.entry) || []).map(
+        ({ content: { _text: content }, title: { _text: title } }) => ({
+          title: title
+            .split(" ")
+            .map((a) => a.toLowerCase())
+            .join("-")
+            .replace(/[^a-z0-9-]/g, ""),
+          content,
+        })
+      );
+      return feeds;
+    });
+
+exports.createPages = async ({ actions }) => {
+  const { createPage } = actions;
+
+  const feeds = [];
+
+  for (let i = 0; i < blogspotUrls.length; i++)
+    feeds.push(...(await getBlogSpotFeeds(blogspotUrls[i])));
+
+  const names = feeds.map(({ title }) => title);
+  fs.writeFile("titles.json", JSON.stringify(names));
+
+  feeds.forEach(({ title, content }) => {
+    createPage({
+      path: `/${title}`,
+      component: require.resolve(`./src/templates/Template.tsx`),
+      context: { content },
+    });
+  });
+};

@@ -4,8 +4,8 @@ const idx = require("idx");
 const fs = require("fs-extra");
 
 const blogspotUrls = [
-  "https://ps-and-ds.blogspot.com/feeds/posts/default",
-  "https://frontend-bytes.blogspot.com/feeds/posts/default",
+  // "https://ps-and-ds.blogspot.com/feeds/posts/default",
+  // "https://frontend-bytes.blogspot.com/feeds/posts/default",
 ];
 
 const getBlogSpotFeeds = (url) =>
@@ -27,7 +27,7 @@ const getBlogSpotFeeds = (url) =>
       return feeds;
     });
 
-exports.createPages = async ({ actions }) => {
+exports.createPages = async ({ actions, graphql }) => {
   const { createPage } = actions;
 
   const feeds = [];
@@ -45,4 +45,32 @@ exports.createPages = async ({ actions }) => {
       context: { content },
     });
   });
+
+  const result = await graphql(`
+    {
+      allMarkdownRemark {
+        edges {
+          node {
+            html
+            frontmatter {
+              title
+              path
+            }
+            timeToRead
+          }
+        }
+      }
+    }
+  `);
+
+  if (!result.errors) {
+    result.data.allMarkdownRemark.edges.forEach(({ node }) => {
+      console.log("path", node.html );
+      createPage({
+        path: node.frontmatter.path,
+        component: require.resolve(`./src/templates/Template.tsx`),
+        context: { content: node.html },
+      });
+    });
+  }
 };

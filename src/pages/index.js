@@ -1,8 +1,10 @@
 import React from "react";
 import { Helmet } from "react-helmet";
+import { graphql, Link } from "gatsby";
 import "../styles/index.css";
 
-export default function Index() {
+export default function Index({ data }) {
+  const edges = data?.allMarkdownRemark?.edges;
   return (
     <main>
       <Helmet>
@@ -18,6 +20,26 @@ export default function Index() {
         ></link>
       </Helmet>
       <h1>bisvarup's blog</h1>
+
+      <div style={{ textAlign: "left" }}>
+        {edges.map(({ node: { frontmatter: { title, path } } }) => (
+          <Link to={`/${path}`}>{title}</Link>
+        ))}
+      </div>
     </main>
   );
 }
+export const query = graphql`
+  query HomePageQuery {
+    allMarkdownRemark {
+      edges {
+        node {
+          frontmatter {
+            title
+            path
+          }
+        }
+      }
+    }
+  }
+`;

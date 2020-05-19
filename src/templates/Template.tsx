@@ -18,7 +18,11 @@ export default function Template({
           href='https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css'
         ></link>
       </Helmet>
-      <div className="container" dangerouslySetInnerHTML={{ __html: content }}></div>;
+      <div
+        className='container'
+        dangerouslySetInnerHTML={{ __html: content }}
+      ></div>
+      ;
     </div>
   );
 }

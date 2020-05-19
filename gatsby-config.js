@@ -3,8 +3,19 @@ module.exports = {
     title: "Gatsby + Node.js (TypeScript) API",
   },
   plugins: [
-    `gatsby-plugin-react-helmet`,
-    `gatsby-transformer-remark`,
+    "gatsby-plugin-react-helmet",
+    "gatsby-transformer-remark",
+    "gatsby-plugin-sass",
+    'gatsby-plugin-sharp', 
+    'gatsby-transformer-sharp',
+    {
+      resolve: 'gatsby-plugin-sharp',
+      options: {
+        useMozJpeg: false,
+        stripMetadata: true,
+        defaultQuality: 75,
+      },
+    },
     {
       resolve: "gatsby-source-blogger",
       options: {

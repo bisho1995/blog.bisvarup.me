@@ -1,9 +1,12 @@
 import React from "react";
 import { Helmet } from "react-helmet";
 import { graphql, Link } from "gatsby";
-import "../styles/index.css";
+import profilePic from "../images/profile.jpg";
+import "../styles/index.scss";
 
 export default function Index({ data }) {
+  console.log(data);
+
   const edges = data?.allMarkdownRemark?.edges;
   return (
     <main>
@@ -24,7 +27,7 @@ export default function Index({ data }) {
       >
         <img
           style={{ borderRadius: "50%", marginRight: 32 }}
-          src='https://bisvarup.me/images/profile_photo.jpg'
+          src={profilePic}
           alt='bisvarup mukherjee'
           height={130}
         />
@@ -41,11 +44,20 @@ export default function Index({ data }) {
 
       <div style={{ textAlign: "left" }}>
         <ol style={{ lineHeight: 1.5 }}>
-          {edges.map(({ node: { frontmatter: { title, path, slug } } }) => (
-            <li style={{ margin: "8px 0" }}>
-              <Link to={`/${path || slug}`}>{title}</Link>
-            </li>
-          ))}
+          {edges.map(
+            (
+              {
+                node: {
+                  frontmatter: { title, path, slug },
+                },
+              },
+              idx
+            ) => (
+              <li style={{ margin: "8px 0" }} key={slug || path || idx}>
+                <Link to={`/${path || slug}`}>{title}</Link>
+              </li>
+            )
+          )}
         </ol>
       </div>
     </main>

@@ -19,12 +19,34 @@ export default function Index({ data }) {
           crossorigin='anonymous'
         ></link>
       </Helmet>
-      <h1>bisvarup's blog</h1>
+      <header
+        style={{ margin: "32px 0", display: "flex", justifyContent: "center" }}
+      >
+        <img
+          style={{ borderRadius: "50%", marginRight: 32 }}
+          src='https://bisvarup.me/images/profile_photo.jpg'
+          alt='bisvarup mukherjee'
+          height={130}
+        />
+        <h1
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+          }}
+        >
+          bisvarup's blog
+        </h1>
+      </header>
 
       <div style={{ textAlign: "left" }}>
-        {edges.map(({ node: { frontmatter: { title, path } } }) => (
-          <Link to={`/${path}`}>{title}</Link>
-        ))}
+        <ol style={{ lineHeight: 1.5 }}>
+          {edges.map(({ node: { frontmatter: { title, path, slug } } }) => (
+            <li style={{ margin: "8px 0" }}>
+              <Link to={`/${path || slug}`}>{title}</Link>
+            </li>
+          ))}
+        </ol>
       </div>
     </main>
   );
@@ -37,6 +59,7 @@ export const query = graphql`
           frontmatter {
             title
             path
+            slug
           }
         }
       }

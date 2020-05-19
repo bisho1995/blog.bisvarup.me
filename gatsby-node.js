@@ -1,12 +1,7 @@
 const axios = require("axios");
 var convert = require("xml-js");
 const idx = require("idx");
-const fs = require("fs-extra");
 
-const blogspotUrls = [
-  // "https://ps-and-ds.blogspot.com/feeds/posts/default",
-  // "https://frontend-bytes.blogspot.com/feeds/posts/default",
-];
 
 const getBlogSpotFeeds = (url) =>
   axios
@@ -30,23 +25,7 @@ const getBlogSpotFeeds = (url) =>
 exports.createPages = async ({ actions, graphql }) => {
   const { createPage } = actions;
 
-  const feeds = [];
-
-  for (let i = 0; i < blogspotUrls.length; i++)
-    feeds.push(...(await getBlogSpotFeeds(blogspotUrls[i])));
-
-  const names = feeds.map(({ title }) => title);
-  fs.writeFile("titles.json", JSON.stringify(names));
-
-  feeds.forEach(({ title, content }) => {
-    createPage({
-      path: `/${title}`,
-      component: require.resolve(`./src/templates/Template.tsx`),
-      context: { content },
-    });
-  });
-
-  const result = await graphql(`
+  const markdownResults = await graphql(`
     {
       allMarkdownRemark {
         edges {
@@ -63,13 +42,42 @@ exports.createPages = async ({ actions, graphql }) => {
     }
   `);
 
-  if (!result.errors) {
-    result.data.allMarkdownRemark.edges.forEach(({ node }) => {
-      console.log("path", node.html );
+  if (!markdownResults.errors) {
+    markdownResults.data.allMarkdownRemark.edges.forEach(({ node }) => {
+      if (!node.frontmatter.path) return;
       createPage({
         path: node.frontmatter.path,
         component: require.resolve(`./src/templates/Template.tsx`),
         context: { content: node.html },
+      });
+    });
+  }
+
+  const bloggerResults = await graphql(`
+    {
+      allBloggerPost {
+        edges {
+          node {
+            childMarkdownRemark {
+              frontmatter {
+                title
+                slug
+              }
+              html
+            }
+          }
+        }
+      }
+    }
+  `);
+
+  if (!bloggerResults.errors) {
+    bloggerResults.data.allBloggerPost.edges.forEach(({ node: {childMarkdownRemark} }) => {
+      if(!childMarkdownRemark.frontmatter.slug)return
+      createPage({
+        path: `/${childMarkdownRemark.frontmatter.slug}`,
+        component: require.resolve(`./src/templates/Template.tsx`),
+        context: { content: childMarkdownRemark.html },
       });
     });
   }

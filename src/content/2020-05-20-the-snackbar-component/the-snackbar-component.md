@@ -6,4 +6,4 @@ path: /the-snackbar-component
 
 # The snackbar component
 
-<!-- `embed:snackbar.tsx` -->
+`embed:src/snippets/snackbar.tsx`

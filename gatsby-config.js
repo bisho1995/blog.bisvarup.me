@@ -1,15 +1,33 @@
 module.exports = {
   siteMetadata: {
-    title: "Gatsby + Node.js (TypeScript) API",
+    title: "bisvarp's blog",
   },
   plugins: [
     "gatsby-plugin-react-helmet",
-    "gatsby-transformer-remark",
-    "gatsby-plugin-sass",
-    'gatsby-plugin-sharp', 
-    'gatsby-transformer-sharp',
     {
-      resolve: 'gatsby-plugin-sharp',
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [
+          {
+            resolve: `gatsby-remark-embed-snippet`,
+            options: {
+              directory: `${__dirname}`,
+            },
+          },
+          {
+            resolve: `gatsby-remark-prismjs`,
+            options: {
+              directory: `${__dirname}`,
+            },
+          },
+        ],
+      },
+    },
+    "gatsby-plugin-sass",
+    "gatsby-plugin-sharp",
+    "gatsby-transformer-sharp",
+    {
+      resolve: "gatsby-plugin-sharp",
       options: {
         useMozJpeg: false,
         stripMetadata: true,
@@ -40,8 +58,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: "Gatsby + Node.js (TypeScript) API",
-        short_name: "Gatsby + Node.js (TypeScript)",
+        name: "bisvarp's blog",
+        short_name: "bisvarup's blog",
         start_url: "/",
         icon: "src/images/gatsby-icon.png",
       },

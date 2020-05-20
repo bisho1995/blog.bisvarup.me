@@ -21,7 +21,9 @@ export default function Index({ data }) {
         />
       </Helmet>
       <header
-        style={{ margin: '32px 0', display: 'flex', justifyContent: 'center' }}
+        style={{
+          margin: '32px 0', display: 'flex', justifyContent: 'center',
+        }}
       >
         <img
           style={{ borderRadius: '50%', marginRight: 32 }}
@@ -36,7 +38,7 @@ export default function Index({ data }) {
             justifyContent: 'center',
           }}
         >
-          bisvarup's blog
+          bisvarup&apos;s blog
         </h1>
       </header>
 

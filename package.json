@@ -1,7 +1,10 @@
 {
-  "private": true,
   "name": "gatsby",
   "version": "1.0.0",
+  "private": true,
+  "bugs": {
+    "url": "https://github.com/bisho1995/blog.bisvarup.me/issues"
+  },
   "dependencies": {
     "@types/marked": "^0.7.4",
     "@types/react-helmet": "^6.0.0",
@@ -26,22 +29,46 @@
     "react": "^16.5.1",
     "react-dom": "^16.5.1",
     "react-helmet": "^5.2.0",
+    "typescript": "^3.9.3",
     "xml-js": "^1.6.11"
   },
   "devDependencies": {
     "@now/node": "^1.3.0",
     "@types/react": "^16.9.35",
-    "eslint": "^7.0.0"
+    "@typescript-eslint/eslint-plugin": "^2.34.0",
+    "@typescript-eslint/parser": "^2.34.0",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb": "^18.1.0",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.20.0",
+    "eslint-plugin-react-hooks": "^2.5.1"
   },
   "scripts": {
+    "start": "yarn dev",
     "dev": "gatsby develop -H 0.0.0.0",
     "build": "gatsby build",
     "reset": "rimraf ./.cache",
     "postreset": "gatsby clean",
-    "start": "yarn dev"
+    "start": "yarn dev",
+    "prettier": "npm-run-all format:source format:examples --parallel",
+    "format:source": "prettier --config .prettierrc --write \"src/**/*.{tsx,jsx,js,ts,html,css,php,java}\"",
+    "format:examples": "prettier --config .prettierrc --write \"snippets/**/*.{tsx,jsx,js,ts,html,css,php,java}\"",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
   },
   "engines": {
     "node": "12.x.x",
     "yarn": "^1.2.x"
+  },
+  "homepage": "https://blog.bisvarup.me/",
+  "keywords": [
+    "blog",
+    "bisvarup"
+  ],
+  "main": "n/a",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:bisho1995/blog.bisvarup.me.git"
   }
 }

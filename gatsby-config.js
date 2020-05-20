@@ -3,19 +3,19 @@ module.exports = {
     title: "bisvarp's blog",
   },
   plugins: [
-    "gatsby-plugin-react-helmet",
+    'gatsby-plugin-react-helmet',
     {
-      resolve: `gatsby-transformer-remark`,
+      resolve: 'gatsby-transformer-remark',
       options: {
         plugins: [
           {
-            resolve: `gatsby-remark-embed-snippet`,
+            resolve: 'gatsby-remark-embed-snippet',
             options: {
               directory: `${__dirname}`,
             },
           },
           {
-            resolve: `gatsby-remark-prismjs`,
+            resolve: 'gatsby-remark-prismjs',
             options: {
               directory: `${__dirname}`,
             },
@@ -23,11 +23,11 @@ module.exports = {
         ],
       },
     },
-    "gatsby-plugin-sass",
-    "gatsby-plugin-sharp",
-    "gatsby-transformer-sharp",
+    'gatsby-plugin-sass',
+    'gatsby-plugin-sharp',
+    'gatsby-transformer-sharp',
     {
-      resolve: "gatsby-plugin-sharp",
+      resolve: 'gatsby-plugin-sharp',
       options: {
         useMozJpeg: false,
         stripMetadata: true,
@@ -35,33 +35,33 @@ module.exports = {
       },
     },
     {
-      resolve: "gatsby-source-blogger",
+      resolve: 'gatsby-source-blogger',
       options: {
-        apiKey: "AIzaSyCAUmu4sLHAbY-rJ0CtE5Us5nqGkU-bKUE",
-        blogId: "2489840993730908370",
+        apiKey: 'AIzaSyCAUmu4sLHAbY-rJ0CtE5Us5nqGkU-bKUE',
+        blogId: '2489840993730908370',
       },
     },
     {
-      resolve: "gatsby-source-blogger",
+      resolve: 'gatsby-source-blogger',
       options: {
-        apiKey: "AIzaSyCAUmu4sLHAbY-rJ0CtE5Us5nqGkU-bKUE",
-        blogId: "6844715559496278267",
+        apiKey: 'AIzaSyCAUmu4sLHAbY-rJ0CtE5Us5nqGkU-bKUE',
+        blogId: '6844715559496278267',
       },
     },
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: 'gatsby-source-filesystem',
       options: {
-        name: `content`,
+        name: 'content',
         path: `${__dirname}/content/`,
       },
     },
     {
-      resolve: `gatsby-plugin-manifest`,
+      resolve: 'gatsby-plugin-manifest',
       options: {
         name: "bisvarp's blog",
         short_name: "bisvarup's blog",
-        start_url: "/",
-        icon: "src/images/gatsby-icon.png",
+        start_url: '/',
+        icon: 'src/images/gatsby-icon.png',
       },
     },
   ],

@@ -1,10 +1,10 @@
-import React from "react";
-import marked from "marked";
+import React from 'react';
+import marked from 'marked';
 
 export default function Template({
-  pageContext: { content },
+  pageContext: {content},
 }: {
-  pageContext: { content: string };
+  pageContext: {content: string},
 }) {
-  return <div dangerouslySetInnerHTML={{ __html: marked(content) }}></div>;
+  return <div dangerouslySetInnerHTML={{__html: marked(content)}}></div>;
 }

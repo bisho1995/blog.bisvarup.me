@@ -1,30 +1,19 @@
 import React from 'react';
-import { Helmet } from 'react-helmet';
 import { graphql, Link } from 'gatsby';
 import withErrorBoundary from '../component/withErrorBoundary/withErrorBoundary';
 import profilePic from '../images/profile.jpg';
-import '../styles/index.scss';
+import styles from '../styles/index.module.scss';
+import Helmet from '../component/Helmet/Helmet';
+
 
 export default withErrorBoundary(({ data }) => {
   const edges = data?.allMarkdownRemark?.edges;
+
   return (
     <main>
-      <Helmet>
-        <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
-        />
-        <link
-          rel="stylesheet"
-          href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
-          integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu"
-          crossOrigin="anonymous"
-        />
-      </Helmet>
+      <Helmet />
       <header
-        style={{
-          margin: '32px 0', display: 'flex', justifyContent: 'center',
-        }}
+        className={styles.header}
       >
         <img
           style={{ borderRadius: '50%', marginRight: 32 }}

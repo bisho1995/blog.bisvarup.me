@@ -1,10 +1,11 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { graphql, Link } from 'gatsby';
+import withErrorBoundary from '../component/withErrorBoundary/withErrorBoundary';
 import profilePic from '../images/profile.jpg';
 import '../styles/index.scss';
 
-export default function Index({ data }) {
+export default withErrorBoundary(({ data }) => {
   const edges = data?.allMarkdownRemark?.edges;
   return (
     <main>
@@ -53,7 +54,9 @@ export default function Index({ data }) {
       </div>
     </main>
   );
-}
+});
+
+
 export const query = graphql`
   query HomePageQuery {
     allMarkdownRemark {

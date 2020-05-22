@@ -8,7 +8,7 @@ exports.createPages = async ({ actions, graphql }) => {
         node {
           frontmatter {
             path
-            date(formatString: "DD MMMM YYYY")
+            date(formatString: "DD MMMM, YYYY")
           }
           html
         }
@@ -20,7 +20,7 @@ exports.createPages = async ({ actions, graphql }) => {
           childMarkdownRemark {
             frontmatter {
               slug
-              date(formatString: "DD MMMM YYYY")
+              date(formatString: "DD MMMM, YYYY")
             }
             html
           }

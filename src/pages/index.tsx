@@ -34,9 +34,21 @@ export default withErrorBoundary(({ data }) => {
 
       <div style={{ textAlign: 'left' }}>
         <ol style={{ lineHeight: 1.5 }}>
-          {edges.map(({ node: { frontmatter: { title, path, slug } } }, idx) => (
+          {edges.map(({
+            node: {
+              frontmatter: {
+                title, path, slug, date,
+              },
+            },
+          }, idx) => (
             <li style={{ margin: '8px 0' }} key={slug || path || idx}>
-              <Link to={`/${path || slug}`}>{title}</Link>
+              <Link to={`/${path || slug}`}>
+                [
+                {date}
+                ]
+                {' '}
+                {title}
+              </Link>
             </li>
           ))}
         </ol>
@@ -47,17 +59,18 @@ export default withErrorBoundary(({ data }) => {
 
 
 export const query = graphql`
-  query HomePageQuery {
-    allMarkdownRemark {
-      edges {
-        node {
-          frontmatter {
-            title
-            path
-            slug
-          }
+query HomePageQuery {
+  allMarkdownRemark(sort: {order: DESC, fields: frontmatter___date}) {
+    edges {
+      node {
+        frontmatter {
+          title
+          path
+          slug
+          date(formatString: "DD MMM YYYY")
         }
       }
     }
   }
+}
 `;

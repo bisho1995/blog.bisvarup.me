@@ -1,59 +1,54 @@
 exports.createPages = async ({ actions, graphql }) => {
   const { createPage } = actions;
 
-  const markdownResults = await graphql(`
-    {
-      allMarkdownRemark {
-        edges {
-          node {
-            html
+  const results = await graphql(`
+  {
+    allMarkdownRemark(sort: {order: DESC, fields: [frontmatter___date]}) {
+      edges {
+        node {
+          frontmatter {
+            path
+            date(formatString: "DD MMMM YYYY")
+          }
+          html
+        }
+      }
+    }
+    allBloggerPost (sort: {order: DESC, fields: [childMarkdownRemark___frontmatter___date]}) {
+      edges {
+        node {
+          childMarkdownRemark {
             frontmatter {
-              title
-              path
+              slug
+              date(formatString: "DD MMMM YYYY")
             }
-            timeToRead
+            html
           }
         }
       }
     }
+  }
+  
   `);
+  if (!results.errors) {
+    const { allMarkdownRemark, allBloggerPost } = results.data;
 
-  if (!markdownResults.errors) {
-    markdownResults.data.allMarkdownRemark.edges.forEach(({ node }) => {
-      if (!node.frontmatter.path) return;
+    allMarkdownRemark.edges.forEach(({ node: { html, frontmatter: { path, date } } }) => {
+      if (!path) return;
       createPage({
-        path: node.frontmatter.path,
+        path,
         component: require.resolve('./src/templates/Template.tsx'),
-        context: { content: node.html },
+        context: { content: html, date },
       });
     });
-  }
 
-  const bloggerResults = await graphql(`
-    {
-      allBloggerPost {
-        edges {
-          node {
-            childMarkdownRemark {
-              frontmatter {
-                title
-                slug
-              }
-              html
-            }
-          }
-        }
-      }
-    }
-  `);
 
-  if (!bloggerResults.errors) {
-    bloggerResults.data.allBloggerPost.edges.forEach(({ node: { childMarkdownRemark } }) => {
-      if (!childMarkdownRemark.frontmatter.slug) return;
+    allBloggerPost.edges.forEach(({ node: { childMarkdownRemark: { html, frontmatter: { slug, date } } } }) => {
+      if (!slug) return;
       createPage({
-        path: `/${childMarkdownRemark.frontmatter.slug}`,
+        path: `/${slug}`,
         component: require.resolve('./src/templates/Template.tsx'),
-        context: { content: childMarkdownRemark.html },
+        context: { content: html, date },
       });
     });
   }

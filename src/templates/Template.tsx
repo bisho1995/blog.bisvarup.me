@@ -5,7 +5,7 @@ import withErrorBoundary from '../component/withErrorBoundary/withErrorBoundary'
 import profilePic from '../images/profile.jpg';
 
 export default withErrorBoundary(({
-  pageContext: { content },
+  pageContext: { content, date },
 }: {
   pageContext: {content: string},
 }) => (
@@ -47,6 +47,7 @@ export default withErrorBoundary(({
         </div>
       </Link>
     </header>
+    <div style={{ textAlign: 'center' }}><b>{date}</b></div>
     <div
       className="container"
       dangerouslySetInnerHTML={{ __html: content }}

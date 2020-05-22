@@ -1,6 +1,6 @@
 ---
 title: The snackbar component
-date: 2020-05-18
+date: 2020-05-20
 path: /the-snackbar-component
 ---
 

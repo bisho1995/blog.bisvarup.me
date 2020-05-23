@@ -1,73 +1,55 @@
 import React from 'react';
-import { Helmet } from 'react-helmet';
 import { Link } from 'gatsby';
+import Helmet from '../component/Helmet/Helmet';
 import withErrorBoundary from '../component/withErrorBoundary/withErrorBoundary';
 import profilePic from '../images/profile.jpg';
 
-export default withErrorBoundary(({
-  pageContext: { content, date },
-}: {
-  pageContext: {content: string},
-}) => (
-  <div>
-    <Helmet>
-      <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
-      />
-      <link
-        rel="stylesheet"
-        href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
-      />
-    </Helmet>
-    <header>
-      <Link to="/" style={{ textDecoration: 'none' }}>
+export default withErrorBoundary(
+  ({ pageContext: { content, date } }: {pageContext: {content: string}}) => (
+    <div>
+      <Helmet />
+      <header>
+        <Link to="/" className="no-underline">
+          <div className="flex justify-start p-4 select-none">
+            <img
+              src={profilePic}
+              alt="bisvarup mukherjee"
+              className="h-24 mr-6 rounded-full"
+            />
+            <span className="flex flex-col justify-center text-2xl no-underline text-grey-900">
+              bisvarup&apos;s blog
+            </span>
+          </div>
+        </Link>
+      </header>
+      <div className="container mx-auto p-4">
+        <div className="text-center">
+          <b>{date}</b>
+        </div>
         <div
-          style={{
-            padding: 32, display: 'flex', justifyContent: 'flex-start', userSelect: 'none',
-          }}
-        >
+          className="container"
+          dangerouslySetInnerHTML={{ __html: content }}
+        />
+        <div className="flex mt-16">
           <img
-            style={{ borderRadius: '50%', marginRight: 12 }}
             src={profilePic}
             alt="bisvarup mukherjee"
-            height={60}
+            className="h-32 mr-6 rounded-full"
           />
-          <b
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              justifyContent: 'center',
-              fontSize: 20,
-              color: '#212121',
-            }}
+          <div
+            className="flex flex-col justify-center text-sm"
           >
-            bisvarup&apos;s blog
-          </b>
-        </div>
-      </Link>
-    </header>
-    <div className="container">
-      <div style={{ textAlign: 'center' }}><b>{date}</b></div>
-      <div
-        className="container"
-        dangerouslySetInnerHTML={{ __html: content }}
-      />
-      <div style={{ marginTop: 64, display: 'flex' }}>
-        <img
-          style={{ borderRadius: '50%', marginRight: 32 }}
-          src={profilePic}
-          alt="bisvarup mukherjee"
-          height={100}
-        />
-        <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-          Hi, I am bisvarup. I am a frontend developer at Flipkart. I love optimizations which included bundling and website perf. Hit me up if you want to talk about typescript, react, and general frontend concepts, or if you have any opinion about this post.
+            Hi, I am bisvarup. I am a frontend developer at Flipkart. I love
+            optimizations which included bundling and website perf. Hit me up if
+            you want to talk about typescript, react, and general frontend
+            concepts, or if you have any opinion about this post.
+          </div>
         </div>
       </div>
-    </div>
-    {/* <footer>
+      {/* <footer>
       Newsletter
       Social media
     </footer> */}
-  </div>
-));
+    </div>
+  ),
+);

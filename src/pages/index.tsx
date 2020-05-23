@@ -29,14 +29,16 @@ export default withErrorBoundary(({data}) => {
             (
               {
                 node: {
+                  excerpt,
                   frontmatter: {title, path, slug, date},
                 },
               },
               idx: number,
             ) => (
-              <div className="my-4" key={slug || path || idx}>
-                <Link to={`/${path || slug}`}>
+              <div className="my-12" key={slug || path || idx}>
+                <Link to={`/${path || slug}`} className="text-purple-900 text-lg font-medium">
                   [{date}] {title}
+                  <p className="text-gray-700 text-sm">{excerpt}</p>
                 </Link>
               </div>
             ),
@@ -58,6 +60,7 @@ export const query = graphql`
             slug
             date(formatString: "DD MMM YYYY")
           }
+          excerpt(pruneLength: 250)
         }
       }
     }

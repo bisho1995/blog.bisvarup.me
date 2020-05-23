@@ -47,11 +47,27 @@ export default withErrorBoundary(({
         </div>
       </Link>
     </header>
-    <div style={{ textAlign: 'center' }}><b>{date}</b></div>
-    <div
-      className="container"
-      dangerouslySetInnerHTML={{ __html: content }}
-    />
-    ;
+    <div className="container">
+      <div style={{ textAlign: 'center' }}><b>{date}</b></div>
+      <div
+        className="container"
+        dangerouslySetInnerHTML={{ __html: content }}
+      />
+      <div style={{ marginTop: 64, display: 'flex' }}>
+        <img
+          style={{ borderRadius: '50%', marginRight: 32 }}
+          src={profilePic}
+          alt="bisvarup mukherjee"
+          height={100}
+        />
+        <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+          Hi, I am bisvarup. I am a frontend developer at Flipkart. I love optimizations which included bundling and website perf. Hit me up if you want to talk about typescript, react, and general frontend concepts, or if you have any opinion about this post.
+        </div>
+      </div>
+    </div>
+    {/* <footer>
+      Newsletter
+      Social media
+    </footer> */}
   </div>
 ));

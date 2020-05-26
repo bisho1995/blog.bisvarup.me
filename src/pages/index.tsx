@@ -9,7 +9,7 @@ export default withErrorBoundary(({data}) => {
   const edges = data?.allMarkdownRemark?.edges;
 
   return (
-    <main>
+    <main className="p-4 container mx-auto">
       <Helmet />
       <header className={styles.header}>
         <img
@@ -18,7 +18,7 @@ export default withErrorBoundary(({data}) => {
           height={130}
           className="h-40 mr-8 rounded-full"
         />
-        <h1 className="text-2xl flex flex-col justify-center">
+        <h1 className="text-3xl flex flex-col justify-center">
           bisvarup&apos;s blog
         </h1>
       </header>

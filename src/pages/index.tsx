@@ -2,7 +2,6 @@ import React from 'react';
 import {graphql, Link} from 'gatsby';
 import withErrorBoundary from '../component/withErrorBoundary/withErrorBoundary';
 import profilePic from '../images/profile.jpg';
-import styles from '../styles/index.module.scss';
 import Helmet from '../component/Helmet/Helmet';
 
 export default withErrorBoundary(({data}) => {
@@ -11,12 +10,12 @@ export default withErrorBoundary(({data}) => {
   return (
     <main className="p-4 container mx-auto">
       <Helmet />
-      <header className={styles.header}>
+      <header className="flex-row justify-center md:m-16 sm:block md:flex">
         <img
           src={profilePic}
           alt="bisvarup mukherjee"
           height={130}
-          className="h-40 mr-8 rounded-full"
+          className="h-32 m-auto md:mr-4 md:ml-0 rounded-full"
         />
         <h1 className="text-3xl flex flex-col justify-center">
           bisvarup&apos;s blog

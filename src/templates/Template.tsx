@@ -15,9 +15,9 @@ export default withErrorBoundary(
             <img
               src={profilePic}
               alt="bisvarup mukherjee"
-              className="h-24 mr-6 rounded-full"
+              className="h-24 rounded-full m-auto md:m-0 md:mr-4 block"
             />
-            <span className="flex flex-col justify-center text-2xl no-underline text-grey-900">
+            <span className="justify-center text-2xl no-underline text-grey-900 hidden md:flex md:flex-col">
               bisvarup&apos;s blog
             </span>
           </div>
@@ -30,13 +30,13 @@ export default withErrorBoundary(
         <div
           dangerouslySetInnerHTML={{ __html: content }}
         />
-
+        <div className="text-center my-4 text-gray-600">-- X -- X -- X --</div>
       </div>
-      <div className="flex mt-16 container mx-auto">
+      <div className="flex mt-1 container mx-auto p-2">
         <img
           src={profilePic}
           alt="bisvarup mukherjee"
-          className="h-32 mr-6 rounded-full"
+          className="h-32 mr-4 md:mr-6 rounded-full"
         />
         <div
           className="flex flex-col justify-center text-sm"

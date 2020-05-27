@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FormEvent } from 'react';
 import { Link } from 'gatsby';
 import { Helmet as ReactHelmet } from 'react-helmet';
 import Helmet from '../component/Helmet/Helmet';
@@ -8,8 +8,8 @@ import Newsletter from '../component/newsletter/Newsletter';
 import './template.scss';
 
 function Template({ pageContext: { content, date, title } }: {pageContext: {content: string, date: string, title:string}}) {
-  function onSubmit(e) {
-    e.preventDefault();
+  function onSubmit({ name, email }: {name: string, email:string}) {
+    console.log({ name, email });
   }
 
   return (

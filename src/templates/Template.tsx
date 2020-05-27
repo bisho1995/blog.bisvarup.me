@@ -1,14 +1,18 @@
 import React from 'react';
 import { Link } from 'gatsby';
+import { Helmet as ReactHelmet } from 'react-helmet';
 import Helmet from '../component/Helmet/Helmet';
 import withErrorBoundary from '../component/withErrorBoundary/withErrorBoundary';
 import profilePic from '../images/profile.jpg';
 import './template.scss';
 
 export default withErrorBoundary(
-  ({ pageContext: { content, date } }: {pageContext: {content: string}}) => (
+  ({ pageContext: { content, date, title } }: {pageContext: {content: string, date: string, title:string}}) => (
     <div>
       <Helmet />
+      <ReactHelmet>
+        <title>{title}</title>
+      </ReactHelmet>
       <header>
         <Link to="/" className="no-underline">
           <div className="flex justify-start p-4 select-none">
@@ -48,9 +52,9 @@ export default withErrorBoundary(
         </div>
       </div>
       {/* <footer>
-      Newsletter
-      Social media
-    </footer> */}
+        Newsletter
+        Social media
+      </footer> */}
     </div>
   ),
 );

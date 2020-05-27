@@ -59,10 +59,14 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
-        name: "bisvarp's blog",
+        name: "bisvarup's blog",
         short_name: "bisvarup's blog",
         start_url: '/',
-        icon: 'src/images/gatsby-icon.png',
+        icon: 'src/images/profile-circle.png',
+        /** todo: use my colors */
+        background_color: '#f7f0eb',
+        theme_color: '#44337a',
+        display: 'standalone',
       },
     },
   ],

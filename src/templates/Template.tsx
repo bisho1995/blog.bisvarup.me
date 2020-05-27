@@ -4,10 +4,15 @@ import { Helmet as ReactHelmet } from 'react-helmet';
 import Helmet from '../component/Helmet/Helmet';
 import withErrorBoundary from '../component/withErrorBoundary/withErrorBoundary';
 import profilePic from '../images/profile.jpg';
+import Newsletter from '../component/newsletter/Newsletter';
 import './template.scss';
 
-export default withErrorBoundary(
-  ({ pageContext: { content, date, title } }: {pageContext: {content: string, date: string, title:string}}) => (
+function Template({ pageContext: { content, date, title } }: {pageContext: {content: string, date: string, title:string}}) {
+  function onSubmit(e) {
+    e.preventDefault();
+  }
+
+  return (
     <div>
       <Helmet />
       <ReactHelmet>
@@ -36,7 +41,9 @@ export default withErrorBoundary(
         />
         <div className="text-center my-4 text-gray-600">-- X -- X -- X --</div>
       </div>
+      <Newsletter onSubmit={onSubmit} />
       <div className="flex mt-1 container mx-auto p-2">
+
         <img
           src={profilePic}
           alt="bisvarup mukherjee"
@@ -56,5 +63,7 @@ export default withErrorBoundary(
         Social media
       </footer> */}
     </div>
-  ),
-);
+  );
+}
+
+export default withErrorBoundary(Template);

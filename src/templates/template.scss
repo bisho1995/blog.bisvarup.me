@@ -68,4 +68,13 @@
       pre {
         border-radius: 4px;
       }
+
+      table {
+        margin: 4px 0 16px 0;
+        td,th {
+          text-align: center;
+          border: 1px solid #212121;
+          padding: 4px 8px;
+        }
+      }
 }

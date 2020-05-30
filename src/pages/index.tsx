@@ -1,10 +1,11 @@
 import React from 'react';
-import {graphql, Link} from 'gatsby';
+import { graphql, Link } from 'gatsby';
 import withErrorBoundary from '../component/withErrorBoundary/withErrorBoundary';
 import profilePic from '../images/profile.jpg';
 import Helmet from '../component/Helmet/Helmet';
+import CircularDot from '../component/CircularDot/CircularDot';
 
-export default withErrorBoundary(({data}) => {
+export default withErrorBoundary(({ data }) => {
   const edges = data?.allMarkdownRemark?.edges;
 
   return (
@@ -17,9 +18,20 @@ export default withErrorBoundary(({data}) => {
           height={130}
           className="h-32 m-auto md:mr-4 md:ml-0 rounded-full"
         />
-        <h1 className="text-3xl flex flex-col justify-center">
-          bisvarup&apos;s blog
-        </h1>
+        <div className="m-0">
+          <h1 className="text-3xl flex flex-col justify-center mb-0">
+            bisvarup&apos;s blog
+          </h1>
+          <h2 className="text-gray-600">
+            Developer
+            <CircularDot />
+            {' '}
+            Story teller
+            <CircularDot />
+            {' '}
+            Polyglot Programmer
+          </h2>
+        </div>
       </header>
 
       <div className="text-left">
@@ -29,14 +41,24 @@ export default withErrorBoundary(({data}) => {
               {
                 node: {
                   excerpt,
-                  frontmatter: {title, path, slug, date},
+                  timeToRead,
+                  frontmatter: {
+                    title, path, slug, date,
+                  },
                 },
               },
               idx: number,
             ) => (
               <div className="my-12" key={slug || path || idx}>
                 <Link to={`/${path || slug}`} className="text-purple-900 text-lg font-medium">
-                  [{date}] {title}
+                  {title}
+                  <p className="text-xs text-gray-600">
+                    {date}
+                    <CircularDot />
+                    {timeToRead}
+                    {' '}
+                    min
+                  </p>
                   <p className="text-gray-700 text-sm">{excerpt}</p>
                 </Link>
               </div>
@@ -60,6 +82,7 @@ export const query = graphql`
             date(formatString: "DD MMM YYYY")
           }
           excerpt(pruneLength: 250)
+          timeToRead
         }
       }
     }

@@ -24,10 +24,10 @@ export default withErrorBoundary(({ data }) => {
           </h1>
           <h2 className="text-gray-600">
             Developer
-            <CircularDot />
+            <CircularDot top={-3} />
             {' '}
             Story teller
-            <CircularDot />
+            <CircularDot top={-3} />
             {' '}
             Polyglot Programmer
           </h2>

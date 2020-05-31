@@ -4,6 +4,7 @@ import { Helmet as ReactHelmet } from 'react-helmet';
 import Helmet from '../component/Helmet/Helmet';
 import withErrorBoundary from '../component/withErrorBoundary/withErrorBoundary';
 import profilePic from '../images/profile.jpg';
+import ViewCounter from '../component/ViewCounter/ViewCounter';
 import './template.scss';
 
 export default withErrorBoundary(
@@ -51,10 +52,9 @@ export default withErrorBoundary(
           concepts, or if you have any opinion about this post.
         </div>
       </div>
-      {/* <footer>
-        Newsletter
-        Social media
-      </footer> */}
+      <footer>
+        <ViewCounter className="my-4" />
+      </footer>
     </div>
   ),
 );

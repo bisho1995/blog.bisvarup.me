@@ -4,6 +4,7 @@ import withErrorBoundary from '../component/withErrorBoundary/withErrorBoundary'
 import profilePic from '../images/profile.jpg';
 import Helmet from '../component/Helmet/Helmet';
 import CircularDot from '../component/CircularDot/CircularDot';
+import ViewCounter from '../component/ViewCounter/ViewCounter';
 
 export default withErrorBoundary(({ data }) => {
   const edges = data?.allMarkdownRemark?.edges;
@@ -66,6 +67,9 @@ export default withErrorBoundary(({ data }) => {
           )}
         </div>
       </div>
+      <footer>
+        <ViewCounter />
+      </footer>
     </main>
   );
 });

@@ -8,6 +8,7 @@ import ViewCounter from '../component/ViewCounter/ViewCounter';
 import styles from './template.module.scss';
 import TemplateFooter from '../component/TemplateFooter/TemplateFooter';
 import AsideBlock from '../component/AsideBlock/AsideBlock';
+import Footer from '../component/Footer/Footer';
 
 export default withErrorBoundary(
   ({ pageContext: { content, date, title } }: {pageContext: {content: string, date: string, title:string}}) => (
@@ -53,10 +54,7 @@ export default withErrorBoundary(
           </AsideBlock>
         </aside>
       </div>
-      <TemplateFooter />
-      <footer>
-        <ViewCounter className="my-4" />
-      </footer>
+      <Footer />
     </div>
   ),
 );

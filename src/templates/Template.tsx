@@ -32,7 +32,7 @@ export default withErrorBoundary(
         </Link>
       </header>
       <div className={`flex ${styles.wrapper} mx-auto`}>
-        <div className={`${styles.template} container mr-16 p-4`}>
+        <div className={`${styles.template} container mx-auto p-4`}>
           <div className="text-center">
             <b>{date}</b>
           </div>
@@ -41,7 +41,7 @@ export default withErrorBoundary(
           />
           <div className="text-center my-4 text-gray-600">-- X -- X -- X --</div>
         </div>
-        <aside className={`${styles.aside} flex flex-col`}>
+        {/* <aside className={`${styles.aside} flex flex-col`}>
           <AsideBlock header="Latest Posts">
             <div>
               Our latest posts
@@ -52,7 +52,7 @@ export default withErrorBoundary(
               All our tags
             </div>
           </AsideBlock>
-        </aside>
+        </aside> */}
       </div>
       <Footer />
     </div>

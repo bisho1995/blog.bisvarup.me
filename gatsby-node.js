@@ -37,12 +37,45 @@ exports.createPages = async ({ actions, graphql }) => {
   if (!results.errors) {
     const { allMarkdownRemark, allBloggerPost } = results.data;
 
-    allMarkdownRemark.edges.forEach(({ node: { html, frontmatter: { path, date, title,slug } } }) => {
+    const res = [];
+    allMarkdownRemark.edges.forEach(({
+      node: {
+        frontmatter: {
+          path, date, title, slug,
+        },
+      },
+    }) => {
+      if (!path) return;
+      res.push({
+        date, title, slug, path,
+      });
+    });
+
+
+    allBloggerPost.edges.forEach(({ node: { childMarkdownRemark: { frontmatter: { slug, date, title } } } }) => {
+      if (!slug) return;
+      res.push({
+        date, title, slug,
+      });
+    });
+
+    const newPosts = res.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()).slice(0, 10 + 1);
+
+
+    allMarkdownRemark.edges.forEach(({
+      node: {
+        html, frontmatter: {
+          path, date, title, slug,
+        },
+      },
+    }) => {
       if (!path) return;
       createPage({
         path,
         component: require.resolve('./src/templates/Template.tsx'),
-        context: { content: html, date, title,slug },
+        context: {
+          content: html, date, title, slug, newPosts, blogPath: path,
+        },
       });
     });
 
@@ -52,7 +85,9 @@ exports.createPages = async ({ actions, graphql }) => {
       createPage({
         path: `/${slug}`,
         component: require.resolve('./src/templates/Template.tsx'),
-        context: { content: html, date, title,slug },
+        context: {
+          content: html, date, title, slug, newPosts, blogPath: `/${slug}`,
+        },
       });
     });
   }

@@ -14,7 +14,7 @@ import Footer from '../component/Footer/Footer';
 export default withErrorBoundary(
   ({
     pageContext: {
-      content, date, title, slug,
+      content, date, title, slug, newPosts, blogPath,
     },
   }: {pageContext: {content: string, date: string, title:string, slug:string}}) => {
     const disqusShortname = 'blog-bisvarup-me'; // found in your Disqus.com dashboard
@@ -60,18 +60,18 @@ export default withErrorBoundary(
               config={disqusConfig}
             />
           </div>
-          {/* <aside className={`${styles.aside} flex flex-col`}>
+          <aside className={`${styles.aside} flex flex-col`}>
             <AsideBlock header="Latest Posts">
               <div>
-                Our latest posts
+                {newPosts.filter(({ title: pageTitle }) => pageTitle !== title).map(({ title: pageTitle, path, slug }) => <Link to={path || `/${slug}`}><div className="mb-4 text-sm leading-normal font-medium">{pageTitle}</div></Link>)}
               </div>
             </AsideBlock>
-            <AsideBlock header="Tags">
+            {/* <AsideBlock header="Tags">
               <div>
                 All our tags
               </div>
-            </AsideBlock>
-          </aside> */}
+            </AsideBlock> */}
+          </aside>
         </div>
         <Footer />
       </div>

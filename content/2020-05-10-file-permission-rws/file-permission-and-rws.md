@@ -4,7 +4,7 @@ date: 2020-05-10
 path: /file-permission-and-rws
 ---
 
-# File Permission and RWS
+ 
 
 ## File Permissions
 

@@ -4,7 +4,7 @@ date: 2020-05-20
 path: /the-snackbar-component
 ---
 
-# The snackbar component
+ 
 
 So for your app, you need a good old snackbar component. How difficult can it be? This was my initial thought as well.
 Let's find out 🙄

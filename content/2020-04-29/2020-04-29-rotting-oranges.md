@@ -4,7 +4,7 @@ date: 2020-04-29
 path: /leetcode-rotting-oranges
 ---
 
-# Rotting Oranges
+ 
 
 [Leetcode: https://leetcode.com/problems/rotting-oranges/](https://leetcode.com/problems/rotting-oranges/)
 

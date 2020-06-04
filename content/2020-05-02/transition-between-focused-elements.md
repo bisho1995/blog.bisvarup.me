@@ -4,7 +4,7 @@ date: 2020-05-02
 path: /transition-between-focused-elements
 ---
 
-# Transition between focused elements
+ 
 
 Suppose you have a list of input tags and one of them has focus enabled on them. You want to hit tab and the next input gets focus.
 

@@ -4,7 +4,7 @@ date: 2020-05-15
 path: /ts-loader-and-babel-loader-hensel-and-gretel
 ---
 
-# ts-loader & babel-loader
+ 
 
 **🚨Short story alert.🚨**<br/>
 Directly quoting from [stackoverflow](https://stackoverflow.com/a/49624611/13142033)

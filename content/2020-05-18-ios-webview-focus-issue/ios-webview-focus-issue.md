@@ -4,7 +4,7 @@ date: 2020-05-18
 path: /ios-webview-focus-issue
 ---
 
-# IOS webview focus issue
+ 
 
 So, currently I am working a lot of mobile version of our website, and a lot of the code runs on webviews as well.
 While, it's mostly sane to work with webviews on android and IOS sometimes we encounter interesting situations.

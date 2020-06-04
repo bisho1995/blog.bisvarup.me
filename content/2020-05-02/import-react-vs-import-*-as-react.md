@@ -4,7 +4,7 @@ date: 2020-05-02
 path: /import-react-from-react-vs-import-*-as-react-from-react
 ---
 
-# import React from react vs import * as React from react 
+ 
 
 React uses CommonJs module system so we cannot use
 ```jsx

@@ -4,7 +4,7 @@ date: 2020-05-04
 path: /silly-me-and-my-dear-friend-jenkins
 ---
 
-# Silly me and my dear friend jenkins
+ 
 
 So, for work we have two Jenkins jobs, one is the actual building and the other is deploying.
 

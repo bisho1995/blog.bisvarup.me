@@ -6,9 +6,6 @@ tags: node, javascript, npm, package-json
 image: /images/nicolas-hans-u2LV_WJdBfQ-unsplash.jpg
 ---
 
-# The ultimate guide to create a npm package
-
----
 
 The following is the `package.json` file which I used for my [ReadMore](https://www.npmjs.com/package/@bisvarup/react-read-more) project.
 

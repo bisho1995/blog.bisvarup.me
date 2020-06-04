@@ -48,6 +48,7 @@ export default withErrorBoundary(
           <div className={`${styles.template} container mx-auto p-4`}>
             <div className="text-center">
               <b>{date}</b>
+              <h1>{title}</h1>
             </div>
             <div
               dangerouslySetInnerHTML={{ __html: content }}

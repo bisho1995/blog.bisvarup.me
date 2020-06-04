@@ -8,6 +8,7 @@ exports.createPages = async ({ actions, graphql }) => {
         node {
           frontmatter {
             path
+            slug
             date(formatString: "DD MMMM, YYYY")
             title
           }
@@ -36,12 +37,12 @@ exports.createPages = async ({ actions, graphql }) => {
   if (!results.errors) {
     const { allMarkdownRemark, allBloggerPost } = results.data;
 
-    allMarkdownRemark.edges.forEach(({ node: { html, frontmatter: { path, date, title } } }) => {
+    allMarkdownRemark.edges.forEach(({ node: { html, frontmatter: { path, date, title,slug } } }) => {
       if (!path) return;
       createPage({
         path,
         component: require.resolve('./src/templates/Template.tsx'),
-        context: { content: html, date, title },
+        context: { content: html, date, title,slug },
       });
     });
 
@@ -51,7 +52,7 @@ exports.createPages = async ({ actions, graphql }) => {
       createPage({
         path: `/${slug}`,
         component: require.resolve('./src/templates/Template.tsx'),
-        context: { content: html, date, title },
+        context: { content: html, date, title,slug },
       });
     });
   }

@@ -30,7 +30,7 @@ export default function ({
         <img loading="lazy" className="rounded block shadow-xl" src={image || '/images/placeholder.jpg'} alt={title} />
         <figcaption className="mt-8">
           <div className="flex justify-between mb-4">
-            <HashTags tags={tags} className="text-purple-900 text-sm" />
+            <HashTags tags={tags} />
             <div className="text-xs text-gray-600">
               {timeToRead}
               {' '}

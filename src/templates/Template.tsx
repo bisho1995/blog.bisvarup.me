@@ -10,11 +10,12 @@ import styles from './template.module.scss';
 import TemplateFooter from '../component/TemplateFooter/TemplateFooter';
 import AsideBlock from '../component/AsideBlock/AsideBlock';
 import Footer from '../component/Footer/Footer';
+import HashTags from '../component/HashTags/HashTags';
 
 export default withErrorBoundary(
   ({
     pageContext: {
-      content, date, title, slug, newPosts, blogPath,
+      content, date, title, slug, newPosts,
     },
   }: {pageContext: {content: string, date: string, title:string, slug:string}}) => {
     const disqusShortname = 'blog-bisvarup-me'; // found in your Disqus.com dashboard
@@ -63,7 +64,19 @@ export default withErrorBoundary(
           <aside className={`${styles.aside} flex flex-col`}>
             <AsideBlock header="Latest Posts">
               <div>
-                {newPosts.filter(({ title: pageTitle }) => pageTitle !== title).map(({ title: pageTitle, path, slug }) => <Link to={path || `/${slug}`}><div className="mb-4 text-sm leading-normal font-medium">{pageTitle}</div></Link>)}
+                {newPosts.filter(({ title: pageTitle }) => pageTitle !== title).map(({
+                  title: pageTitle, path, slug, image = '/images/placeholder.jpg', tags = '',
+                }) => (
+                  <Link to={path || `/${slug}`}>
+                    <div className="mb-8 text-sm leading-normal font-medium flex">
+                      <img className="w-10 h-10 mr-4" src={image || '/images/placeholder.jpg'} alt={pageTitle} />
+                      <div>
+                        {pageTitle}
+                        <div><HashTags tags={tags} /></div>
+                      </div>
+                    </div>
+                  </Link>
+                ))}
               </div>
             </AsideBlock>
             {/* <AsideBlock header="Tags">

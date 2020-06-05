@@ -11,6 +11,8 @@ exports.createPages = async ({ actions, graphql }) => {
             slug
             date(formatString: "DD MMMM, YYYY")
             title
+            image
+            tags
           }
           html
         }
@@ -41,13 +43,13 @@ exports.createPages = async ({ actions, graphql }) => {
     allMarkdownRemark.edges.forEach(({
       node: {
         frontmatter: {
-          path, date, title, slug,
+          path, date, title, slug, image, tags,
         },
       },
     }) => {
       if (!path) return;
       res.push({
-        date, title, slug, path,
+        date, title, slug, path, image, tags,
       });
     });
 
@@ -74,7 +76,7 @@ exports.createPages = async ({ actions, graphql }) => {
         path,
         component: require.resolve('./src/templates/Template.tsx'),
         context: {
-          content: html, date, title, slug, newPosts, blogPath: path,
+          content: html, date, title, slug, newPosts,
         },
       });
     });
@@ -86,7 +88,7 @@ exports.createPages = async ({ actions, graphql }) => {
         path: `/${slug}`,
         component: require.resolve('./src/templates/Template.tsx'),
         context: {
-          content: html, date, title, slug, newPosts, blogPath: `/${slug}`,
+          content: html, date, title, slug, newPosts,
         },
       });
     });

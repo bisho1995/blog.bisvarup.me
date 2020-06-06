@@ -74,10 +74,9 @@ export default withErrorBoundary(
         <div className={`flex flex-col ${styles.wrapper} mx-auto lg:flex-row`}>
           <div className={`${styles.template} container mx-auto p-4`}>
             <h1 className="text-center text-2xl md:text-3xl">{title}</h1>
-            <div className="flex justify-between">
+            <div className="flex justify-between mt-8 mb-4">
               <div className="hidden md:block text-sm font-normal text-gray-900">{date}</div>
               <div className="flex">
-                <div>Share on</div>
                 <WhatsappShareButton className="mx-1" title={shareTitle} url={window.location.href}>
                   <WhatsappIcon size={25} round />
                 </WhatsappShareButton>
@@ -107,7 +106,7 @@ export default withErrorBoundary(
               config={disqusConfig}
             />
           </div>
-          <aside className={`${styles.aside} m-4 lg:mr-4 flex flex-col`}>
+          <aside className="w-full md:w-auto m-4 lg:mr-4 flex flex-col">
             <AsideBlock header="Latest Posts">
               <div>
                 {newPosts.filter(({ title: pageTitle }) => pageTitle !== title).map(({

@@ -2,6 +2,18 @@ import React from 'react';
 import { Link } from 'gatsby';
 import { Helmet as ReactHelmet } from 'react-helmet';
 import Disqus from 'disqus-react';
+import {
+  FacebookShareButton,
+  FacebookIcon,
+  LinkedinShareButton,
+  LinkedinIcon,
+  RedditShareButton,
+  RedditIcon,
+  TwitterShareButton,
+  TwitterIcon,
+  WhatsappShareButton,
+  WhatsappIcon,
+} from 'react-share';
 import Helmet from '../component/Helmet/Helmet';
 import withErrorBoundary from '../component/withErrorBoundary/withErrorBoundary';
 import profilePic from '../images/profile.jpg';
@@ -37,6 +49,8 @@ export default withErrorBoundary(
       identifier: encodeURIComponent(slug),
       title,
     };
+    const shareTitle = `Checkout ${title} on`;
+
     return (
       <div>
         <Helmet />
@@ -60,10 +74,29 @@ export default withErrorBoundary(
         <div className={`flex flex-col ${styles.wrapper} mx-auto lg:flex-row`}>
           <div className={`${styles.template} container mx-auto p-4`}>
             <h1 className="text-center text-2xl md:text-3xl">{title}</h1>
-            <div className="flex flex-col justify-between">
-              <div className="text-sm font-normal">{date}</div>
-              {image && <figure><img className="my-4" src={image} alt={title} /></figure>}
+            <div className="flex justify-between">
+              <div className="hidden md:block text-sm font-normal text-gray-900">{date}</div>
+              <div className="flex">
+                <div>Share on</div>
+                <WhatsappShareButton className="mx-1" title={shareTitle} url={window.location.href}>
+                  <WhatsappIcon size={25} round />
+                </WhatsappShareButton>
+                <LinkedinShareButton className="mx-1" title={shareTitle} url={window.location.href}>
+                  <LinkedinIcon size={25} round />
+                </LinkedinShareButton>
+                <RedditShareButton className="mx-1" title={shareTitle} url={window.location.href}>
+                  <RedditIcon size={25} round />
+                </RedditShareButton>
+
+                <TwitterShareButton className="mx-1" title={shareTitle} url={window.location.href}>
+                  <TwitterIcon size={25} round />
+                </TwitterShareButton>
+                <FacebookShareButton className="mx-1" title={shareTitle} url={window.location.href}>
+                  <FacebookIcon size={25} round />
+                </FacebookShareButton>
+              </div>
             </div>
+            {image && <figure><img className="my-4" src={image} alt={title} /></figure>}
             <div
               dangerouslySetInnerHTML={{ __html: content }}
             />

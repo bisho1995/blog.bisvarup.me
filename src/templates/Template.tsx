@@ -45,7 +45,7 @@ export default withErrorBoundary(
             </div>
           </Link>
         </header>
-        <div className={`flex ${styles.wrapper} mx-auto`}>
+        <div className={`flex flex-col ${styles.wrapper} mx-auto lg:flex-row`}>
           <div className={`${styles.template} container mx-auto p-4`}>
             <div className="text-center">
               <b>{date}</b>
@@ -61,7 +61,7 @@ export default withErrorBoundary(
               config={disqusConfig}
             />
           </div>
-          <aside className={`${styles.aside} flex flex-col`}>
+          <aside className={`${styles.aside} m-4 lg:mr-4 flex flex-col`}>
             <AsideBlock header="Latest Posts">
               <div>
                 {newPosts.filter(({ title: pageTitle }) => pageTitle !== title).map(({
@@ -69,7 +69,7 @@ export default withErrorBoundary(
                 }) => (
                   <Link to={path || `/${slug}`}>
                     <div className="mb-8 text-sm leading-normal font-medium flex">
-                      <img className="w-10 h-10 mr-4" src={image || '/images/placeholder.jpg'} alt={pageTitle} />
+                      <img className="w-20 h-20 mr-4" src={image || '/images/placeholder.jpg'} alt={pageTitle} />
                       <div>
                         {pageTitle}
                         <div><HashTags tags={tags} /></div>

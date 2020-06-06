@@ -67,7 +67,7 @@ exports.createPages = async ({ actions, graphql }) => {
     allMarkdownRemark.edges.forEach(({
       node: {
         html, frontmatter: {
-          path, date, title, slug,
+          path, date, title, slug, image, tags,
         },
       },
     }) => {
@@ -76,7 +76,7 @@ exports.createPages = async ({ actions, graphql }) => {
         path,
         component: require.resolve('./src/templates/Template.tsx'),
         context: {
-          content: html, date, title, slug, newPosts,
+          content: html, date, title, slug, newPosts, image, tags,
         },
       });
     });

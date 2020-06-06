@@ -12,12 +12,24 @@ import AsideBlock from '../component/AsideBlock/AsideBlock';
 import Footer from '../component/Footer/Footer';
 import HashTags from '../component/HashTags/HashTags';
 
+interface Props {
+  pageContext: {
+    content: string,
+    date: string,
+    title:string,
+    slug:string,
+    newPosts?:Object[]
+    image?:string
+    tags?:string | string[]
+  }
+}
+
 export default withErrorBoundary(
   ({
     pageContext: {
-      content, date, title, slug, newPosts,
+      content, date, title, slug, newPosts = [], image = '', tags = '',
     },
-  }: {pageContext: {content: string, date: string, title:string, slug:string}}) => {
+  }: Props) => {
     const disqusShortname = 'blog-bisvarup-me'; // found in your Disqus.com dashboard
     const disqusConfig = {
       // @ts-ignore
@@ -47,9 +59,10 @@ export default withErrorBoundary(
         </header>
         <div className={`flex flex-col ${styles.wrapper} mx-auto lg:flex-row`}>
           <div className={`${styles.template} container mx-auto p-4`}>
-            <div className="text-center">
-              <b>{date}</b>
-              <h1>{title}</h1>
+            <h1 className="text-center text-2xl md:text-3xl">{title}</h1>
+            <div className="flex flex-col justify-between">
+              <div className="text-sm font-normal">{date}</div>
+              {image && <figure><img className="my-4" src={image} alt={title} /></figure>}
             </div>
             <div
               dangerouslySetInnerHTML={{ __html: content }}

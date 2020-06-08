@@ -23,6 +23,7 @@ import TemplateFooter from '../component/TemplateFooter/TemplateFooter';
 import AsideBlock from '../component/AsideBlock/AsideBlock';
 import Footer from '../component/Footer/Footer';
 import HashTags from '../component/HashTags/HashTags';
+import config from '../config/config';
 
 interface Props {
   pageContext: {
@@ -30,6 +31,7 @@ interface Props {
     date: string,
     title:string,
     slug:string,
+    url:string,
     newPosts?:Object[]
     image?:string
     tags?:string | string[]
@@ -39,13 +41,12 @@ interface Props {
 export default withErrorBoundary(
   ({
     pageContext: {
-      content, date, title, slug, newPosts = [], image = '', tags = '',
+      content, date, title, slug, newPosts = [], image = '', tags = '', url,
     },
   }: Props) => {
-    const disqusShortname = 'blog-bisvarup-me'; // found in your Disqus.com dashboard
+    const disqusShortname = 'blog-bisvarup-me';
     const disqusConfig = {
-      // @ts-ignore
-      url: window.location.href,
+      url: `${config.base_path}${url}`,
       identifier: encodeURIComponent(slug),
       title,
     };

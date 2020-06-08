@@ -76,7 +76,7 @@ exports.createPages = async ({ actions, graphql }) => {
         path,
         component: require.resolve('./src/templates/Template.tsx'),
         context: {
-          content: html, date, title, slug, newPosts, image, tags,
+          content: html, date, title, slug, newPosts, image, tags, url: path,
         },
       });
     });
@@ -88,7 +88,7 @@ exports.createPages = async ({ actions, graphql }) => {
         path: `/${slug}`,
         component: require.resolve('./src/templates/Template.tsx'),
         context: {
-          content: html, date, title, slug, newPosts,
+          content: html, date, title, slug, newPosts, url: `/${slug}`,
         },
       });
     });

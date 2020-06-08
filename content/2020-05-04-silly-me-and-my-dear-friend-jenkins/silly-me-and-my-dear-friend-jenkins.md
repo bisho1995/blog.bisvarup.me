@@ -2,6 +2,8 @@
 title: Silly me and my dear friend jenkins
 date: 2020-05-04
 path: /silly-me-and-my-dear-friend-jenkins
+tags: jenkins, build
+image: /images/hannah-rodrigo-mf_3yZnC6ug-unsplash.jpg
 ---
 
  

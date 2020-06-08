@@ -2,6 +2,8 @@
 title: import React from react vs import * as React from react 
 date: 2020-05-02
 path: /import-react-from-react-vs-import-*-as-react-from-react
+tags: react, commonjs, typescript
+image: /images/camylla-battani-AoqgGAqrLpU-unsplash.jpg
 ---
 
  

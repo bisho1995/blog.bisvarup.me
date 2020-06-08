@@ -2,6 +2,8 @@
 title: Transition between focused elements
 date: 2020-05-02
 path: /transition-between-focused-elements
+tags: input, frontend, react
+image: /images/markus-spiske-_v6mhdOK2g0-unsplash.jpg
 ---
 
  

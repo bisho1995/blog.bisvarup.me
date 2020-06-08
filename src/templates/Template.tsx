@@ -44,9 +44,10 @@ export default withErrorBoundary(
       content, date, title, slug, newPosts = [], image = '', tags = '', url,
     },
   }: Props) => {
+    const pageUrl = `${config.base_path}${url}`;
     const disqusShortname = 'blog-bisvarup-me';
     const disqusConfig = {
-      url: `${config.base_path}${url}`,
+      url: pageUrl,
       identifier: encodeURIComponent(slug),
       title,
     };
@@ -78,20 +79,20 @@ export default withErrorBoundary(
             <div className="flex justify-between mt-8 mb-4">
               <div className="hidden md:block text-sm font-normal text-gray-900">{date}</div>
               <div className="flex">
-                <WhatsappShareButton className="mx-1" title={shareTitle} url={window.location.href}>
+                <WhatsappShareButton className="mx-1" title={shareTitle} url={pageUrl}>
                   <WhatsappIcon size={25} round />
                 </WhatsappShareButton>
-                <LinkedinShareButton className="mx-1" title={shareTitle} url={window.location.href}>
+                <LinkedinShareButton className="mx-1" title={shareTitle} url={pageUrl}>
                   <LinkedinIcon size={25} round />
                 </LinkedinShareButton>
-                <RedditShareButton className="mx-1" title={shareTitle} url={window.location.href}>
+                <RedditShareButton className="mx-1" title={shareTitle} url={pageUrl}>
                   <RedditIcon size={25} round />
                 </RedditShareButton>
 
-                <TwitterShareButton className="mx-1" title={shareTitle} url={window.location.href}>
+                <TwitterShareButton className="mx-1" title={shareTitle} url={pageUrl}>
                   <TwitterIcon size={25} round />
                 </TwitterShareButton>
-                <FacebookShareButton className="mx-1" title={shareTitle} url={window.location.href}>
+                <FacebookShareButton className="mx-1" title={shareTitle} url={pageUrl}>
                   <FacebookIcon size={25} round />
                 </FacebookShareButton>
               </div>

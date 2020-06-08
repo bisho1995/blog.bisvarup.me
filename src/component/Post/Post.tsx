@@ -37,7 +37,7 @@ export default function ({
               min read ⏱
             </div>
           </div>
-          <Link to={`/${path || slug}`} className="text-purple-900 text-lg font-medium">
+          <Link to={`${path || `/${slug}`}`} className="text-purple-900 text-lg font-medium">
             {title}
             <p className="text-gray-700 text-sm">{excerpt}</p>
           </Link>

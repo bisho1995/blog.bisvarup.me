@@ -2,6 +2,8 @@
 title: The docker handbook for frontend devs
 date: 2020-05-22
 path: /docker-handbook-for-feds
+tags: frontend, docker
+image: /images/guillaume-bolduc-uBe2mknURG4-unsplash.jpg
 ---
 
  

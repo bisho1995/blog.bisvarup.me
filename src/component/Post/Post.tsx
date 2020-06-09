@@ -33,7 +33,7 @@ export default function ({
         <figcaption className="mt-8">
           <div className="flex justify-between mb-4">
             <HashTags tags={tags} />
-            <div className="text-xs text-gray-600">
+            <div className="text-xs text-gray-600 text-right" style={{minWidth: 85}}>
               {timeToRead}
               {' '}
               min read ⏱

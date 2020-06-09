@@ -3,7 +3,7 @@ title: ts-loader and babel-loader | hensel and gretel
 date: 2020-05-15
 path: /ts-loader-and-babel-loader-hensel-and-gretel
 tags: babel, loaders
-image:  fynn-schmidt-IYKL2uhgsnU-unsplash.jpg
+featuredImage: ../../static/images/fynn-schmidt-IYKL2uhgsnU-unsplash.jpg
 ---
 
  

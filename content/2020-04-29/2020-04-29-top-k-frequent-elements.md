@@ -3,7 +3,7 @@ title: K Frequent Elements
 date: 2020-04-29
 path: /k-frequent-elements
 tags: algorithm, data structures
-image:  problem-solving.jpg
+featuredImage: ../../static/images/problem-solving.jpg
 ---
 
  

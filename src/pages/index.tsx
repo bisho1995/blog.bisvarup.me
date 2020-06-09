@@ -45,7 +45,7 @@ export default withErrorBoundary(({ data }) => {
                   excerpt,
                   timeToRead,
                   frontmatter: {
-                    title, path, slug, date, tags, image,
+                    title, path, slug, date, tags, featuredImage:{ childImageSharp:{fluid:image}},
                   },
                 },
               }) => (
@@ -78,10 +78,15 @@ export const query = graphql`
           frontmatter {
             title
             path
-            slug
             date(formatString: "DD MMM YYYY")
             tags
-            image
+            featuredImage {
+              childImageSharp{
+                fluid(maxWidth: 1000, quality: 90){
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
           }
           excerpt(pruneLength: 250)
           timeToRead

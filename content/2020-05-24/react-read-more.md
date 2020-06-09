@@ -3,7 +3,7 @@ title: Creating a read more component in react
 date: 2020-05-24
 path: /creating-a-read-more-component-using-react
 tags: react, javascript, read-more
-image:  alberto-bigoni-S25lkmUwTk8-unsplash.jpg
+featuredImage: ../../static/images/alberto-bigoni-S25lkmUwTk8-unsplash.jpg
 ---
 > Add a '...read more' text to your long content
 

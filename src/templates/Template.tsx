@@ -14,17 +14,15 @@ import {
   WhatsappShareButton,
   WhatsappIcon,
 } from 'react-share';
+import Img from 'gatsby-image';
 import Helmet from '../component/Helmet/Helmet';
 import withErrorBoundary from '../component/withErrorBoundary/withErrorBoundary';
 import profilePic from '../images/profile.jpg';
-import ViewCounter from '../component/ViewCounter/ViewCounter';
 import styles from './template.module.scss';
-import TemplateFooter from '../component/TemplateFooter/TemplateFooter';
 import AsideBlock from '../component/AsideBlock/AsideBlock';
 import Footer from '../component/Footer/Footer';
 import HashTags from '../component/HashTags/HashTags';
 import config from '../config/config';
-import Img from "gatsby-image"
 
 interface Props {
   pageContext: {
@@ -45,7 +43,7 @@ export default withErrorBoundary(
     pageContext: {
       content, date, title, slug, newPosts = [], image = '', tags = '', url,
     },
-    data = {} 
+    data = {},
   }: Props) => {
     const pageUrl = `${config.base_path}${url}`;
     const disqusShortname = 'blog-bisvarup-me';
@@ -56,7 +54,7 @@ export default withErrorBoundary(
     };
     const shareTitle = `Checkout ${title} on`;
 
-  const sources = data.file?.childImageSharp?.fluid
+    const sources = data.file?.childImageSharp?.fluid;
 
     return (
       <div>
@@ -102,7 +100,7 @@ export default withErrorBoundary(
                 </FacebookShareButton>
               </div>
             </div>
-            {image && <figure><Img fluid={sources} alt={title} className="my-4"/></figure>}
+            {image && <figure><Img fluid={sources} alt={title} className="my-4" /></figure>}
             <div
               dangerouslySetInnerHTML={{ __html: content }}
             />
@@ -121,7 +119,7 @@ export default withErrorBoundary(
                 }) => (
                   <Link to={path || `/${slug}`}>
                     <div className="mb-8 text-sm leading-normal font-medium flex">
-                      <img className="w-20 h-20 mr-4" src={image || '/images/placeholder.jpg'} alt={pageTitle} />
+                      <img className="w-20 h-20 mr-4" width="80" height="80" style={{ width: 80, height: 80 }} src={image || '/images/placeholder.jpg'} alt={pageTitle} />
                       <div>
                         {pageTitle}
                         <div><HashTags tags={tags} /></div>
@@ -154,4 +152,4 @@ query ImageQuery($image: String) {
     }
   }
 }    
-`
+`;

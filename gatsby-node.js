@@ -1,96 +1,98 @@
-exports.createPages = async ({ actions, graphql }) => {
-  const { createPage } = actions;
+exports.createPages = async ({actions, graphql}) => {
+  const {createPage} = actions;
 
   const results = await graphql(`
-  {
-    allMarkdownRemark(sort: {order: DESC, fields: [frontmatter___date]}) {
-      edges {
-        node {
-          frontmatter {
-            path
-            slug
-            date(formatString: "DD MMMM, YYYY")
-            title
-            image
-            tags
-          }
-          html
-        }
-      }
-    }
-    allBloggerPost(sort: {order: DESC, fields: [childMarkdownRemark___frontmatter___date]}) {
-      edges {
-        node {
-          childMarkdownRemark {
+    {
+      allMarkdownRemark(sort: {order: DESC, fields: [frontmatter___date]}) {
+        edges {
+          node {
             frontmatter {
-              slug
+              path
               date(formatString: "DD MMMM, YYYY")
               title
+              featuredImage {
+                relativePath
+                childImageSharp {
+                  fixed(width: 150, height:150, quality: 90) {
+                    src
+                  }
+                }
+              }
+              tags
             }
             html
           }
         }
       }
     }
-  }
-  
-  
   `);
   if (!results.errors) {
-    const { allMarkdownRemark, allBloggerPost } = results.data;
+    const {allMarkdownRemark} = results.data;
 
     const res = [];
-    allMarkdownRemark.edges.forEach(({
-      node: {
-        frontmatter: {
-          path, date, title, slug, image, tags,
+    allMarkdownRemark.edges.forEach(
+      ({
+        node: {
+          frontmatter: {
+            path,
+            date,
+            title,
+            slug,
+            featuredImage: {
+              childImageSharp: {
+                fixed: {src},
+              },
+            },
+            tags,
+          },
         },
+      }) => {
+        if (!path) return;
+        res.push({
+          date,
+          title,
+          slug,
+          path,
+          image: src,
+          tags,
+        });
       },
-    }) => {
-      if (!path) return;
-      res.push({
-        date, title, slug, path, image, tags,
-      });
-    });
+    );
 
+    const newPosts = res
+      .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+      .slice(0, 10 + 1);
 
-    allBloggerPost.edges.forEach(({ node: { childMarkdownRemark: { frontmatter: { slug, date, title } } } }) => {
-      if (!slug) return;
-      res.push({
-        date, title, slug,
-      });
-    });
-
-    const newPosts = res.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()).slice(0, 10 + 1);
-
-
-    allMarkdownRemark.edges.forEach(({
-      node: {
-        html, frontmatter: {
-          path, date, title, slug, image, tags,
+    allMarkdownRemark.edges.forEach(
+      ({
+        node: {
+          html,
+          frontmatter: {
+            path,
+            date,
+            title,
+            slug,
+            featuredImage: {relativePath},
+            tags,
+          },
         },
+      }) => {
+        if (!path) return;
+        createPage({
+          path,
+          component: require.resolve('./src/templates/Template.tsx'),
+          context: {
+            content: html,
+            date,
+            title,
+            slug,
+            newPosts,
+            image: relativePath,
+            tags,
+            url: path,
+          },
+        });
       },
-    }) => {
-      if (!path) return;
-      createPage({
-        path,
-        component: require.resolve('./src/templates/Template.tsx'),
-        context: {
-          content: html, date, title, slug, newPosts, image, tags, url: path,
-        },
-      });
-    });
-
-
-    allBloggerPost.edges.forEach(({ node: { childMarkdownRemark: { html, frontmatter: { slug, date, title } } } }) => {
-      if (!slug) return;
-      createPage({
-        path: `/${slug}`,
-        component: require.resolve('./src/templates/Template.tsx'),
-        context: {
-          content: html, date, title, slug, newPosts, url: `/${slug}`,
-        },
-      });
-    });
+    );
   }
 };

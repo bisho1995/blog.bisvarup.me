@@ -3,7 +3,7 @@ title: My preferred prettier config
 date: 2020-05-18
 path: /my-preferred-prettier-config
 tags: prettier  
-image:  javad-allahyari-H1Zxdm2ilp4-unsplash.jpg
+featuredImage: ../../static/images/javad-allahyari-H1Zxdm2ilp4-unsplash.jpg
 ---
 
  

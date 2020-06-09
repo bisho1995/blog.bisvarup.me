@@ -35,20 +35,20 @@ module.exports = {
         defaultQuality: 75,
       },
     },
-    {
-      resolve: 'gatsby-source-blogger',
-      options: {
-        apiKey: 'AIzaSyCAUmu4sLHAbY-rJ0CtE5Us5nqGkU-bKUE',
-        blogId: '2489840993730908370',
-      },
-    },
-    {
-      resolve: 'gatsby-source-blogger',
-      options: {
-        apiKey: 'AIzaSyCAUmu4sLHAbY-rJ0CtE5Us5nqGkU-bKUE',
-        blogId: '6844715559496278267',
-      },
-    },
+    // {
+    //   resolve: 'gatsby-source-blogger',
+    //   options: {
+    //     apiKey: 'AIzaSyCAUmu4sLHAbY-rJ0CtE5Us5nqGkU-bKUE',
+    //     blogId: '2489840993730908370',
+    //   },
+    // },
+    // {
+    //   resolve: 'gatsby-source-blogger',
+    //   options: {
+    //     apiKey: 'AIzaSyCAUmu4sLHAbY-rJ0CtE5Us5nqGkU-bKUE',
+    //     blogId: '6844715559496278267',
+    //   },
+    // },
     {
       resolve: 'gatsby-source-filesystem',
       options: {

@@ -3,7 +3,7 @@ title: File Permission and RWS
 date: 2020-05-10
 path: /file-permission-and-rws
 tags: linux, file-permissions   
-image:  wesley-tingey-snNHKZ-mGfE-unsplash.jpg
+featuredImage: ../../static/images/wesley-tingey-snNHKZ-mGfE-unsplash.jpg
 ---
 
  

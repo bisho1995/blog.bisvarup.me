@@ -3,7 +3,7 @@ title: Rotting Oranges
 date: 2020-04-29
 path: /leetcode-rotting-oranges
 tags: algorithm, data structures
-image: /images/problem-solving.jpg
+image:  problem-solving.jpg
 ---
 
  

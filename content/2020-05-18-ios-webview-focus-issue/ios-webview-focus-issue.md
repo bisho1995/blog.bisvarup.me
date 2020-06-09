@@ -3,7 +3,7 @@ title: IOS webview focus issue
 date: 2020-05-18
 path: /ios-webview-focus-issue
 tags: ios, otp, focus, WkWebView, UiWebView
-image: /images/przemyslaw-marczynski-oCfkSnqZ0SI-unsplash.jpg
+image:  przemyslaw-marczynski-oCfkSnqZ0SI-unsplash.jpg
 ---
 
  

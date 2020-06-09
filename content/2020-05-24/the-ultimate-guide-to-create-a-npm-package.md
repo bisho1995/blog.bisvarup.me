@@ -3,7 +3,7 @@ title: The ultimate guide to create a npm package
 date: 2020-05-24
 path: /the-ultimate-guide-to-create-a-npm-package
 tags: node, javascript, npm, package-json
-image: /images/nicolas-hans-u2LV_WJdBfQ-unsplash.jpg
+image:  nicolas-hans-u2LV_WJdBfQ-unsplash.jpg
 ---
 
 

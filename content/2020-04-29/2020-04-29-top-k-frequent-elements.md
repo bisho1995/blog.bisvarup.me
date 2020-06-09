@@ -3,7 +3,7 @@ title: K Frequent Elements
 date: 2020-04-29
 path: /k-frequent-elements
 tags: algorithm, data structures
-image: /images/problem-solving.jpg
+image:  problem-solving.jpg
 ---
 
  
@@ -34,4 +34,4 @@ Simply brilliant solution.
 
 ---
 
-![transition between focused elements](/images/k-frequent-element.png)
+![transition between focused elements]( k-frequent-element.png)

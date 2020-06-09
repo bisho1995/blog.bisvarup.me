@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'gatsby';
+import { Link, useStaticQuery, graphql } from 'gatsby';
 import { Helmet as ReactHelmet } from 'react-helmet';
 import Disqus from 'disqus-react';
 import {
@@ -24,6 +24,7 @@ import AsideBlock from '../component/AsideBlock/AsideBlock';
 import Footer from '../component/Footer/Footer';
 import HashTags from '../component/HashTags/HashTags';
 import config from '../config/config';
+import Img from "gatsby-image"
 
 interface Props {
   pageContext: {
@@ -36,6 +37,7 @@ interface Props {
     image?:string
     tags?:string | string[]
   }
+  data?:any
 }
 
 export default withErrorBoundary(
@@ -43,6 +45,7 @@ export default withErrorBoundary(
     pageContext: {
       content, date, title, slug, newPosts = [], image = '', tags = '', url,
     },
+    data = {} 
   }: Props) => {
     const pageUrl = `${config.base_path}${url}`;
     const disqusShortname = 'blog-bisvarup-me';
@@ -52,6 +55,8 @@ export default withErrorBoundary(
       title,
     };
     const shareTitle = `Checkout ${title} on`;
+
+  const sources = data.file?.childImageSharp?.fluid
 
     return (
       <div>
@@ -97,7 +102,7 @@ export default withErrorBoundary(
                 </FacebookShareButton>
               </div>
             </div>
-            {image && <figure><img className="my-4" src={image} alt={title} /></figure>}
+            {image && <figure><Img fluid={sources} alt={title} className="my-4"/></figure>}
             <div
               dangerouslySetInnerHTML={{ __html: content }}
             />
@@ -138,3 +143,15 @@ export default withErrorBoundary(
     );
   },
 );
+
+export const query = graphql`
+query ImageQuery($image: String) {
+  file(relativePath: {eq: $image}) {
+    childImageSharp{
+      fluid(maxWidth: 1000, quality: 90){
+        ...GatsbyImageSharpFluid
+      }
+    }
+  }
+}    
+`

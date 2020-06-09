@@ -3,7 +3,7 @@ title: Creating a read more component in react
 date: 2020-05-24
 path: /creating-a-read-more-component-using-react
 tags: react, javascript, read-more
-image: /images/alberto-bigoni-S25lkmUwTk8-unsplash.jpg
+image:  alberto-bigoni-S25lkmUwTk8-unsplash.jpg
 ---
 > Add a '...read more' text to your long content
 
@@ -23,7 +23,7 @@ Here is an example of how the component behaves. I figured rather than writing a
 
 Truth be told, I was inspired to create this component from LinkedIn. So LinkedIn has this `...show more` UI which shows a small section of a long content initially and when clicked, it shows the complete content.
 
-![LinkedIn show more](/images/linkedin-show-more.png)
+![LinkedIn show more]( linkedin-show-more.png)
 
 ## The art of creating it
 

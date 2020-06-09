@@ -3,7 +3,7 @@ title: The snackbar component
 date: 2020-05-20
 path: /the-snackbar-component
 tags: react, npm, react-component
-image: /images/daniel-fazio-JBN6FHP5VXk-unsplash.jpg
+image:  daniel-fazio-JBN6FHP5VXk-unsplash.jpg
 ---
 
  

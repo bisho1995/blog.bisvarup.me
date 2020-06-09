@@ -1,6 +1,6 @@
 {
   "name": "gatsby",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "private": true,
   "bugs": {
     "url": "https://github.com/bisho1995/blog.bisvarup.me/issues"
@@ -18,7 +18,7 @@
     "eslint-plugin-react-hooks": "^2.5.1",
     "fs-extra": "^9.0.0",
     "gatsby": "^2.18.14",
-    "gatsby-image": "^2.0.15",
+    "gatsby-image": "^2.4.6",
     "gatsby-plugin-google-analytics": "^2.3.2",
     "gatsby-plugin-manifest": "^2.0.5",
     "gatsby-plugin-offline": "^3.2.7",

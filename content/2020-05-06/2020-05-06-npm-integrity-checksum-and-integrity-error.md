@@ -3,7 +3,7 @@ title: npm integrity, checksum and integrity error
 date: 2020-05-06
 path: /npm-integrity-checksum-and-integrity-error
 tags: npm, npm-integrity, checksum
-featuredImage: ../../static/images/problem-solving.jpg
+featuredImage: ../../static/images/miltiadis-fragkidis-2zGTh-S5moM-unsplash.jpg
 ---
 
 Suppose you want to install a node module like this,

@@ -1,5 +1,5 @@
 import React from 'react';
-import { graphql, Link } from 'gatsby';
+import { graphql } from 'gatsby';
 import withErrorBoundary from '../component/withErrorBoundary/withErrorBoundary';
 import profilePic from '../images/profile.jpg';
 import Helmet from '../component/Helmet/Helmet';
@@ -45,7 +45,7 @@ export default withErrorBoundary(({ data }) => {
                   excerpt,
                   timeToRead,
                   frontmatter: {
-                    title, path, slug, date, tags, featuredImage:{ childImageSharp:{fluid:image}},
+                    title, path, slug, date, tags, featuredImage: { childImageSharp: { fluid: image } },
                   },
                 },
               }) => (

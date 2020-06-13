@@ -12,7 +12,7 @@ const images = [
   { attribution: 'Photo by Wesley Tingey on Unsplash', url: 'https://unsplash.com/photos/snNHKZ-mGfE' },
   { attribution: 'Photo by Hannah Rodrigo on Unsplash', url: 'https://unsplash.com/photos/mf_3yZnC6ug' },
   { attribution: 'Photo by Markus Spiske on Unsplash', url: 'https://unsplash.com/photos/_v6mhdOK2g0' },
-  {attribution:"Photo by Camylla Battani on Unsplash",url:"https://unsplash.com/photos/AoqgGAqrLpU"}
+  { attribution: 'Photo by Camylla Battani on Unsplash', url: 'https://unsplash.com/photos/AoqgGAqrLpU' },
 ];
 
 export default function Thanks() {

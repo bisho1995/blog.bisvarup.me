@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, useStaticQuery, graphql } from 'gatsby';
+import { Link, graphql } from 'gatsby';
 import { Helmet as ReactHelmet } from 'react-helmet';
 import Disqus from 'disqus-react';
 import {

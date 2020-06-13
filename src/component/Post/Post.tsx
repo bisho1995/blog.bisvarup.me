@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'gatsby';
-import Img from "gatsby-image"
+import Img from 'gatsby-image';
 import HashTags from '../HashTags/HashTags';
 
 export interface Props{
@@ -28,12 +28,12 @@ export default function ({
         {date}
       </div>
       <figure>
-      <Img fluid={image} alt={title} className="rounded block shadow-xl"/>
+        <Img fluid={image} alt={title} className="rounded block shadow-xl" />
         {/* <img loading="lazy" className="rounded block shadow-xl" src={image || '/images/placeholder.jpg'} alt={title} /> */}
         <figcaption className="mt-8">
           <div className="flex justify-between mb-4">
             <HashTags tags={tags} />
-            <div className="text-xs text-gray-600 text-right" style={{minWidth: 85}}>
+            <div className="text-xs text-gray-600 text-right" style={{ minWidth: 85 }}>
               {timeToRead}
               {' '}
               min read ⏱

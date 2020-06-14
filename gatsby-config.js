@@ -5,6 +5,14 @@ module.exports = {
   plugins: [
     'gatsby-plugin-react-helmet',
     {
+      resolve: 'gatsby-plugin-google-analytics',
+      options: {
+        trackingId: 'UA-167742423-1',
+        head: true,
+        anonymize: true,
+      },
+    },
+    {
       resolve: 'gatsby-transformer-remark',
       options: {
         plugins: [
@@ -35,20 +43,6 @@ module.exports = {
         defaultQuality: 75,
       },
     },
-    // {
-    //   resolve: 'gatsby-source-blogger',
-    //   options: {
-    //     apiKey: 'AIzaSyCAUmu4sLHAbY-rJ0CtE5Us5nqGkU-bKUE',
-    //     blogId: '2489840993730908370',
-    //   },
-    // },
-    // {
-    //   resolve: 'gatsby-source-blogger',
-    //   options: {
-    //     apiKey: 'AIzaSyCAUmu4sLHAbY-rJ0CtE5Us5nqGkU-bKUE',
-    //     blogId: '6844715559496278267',
-    //   },
-    // },
     {
       resolve: 'gatsby-source-filesystem',
       options: {
@@ -77,12 +71,5 @@ module.exports = {
       },
     },
     'gatsby-plugin-offline',
-    {
-      resolve: 'gatsby-plugin-google-analytics',
-      options: {
-        // replace "UA-XXXXXXXXX-X" with your own Tracking ID
-        trackingId: 'G-WFL8VY65FQ',
-      },
-    },
   ],
 };

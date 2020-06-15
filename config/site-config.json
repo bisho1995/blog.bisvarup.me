@@ -1,0 +1,18 @@
+{
+    "site-metadata": {
+        "name": "bisvarup's blog",
+        "short_name": "bisvarup's blog",
+        "title":"bisvarup&apos;s blog",
+        "description":"Technical blog regarding bisvarup's views and experiences. Subscribe now to get the best industry standard information delivered to you."
+    },
+    "analytics": {
+        "google": {
+            "trackingId": "UA-167742423-1"
+        }
+    },
+    "pwa": {
+        "display": "standalong",
+        "theme_color":"#44337a",
+        "background_color":"#f7f0eb"
+    }
+}

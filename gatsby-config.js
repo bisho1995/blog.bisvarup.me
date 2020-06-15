@@ -1,6 +1,8 @@
+const siteConfig = require('./config/site-config.json');
+
 module.exports = {
   siteMetadata: {
-    title: "bisvarp's blog",
+    title: siteConfig['site-metadata'].title,
   },
   plugins: [
     'gatsby-plugin-react-helmet',
@@ -60,14 +62,14 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
-        name: "bisvarup's blog",
-        short_name: "bisvarup's blog",
+        name: siteConfig['site-metadata'].name,
+        short_name: siteConfig['site-metadata'].short_name,
         start_url: '/',
         icon: 'src/images/profile-circle.png',
         /** todo: use my colors */
-        background_color: '#f7f0eb',
-        theme_color: '#44337a',
-        display: 'standalone',
+        background_color: siteConfig.pwa.background_color,
+        theme_color: siteConfig.pwa.theme_color,
+        display: siteConfig.pwa.display,
       },
     },
     'gatsby-plugin-offline',

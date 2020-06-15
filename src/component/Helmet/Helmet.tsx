@@ -1,5 +1,6 @@
 import React from 'react';
-import { Helmet } from 'react-helmet';
+import {Helmet} from 'react-helmet';
+import siteConfig from '../../../config/site-config.json';
 
 export default function AppHelmet() {
   return (
@@ -14,23 +15,22 @@ export default function AppHelmet() {
         {window.dataLayer.push(args)}
         gtag('js', new Date());
 
-        gtag('config', 'UA-167742423-1');
+        gtag('config', '${siteConfig.analytics.google.trackingId}');
       `,
         },
-      ]}
-    >
+      ]}>
       <meta
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
       />
       <meta
         name="description"
-        content="Technical blog regarding bisvarup's views and experiences. Subscribe now to get the best industry standard information delivered to you."
+        content={siteConfig['site-metadata'].description}
       />
-      <title>bisvarup&apos;s blog</title>
+      <title>{siteConfig['site-metadata'].title}</title>
       <script
         async
-        src="https://www.googletagmanager.com/gtag/js?id=UA-167742423-1"
+        src={`https://www.googletagmanager.com/gtag/js?id=${siteConfig.analytics.google.trackingId}`}
       />
     </Helmet>
   );

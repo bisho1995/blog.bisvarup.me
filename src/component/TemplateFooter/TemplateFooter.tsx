@@ -9,13 +9,11 @@ export default function TemplateFooter() {
         alt="bisvarup mukherjee"
         className="h-32 mr-4 md:mr-6 rounded-full"
       />
-      <div
-        className="flex flex-col justify-center text-sm"
-      >
+      <div className="flex flex-col justify-center text-sm">
         Hi, I am bisvarup. I am a frontend developer at Flipkart. I love
-        optimizations which included bundling and website perf. Hit me up if
-        you want to talk about typescript, react, and general frontend
-        concepts, or if you have any opinion about this post.
+        optimizations which included bundling and website perf. Hit me up if you
+        want to talk about typescript, react, and general frontend concepts, or
+        if you have any opinion about this post.
       </div>
     </div>
   );

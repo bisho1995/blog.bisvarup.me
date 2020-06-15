@@ -1,9 +1,11 @@
 import React from 'react';
+import siteConfig from '../../../config/site-config.json';
 
 export interface Props {
   className?: string;
 }
 
+// todo: check if hitwebcounter.url is available else return null
 export default function ViewCounter({ className = '' }: Props) {
   return (
     <a
@@ -15,7 +17,7 @@ export default function ViewCounter({ className = '' }: Props) {
     >
       <img
         className="mr-2"
-        src="https://hitwebcounter.com/counter/counter.php?page=7355859&style=0006&nbdigits=6&type=page&initCount=7387"
+        src={siteConfig.analytics.hitwebcounter.url}
         title="Web Counter"
         alt="counter free"
       />

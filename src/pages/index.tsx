@@ -6,9 +6,16 @@ import Helmet from '../component/Helmet/Helmet';
 import CircularDot from '../component/CircularDot/CircularDot';
 import Post from '../component/Post/Post';
 import Footer from '../component/Footer/Footer';
+import siteConfig from '../../config/site-config.json';
 
 export default withErrorBoundary(({ data }) => {
   const edges = data?.allMarkdownRemark?.edges;
+
+  const tags = [];
+  for (let i = 0; i < siteConfig['index-page'].tags.length; i += 1) {
+    if (i === 0)tags.push(siteConfig['index-page'].tags[i]);
+    else tags.push(<CircularDot top={-3} key={siteConfig['index-page'].tags[i]} />, siteConfig['index-page'].tags[i]);
+  }
 
   return (
     <>
@@ -17,22 +24,16 @@ export default withErrorBoundary(({ data }) => {
         <header className="flex-row justify-center md:m-16 sm:block md:flex">
           <img
             src={profilePic}
-            alt="bisvarup mukherjee"
+            alt={siteConfig['index-page'].pic_alt}
             height={130}
             className="h-32 m-auto md:mr-4 md:ml-0 rounded-full"
           />
           <div className="m-0">
             <h1 className="text-3xl flex flex-col justify-center mb-0">
-              bisvarup&apos;s blog
+              {siteConfig['index-page'].title}
             </h1>
             <h2 className="text-gray-600">
-              Developer
-              <CircularDot top={-3} />
-              {' '}
-              Story teller
-              <CircularDot top={-3} />
-              {' '}
-              Polyglot Programmer
+              {tags}
             </h2>
           </div>
         </header>

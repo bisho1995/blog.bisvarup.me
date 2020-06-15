@@ -1,11 +1,15 @@
 {
     "site-metadata": {
+        "owner":"Bisvarup Mukherjee",
         "name": "bisvarup's blog",
         "short_name": "bisvarup's blog",
-        "title":"bisvarup&apos;s blog",
+        "title":"bisvarup's blog",
         "description":"Technical blog regarding bisvarup's views and experiences. Subscribe now to get the best industry standard information delivered to you."
     },
     "analytics": {
+        "hitwebcounter": {
+            "url":"https://hitwebcounter.com/counter/counter.php?page=7355859&style=0006&nbdigits=6&type=page&initCount=7387"
+        },
         "google": {
             "trackingId": "UA-167742423-1"
         }
@@ -14,5 +18,15 @@
         "display": "standalong",
         "theme_color":"#44337a",
         "background_color":"#f7f0eb"
-    }
+    },
+    "index-page": {
+        "pic_alt": "bisvarup mukherjee",
+        "title":"bisvarup's blog",
+        "tags": ["Developer","Story teller","Polyglot Programmer"]
+    },
+    "social-urls": [
+        "https://twitter.com/BisvarupMukher",
+        "https://www.linkedin.com/in/bisvarup-mukherjee-78865a131/",
+        "https://www.facebook.com/bisvarup.mukherjee.9/",
+      ]
 }

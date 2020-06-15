@@ -1,12 +1,9 @@
 import React from 'react';
 import { SocialIcon } from 'react-social-icons';
 import ViewCounter from '../ViewCounter/ViewCounter';
+import siteConfig from '../../../config/site-config.json';
 
-const socialUrls = [
-  'https://twitter.com/BisvarupMukher1',
-  'https://www.linkedin.com/in/bisvarup-mukherjee-78865a131/',
-  'https://www.facebook.com/bisvarup.mukherjee.9/',
-];
+const socialUrls = siteConfig['social-urls'];
 
 export default function Footer() {
   return (
@@ -17,7 +14,7 @@ export default function Footer() {
           {' '}
           {new Date().getFullYear()}
           {' '}
-          Bisvarup Mukherjee
+          {siteConfig['site-metadata'].owner}
         </div>
         <div className="my-2 md:my-0 text-center md:text-right">
           {socialUrls.map((url) => (
@@ -26,6 +23,7 @@ export default function Footer() {
               className="mx-2 rounded-full"
               fgColor="#fff"
               style={{ width: 30, height: 30 }}
+              key={url}
             />
           ))}
         </div>

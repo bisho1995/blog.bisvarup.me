@@ -5,14 +5,14 @@ import {HIT_TYPE} from "./Models"
 // todo: need to check if sending custom  data to GA is actually working
 
  class GoogleAnalytics implements IAnalytics {
-    ga: undefined | (any) => void: any
+    private ga: undefined | (any) => void: any
 
     constructor() {
       // @ts-ignore
       this.ga = get(window || null, 'ga');
     }
 
-    private track = (hitType: HIT_TYPE, pageName: string, options: { [key: string]: string | number; }) => {
+    private track = (hitType: HIT_TYPE, pageName: string, options: { [key: string]: any; }) => {
       if (!this.ga || !pageName) {
           console.log({pageName,...options,}, {ga:this.ga}, {pageName})
           return;
@@ -25,19 +25,19 @@ import {HIT_TYPE} from "./Models"
       });
     }
 
-    private trackPage = (pageName: string, options: { [key: string]: string | number; })=>{
+    private trackPage = (pageName: string, options: { [key: string]: any; })=>{
       this.track(HIT_TYPE.PAGE_VIEW,pageName,options)
     }
 
-    private trackEventData = (pageName: string, options: { [key: string]: string | number; })=>{
+    private trackEventData = (pageName: string, options: { [key: string]: any; })=>{
       this.track(HIT_TYPE.EVENT,pageName,options)
     }
 
-    public trackPageView = (pageName: string, options: { [key: string]: string | number; }) => {
+    public trackPageView = (pageName: string, options: { [key: string]: any; }) => {
         this.trackPage(pageName,options)
     }
 
-    public trackEvent = (pageName: string, options: { [key: string]: string | number; }) => {
+    public trackEvent = (pageName: string, options: { [key: string]: any; }) => {
         this.trackEventData(pageName,options)
     }
 }

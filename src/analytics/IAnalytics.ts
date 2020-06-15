@@ -1,4 +1,4 @@
 export default interface IAnalytics {
-     trackPageView: (pageName: string, options: {[key:string]: string | number})=>void
-     trackEvent: (pageName:string, options: {[key:string]: string | number})=>void
+     trackPageView: (pageName: string, options: {[key:string]: any})=>void
+     trackEvent: (pageName:string, options: {[key:string]: any})=>void
 };

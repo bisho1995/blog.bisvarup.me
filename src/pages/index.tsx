@@ -1,5 +1,5 @@
 import React from 'react';
-import {graphql} from 'gatsby';
+import { graphql } from 'gatsby';
 import withErrorBoundary from '../component/withErrorBoundary/withErrorBoundary';
 import profilePic from '../images/profile.jpg';
 import Helmet from '../component/Helmet/Helmet';
@@ -7,7 +7,7 @@ import CircularDot from '../component/CircularDot/CircularDot';
 import Post from '../component/Post/Post';
 import Footer from '../component/Footer/Footer';
 
-export default withErrorBoundary(({data}) => {
+export default withErrorBoundary(({ data }) => {
   const edges = data?.allMarkdownRemark?.edges;
 
   return (
@@ -27,8 +27,12 @@ export default withErrorBoundary(({data}) => {
             </h1>
             <h2 className="text-gray-600">
               Developer
-              <CircularDot top={-3} /> Story teller
-              <CircularDot top={-3} /> Polyglot Programmer
+              <CircularDot top={-3} />
+              {' '}
+              Story teller
+              <CircularDot top={-3} />
+              {' '}
+              Polyglot Programmer
             </h2>
           </div>
         </header>
@@ -47,7 +51,7 @@ export default withErrorBoundary(({data}) => {
                     date,
                     tags,
                     featuredImage: {
-                      childImageSharp: {fluid: image},
+                      childImageSharp: { fluid: image },
                     },
                   },
                 },

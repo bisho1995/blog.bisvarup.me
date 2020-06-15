@@ -58,7 +58,7 @@ const images = [
 export default function Thanks() {
   return (
     <>
-      {images.map(({attribution, url}) => (
+      {images.map(({ attribution, url }) => (
         <a href={url} target="_blank" rel="noopener noreferrer nofollow">
           {attribution}
         </a>

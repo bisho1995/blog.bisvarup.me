@@ -1,6 +1,5 @@
 import React from 'react';
-import analytics from '../../analytics/GoogleAnalytics';
-import googleAnalytics from '../../analytics/GoogleAnalytics';
+// import googleAnalytics from '../../analytics/GoogleAnalytics';
 
 interface Props {
     children: React.ReactNode
@@ -25,9 +24,9 @@ export default class ErrorBoundary extends React.PureComponent<Props, State> {
 
   public componentDidCatch(error: Error, errorInfo: any) {
     console.error(error, errorInfo);
-    googleAnalytics.trackEvent('ErrorBoundary', {
-      error, errorInfo,
-    });
+    // googleAnalytics.trackEvent('ErrorBoundary', {
+    //   error, errorInfo,
+    // });
   }
 
   renderErrorUI = () => <div>Oops, something went wrong!</div>

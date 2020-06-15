@@ -24,6 +24,8 @@ import Footer from '../component/Footer/Footer';
 import HashTags from '../component/HashTags/HashTags';
 import config from '../config/config';
 
+import siteConfig from '../../config/site-config.json';
+
 interface Props {
   pageContext: {
     content: string,
@@ -46,7 +48,7 @@ export default withErrorBoundary(
     data = {},
   }: Props) => {
     const pageUrl = `${config.base_path}${url}`;
-    const disqusShortname = 'blog-bisvarup-me';
+    const disqusShortname = siteConfig.disqus.short_name;
     const disqusConfig = {
       url: pageUrl,
       identifier: encodeURIComponent(slug),
@@ -67,11 +69,11 @@ export default withErrorBoundary(
             <div className="flex justify-start p-4 select-none">
               <img
                 src={profilePic}
-                alt="bisvarup mukherjee"
+                alt={siteConfig['index-page'].pic_alt}
                 className="h-24 rounded-full m-auto md:m-0 md:mr-4 block"
               />
               <span className="justify-center text-2xl no-underline text-grey-900 hidden md:flex md:flex-col">
-                bisvarup&apos;s blog
+                {siteConfig['index-page'].title}
               </span>
             </div>
           </Link>

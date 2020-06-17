@@ -1,6 +1,6 @@
 const path = require('path');
-const { EOL } = require('os');
-const { execSync } = require('child_process');
+const {EOL} = require('os');
+const {execSync} = require('child_process');
 const fs = require('fs-extra');
 const chalk = require('chalk');
 
@@ -11,26 +11,19 @@ try {
     .toString()
     .split(EOL)
     .filter(Boolean)
-    .map((a) => a.trim().split(' ')[1])
-    .filter(Boolean);
+    .map((a) => a.trim().split(' ').filter(Boolean))
+    .map((a) => a[1]);
 
   let errors = 0;
-  console.log('res', res);
   res.forEach((p) => {
     try {
       const endsWith = path.extname(p);
 
       const lintCode = () => {
-        const val = execSync(
-          `./node_modules/.bin/eslint ${p} --ext=ts,tsx,js,jsx --fix`,
-          { stdio: 'inherit' },
-        );
-
-        console.log(val, val.toString());
-        return val;
+        execSync(`./node_modules/.bin/eslint ${p} --ext=ts,tsx,js,jsx --fix`, {
+          stdio: 'inherit',
+        });
       };
-
-      console.log(__dirname, 'p is ', p.toString());
 
       if (fs.lstatSync(p.toString()).isDirectory()) {
         return lintCode();
@@ -38,8 +31,6 @@ try {
 
       if (VALID_EXTENSIONS.includes(endsWith)) lintCode();
     } catch (error) {
-      // eslint-disable-next-line
-      console.log(error.stdout && error.stdout.toString());
       errors += 1;
     }
   });
@@ -60,8 +51,6 @@ try {
         } please fix issue${errors > 1 ? 'them' : 'it'}`,
       ),
     );
-
-    process.exit(1);
   }
 } catch (err) {
   // eslint-disable-next-line

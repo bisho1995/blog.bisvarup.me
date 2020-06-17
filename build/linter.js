@@ -1,6 +1,6 @@
 const path = require('path');
-const {EOL} = require('os');
-const {execSync} = require('child_process');
+const { EOL } = require('os');
+const { execSync } = require('child_process');
 const fs = require('fs-extra');
 const chalk = require('chalk');
 
@@ -24,6 +24,7 @@ try {
           stdio: 'inherit',
         });
 
+        console.log(p)
         execSync(`git add ${p}`);
       };
 

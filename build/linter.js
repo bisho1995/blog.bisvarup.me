@@ -19,9 +19,13 @@ try {
     try {
       const endsWith = path.extname(p);
 
-      const lintCode = () => execSync(`./node_modules/.bin/eslint ${p} --ext=ts,tsx,js,jsx --fix`, {
-        stdio: 'inherit',
-      });
+      const lintCode = () => {
+        const val = execSync(
+          `./node_modules/.bin/eslint ${p} --ext=ts,tsx,js,jsx --fix`, { stdio: 'pipe' },
+        );
+
+        console.log(val.toString());
+      };
 
       console.log(__dirname, 'p is ', p.toString());
 
@@ -32,7 +36,6 @@ try {
 
       if (VALID_EXTENSIONS.includes(endsWith)) lintCode();
     } catch (error) {
-      console.log('error.stdout', error.stdout, error, Object.keys(error));
       // eslint-disable-next-line
       console.log(error.stdout && error.stdout.toString());
       errors += 1;

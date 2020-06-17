@@ -11,7 +11,8 @@ try {
     .toString()
     .split(EOL)
     .filter(Boolean)
-    .map((a) => a.trim().split(' ')[1]);
+    .map((a) => a.trim().split(' ')[1])
+    .filter(Boolean);
 
   let errors = 0;
   res.forEach((p) => {
@@ -23,6 +24,7 @@ try {
           stdio: 'pipe',
         });
 
+      console.log(__dirname, 'p is ', p.toString());
       if (fs.lstatSync(p.toString()).isDirectory()) {
         lintCode();
         return;
@@ -30,8 +32,9 @@ try {
 
       if (VALID_EXTENSIONS.includes(endsWith)) lintCode();
     } catch (error) {
+      console.log('error.stdout', error.stdout, error, Object.keys(error));
       // eslint-disable-next-line
-      console.log(error.stdout.toString());
+      console.log(error.stdout && error.stdout.toString());
       errors += 1;
     }
   });
@@ -60,4 +63,6 @@ try {
   console.log(
     chalk.redBright(`could not complete linting due to ${err.toString()}`),
   );
+
+  process.exit(1);
 }

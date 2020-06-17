@@ -1,8 +1,9 @@
 const path = require('path');
-const { EOL } = require('os');
-const { execSync } = require('child_process');
+const {EOL} = require('os');
+const {execSync} = require('child_process');
 const fs = require('fs-extra');
 const chalk = require('chalk');
+const util = require('util');
 
 const VALID_EXTENSIONS = ['.js', '.ts', '.jsx', '.tsx'];
 
@@ -18,9 +19,10 @@ try {
     try {
       const endsWith = path.extname(p);
 
-      const lintCode = () => execSync(`./node_modules/.bin/eslint ${p} --ext=ts,tsx,js,jsx --fix`, {
-        stdio: 'inherit',
-      });
+      const lintCode = () =>
+        execSync(`./node_modules/.bin/eslint ${p} --ext=ts,tsx,js,jsx --fix`, {
+          stdio: 'inherit',
+        });
 
       if (fs.lstatSync(p.toString()).isDirectory()) {
         lintCode();
@@ -36,7 +38,9 @@ try {
   if (errors === 0) {
     // eslint-disable-next-line
     console.log(
-      chalk.green('Linting on modified files complete, no errors 🎉🎉There may be some warnings, please fix them'),
+      chalk.green(
+        'Linting on modified files complete, no errors 🎉🎉There may be some warnings, please fix them',
+      ),
     );
   } else {
     // eslint-disable-next-line
@@ -44,9 +48,7 @@ try {
       chalk.yellow(
         `There seems to be ${errors} issue${
           errors > 1 ? 's' : ''
-        } please fix issue${
-          errors > 1 ? 'them' : 'it'
-        }`,
+        } please fix issue${errors > 1 ? 'them' : 'it'}`,
       ),
     );
   }

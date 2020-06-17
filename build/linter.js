@@ -15,6 +15,7 @@ try {
     .filter(Boolean);
 
   let errors = 0;
+  console.log('res', res);
   res.forEach((p) => {
     try {
       const endsWith = path.extname(p);

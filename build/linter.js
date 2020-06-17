@@ -1,6 +1,6 @@
 const path = require('path');
-const {EOL} = require('os');
-const {execSync} = require('child_process');
+const { EOL } = require('os');
+const { execSync } = require('child_process');
 const fs = require('fs-extra');
 const chalk = require('chalk');
 
@@ -23,7 +23,7 @@ try {
       const lintCode = () => {
         const val = execSync(
           `./node_modules/.bin/eslint ${p} --ext=ts,tsx,js,jsx --fix`,
-          {stdio: 'inherit'},
+          { stdio: 'inherit' },
         );
 
         console.log(val, val.toString());

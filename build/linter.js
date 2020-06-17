@@ -3,7 +3,6 @@ const {EOL} = require('os');
 const {execSync} = require('child_process');
 const fs = require('fs-extra');
 const chalk = require('chalk');
-const util = require('util');
 
 const VALID_EXTENSIONS = ['.js', '.ts', '.jsx', '.tsx'];
 
@@ -21,7 +20,7 @@ try {
 
       const lintCode = () =>
         execSync(`./node_modules/.bin/eslint ${p} --ext=ts,tsx,js,jsx --fix`, {
-          stdio: 'inherit',
+          stdio: 'pipe',
         });
 
       if (fs.lstatSync(p.toString()).isDirectory()) {
@@ -31,6 +30,8 @@ try {
 
       if (VALID_EXTENSIONS.includes(endsWith)) lintCode();
     } catch (error) {
+      // eslint-disable-next-line
+      console.log(error.stdout.toString());
       errors += 1;
     }
   });

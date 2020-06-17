@@ -1,6 +1,6 @@
 const path = require('path');
-const { EOL } = require('os');
-const { execSync } = require('child_process');
+const {EOL} = require('os');
+const {execSync} = require('child_process');
 const fs = require('fs-extra');
 const chalk = require('chalk');
 
@@ -20,12 +20,11 @@ try {
       const endsWith = path.extname(p);
 
       const lintCode = () => {
-        console.log('lintCode', p, `git add ${p}`);
         execSync(`./node_modules/.bin/eslint ${p} --ext=ts,tsx,js,jsx --fix`, {
           stdio: 'inherit',
         });
 
-        execSync(`git add ${p}`, { stdio: 'inherit' });
+        execSync(`git add ${p}`, {stdio: 'inherit'});
       };
 
       if (fs.lstatSync(p.toString()).isDirectory()) {

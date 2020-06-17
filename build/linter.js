@@ -1,6 +1,6 @@
 const path = require('path');
-const {EOL} = require('os');
-const {execSync} = require('child_process');
+const { EOL } = require('os');
+const { execSync } = require('child_process');
 const fs = require('fs-extra');
 const chalk = require('chalk');
 
@@ -19,12 +19,12 @@ try {
     try {
       const endsWith = path.extname(p);
 
-      const lintCode = () =>
-        execSync(`./node_modules/.bin/eslint ${p} --ext=ts,tsx,js,jsx --fix`, {
-          stdio: 'pipe',
-        });
+      const lintCode = () => execSync(`./node_modules/.bin/eslint ${p} --ext=ts,tsx,js,jsx --fix`, {
+        stdio: 'inherit',
+      });
 
       console.log(__dirname, 'p is ', p.toString());
+
       if (fs.lstatSync(p.toString()).isDirectory()) {
         lintCode();
         return;

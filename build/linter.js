@@ -26,13 +26,13 @@ try {
         );
 
         console.log(val, val.toString());
+        return val;
       };
 
       console.log(__dirname, 'p is ', p.toString());
 
       if (fs.lstatSync(p.toString()).isDirectory()) {
-        lintCode();
-        return;
+        return lintCode();
       }
 
       if (VALID_EXTENSIONS.includes(endsWith)) lintCode();

@@ -52,6 +52,8 @@ try {
         } please fix issue${errors > 1 ? 'them' : 'it'}`,
       ),
     );
+
+    process.exit(1);
   }
 } catch (err) {
   // eslint-disable-next-line

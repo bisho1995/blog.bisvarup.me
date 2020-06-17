@@ -9,6 +9,7 @@
     "@types/marked": "^0.7.4",
     "@types/react-helmet": "^6.0.0",
     "axios": "^0.19.2",
+    "chalk": "^4.1.0",
     "disqus-react": "^1.0.8",
     "eslint": "^6.8.0",
     "eslint-config-airbnb": "^18.1.0",
@@ -35,6 +36,7 @@
     "lodash": "^4.17.15",
     "marked": "^1.0.0",
     "node-sass": "^4.14.1",
+    "once": "^1.4.0",
     "prismjs": "^1.20.0",
     "react": "^16.5.1",
     "react-dom": "^16.5.1",
@@ -49,7 +51,8 @@
     "@now/node": "^1.3.0",
     "@types/react": "^16.9.35",
     "@typescript-eslint/eslint-plugin": "^2.34.0",
-    "@typescript-eslint/parser": "^2.34.0"
+    "@typescript-eslint/parser": "^2.34.0",
+    "husky": "^4.2.5"
   },
   "scripts": {
     "start": "npm run dev",
@@ -61,7 +64,8 @@
     "format:source": "prettier --config .prettierrc --write \"src/**/*.{tsx,jsx,js,ts,html,css,php,java}\"",
     "format:examples": "prettier --config .prettierrc --write \"snippets/**/*.{tsx,jsx,js,ts,html,css,php,java}\"",
     "lint": "eslint src/ --ext=ts,tsx,js,jsx",
-    "lint:fix": "eslint src/ --ext=ts,tsx,js,jsx --fix"
+    "lint:fix": "eslint src/ --ext=ts,tsx,js,jsx --fix",
+    "lint:modified": "node build/linter.js"
   },
   "engines": {
     "node": "12.x.x",
@@ -76,5 +80,10 @@
   "repository": {
     "type": "git",
     "url": "git@github.com:bisho1995/blog.bisvarup.me.git"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint:modified"
+    }
   }
 }

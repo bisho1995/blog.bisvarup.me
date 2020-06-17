@@ -52,7 +52,8 @@ try {
       ),
     );
   }
-  
+
+  execSync('git add --all');
 } catch (err) {
   // eslint-disable-next-line
   console.log(

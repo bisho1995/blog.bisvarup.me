@@ -23,7 +23,7 @@ Here is an example of how the component behaves. I figured rather than writing a
 
 Truth be told, I was inspired to create this component from LinkedIn. So LinkedIn has this `...show more` UI which shows a small section of a long content initially and when clicked, it shows the complete content.
 
-![LinkedIn show more]( linkedin-show-more.png)
+![LinkedIn show more](/images/linkedin-show-more.png)
 
 ## The art of creating it
 

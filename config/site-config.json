@@ -34,5 +34,8 @@
       },
       "site": {
           "base_path":"https://blog.bisvarup.me"
+      },
+      "color": {
+          "primary_color":"#44337a"
       }
 }

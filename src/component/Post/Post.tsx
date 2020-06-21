@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'gatsby';
 import Img from 'gatsby-image';
 import HashTags from '../HashTags/HashTags';
+import config from '../../../config/site-config.json';
 
 export interface Props{
     title:string
@@ -39,7 +40,7 @@ export default function ({
               min read ⏱
             </div>
           </div>
-          <Link to={`${path || `/${slug}`}`} className="text-purple-900 text-lg font-medium">
+          <Link to={`${path || `/${slug}`}`} className="text-lg font-medium" style={{ color: config.color.primary_color }}>
             {title}
             <p className="text-gray-700 text-sm">{excerpt}</p>
           </Link>

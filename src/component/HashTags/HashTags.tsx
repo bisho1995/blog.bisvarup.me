@@ -1,4 +1,5 @@
 import React from 'react';
+import config from '../../../config/site-config.json';
 
 export interface Props {
 tags:string | string[] | null | undefined
@@ -10,7 +11,7 @@ export default function HashTags({ tags, className }:Props) {
   let ar = Array.isArray(tags) ? tags : tags.split(',').filter(Boolean).map((a) => a.trim());
   ar = ar.map((a) => `#${a}`);
   return (
-    <div className={`text-purple-900 text-sm ${className}`}>
+    <div className={`text-sm ${className}`} style={{ color: config.color.primary_color }}>
       {ar.join(' ')}
     </div>
   );

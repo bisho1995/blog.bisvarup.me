@@ -14,7 +14,8 @@ export default withErrorBoundary(({ data }) => {
   const tags = [];
   for (let i = 0; i < siteConfig['index-page'].tags.length; i += 1) {
     if (i === 0)tags.push(siteConfig['index-page'].tags[i]);
-    else tags.push(<CircularDot top={-3} key={siteConfig['index-page'].tags[i]} />, siteConfig['index-page'].tags[i]);
+    else tags.push(<
+      CircularDot top={-3} key={siteConfig['index-page'].tags[i]} />, siteConfig['index-page'].tags[i]);
   }
 
   return (

@@ -52,7 +52,8 @@
     "@types/react": "^16.9.35",
     "@typescript-eslint/eslint-plugin": "^2.34.0",
     "@typescript-eslint/parser": "^2.34.0",
-    "husky": "^4.2.5"
+    "husky": "^4.2.5",
+    "lint-staged": "^10.2.11"
   },
   "scripts": {
     "start": "npm run dev",
@@ -81,9 +82,7 @@
     "type": "git",
     "url": "git@github.com:bisho1995/blog.bisvarup.me.git"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run lint:modified"
-    }
+  "lint-staged": {
+    "*": "yarn lint"
   }
 }

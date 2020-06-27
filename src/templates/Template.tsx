@@ -15,6 +15,7 @@ import {
   WhatsappIcon,
 } from 'react-share';
 import Img from 'gatsby-image';
+import { Popup } from 'semantic-ui-react';
 import Helmet from '../component/Helmet/Helmet';
 import withErrorBoundary from '../component/withErrorBoundary/withErrorBoundary';
 import profilePic from '../images/profile.jpg';
@@ -84,9 +85,19 @@ export default withErrorBoundary(
             <div className="flex justify-between mt-8 mb-4">
               <div className="hidden md:block text-sm font-normal text-gray-900">{date}</div>
               <div className="flex">
-                <WhatsappShareButton className="mx-1" title={shareTitle} url={pageUrl}>
-                  <WhatsappIcon size={25} round />
-                </WhatsappShareButton>
+                <Popup
+                  position="top left"
+                  style={{
+                    border: '1px solid black', background: 'black', color: '#fff', marginBottom: 4, padding: 8,
+                  }}
+                  trigger={(
+                    <WhatsappShareButton className="mx-1" title={shareTitle} url={pageUrl}>
+                      <WhatsappIcon size={25} round />
+                    </WhatsappShareButton>
+)}
+                  content="Share on whatsapp"
+                />
+
                 <LinkedinShareButton className="mx-1" title={shareTitle} url={pageUrl}>
                   <LinkedinIcon size={25} round />
                 </LinkedinShareButton>
@@ -117,14 +128,14 @@ export default withErrorBoundary(
             <AsideBlock header="Latest Posts">
               <div>
                 {newPosts.filter(({ title: pageTitle }) => pageTitle !== title).map(({
-                  title: pageTitle, path, slug, image = '/images/placeholder.jpg', tags = '',
+                  title: pageTitle, path, slug: s, image: i = '/images/placeholder.jpg', tags: t = '',
                 }) => (
-                  <Link to={path || `/${slug}`}>
+                  <Link to={path || `/${s}`}>
                     <div className="mb-8 text-sm leading-normal font-medium flex">
-                      <img className="w-20 h-20 mr-4" width="80" height="80" style={{ width: 80, height: 80 }} src={image || '/images/placeholder.jpg'} alt={pageTitle} />
+                      <img className="w-20 h-20 mr-4" width="80" height="80" style={{ width: 80, height: 80 }} src={i || '/images/placeholder.jpg'} alt={pageTitle} />
                       <div>
                         {pageTitle}
-                        <div><HashTags tags={tags} /></div>
+                        <div><HashTags tags={t} /></div>
                       </div>
                     </div>
                   </Link>

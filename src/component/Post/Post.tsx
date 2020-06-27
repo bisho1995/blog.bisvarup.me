@@ -21,7 +21,7 @@ export default function ({
   return (
     <div className="my-12 w-full md:w-2/5 relative">
       <div
-        className="p-1 absolute bg-gray-900 text-white rounded"
+        className="p-1 absolute bg-gray-900 text-white rounded z-10"
         style={{
           top: 10, left: 10,
         }}
@@ -30,7 +30,6 @@ export default function ({
       </div>
       <figure>
         <Img fluid={image} alt={title} className="rounded block shadow-xl" />
-        {/* <img loading="lazy" className="rounded block shadow-xl" src={image || '/images/placeholder.jpg'} alt={title} /> */}
         <figcaption className="mt-8">
           <div className="flex justify-between mb-4">
             <HashTags tags={tags} />

@@ -6,6 +6,7 @@
     "url": "https://github.com/bisho1995/blog.bisvarup.me/issues"
   },
   "dependencies": {
+    "@material-ui/core": "^4.10.2",
     "@types/marked": "^0.7.4",
     "@types/react-helmet": "^6.0.0",
     "add": "^2.0.6",

@@ -2,20 +2,8 @@ import React from 'react';
 import { Link, graphql } from 'gatsby';
 import { Helmet as ReactHelmet } from 'react-helmet';
 import Disqus from 'disqus-react';
-import {
-  FacebookShareButton,
-  FacebookIcon,
-  LinkedinShareButton,
-  LinkedinIcon,
-  RedditShareButton,
-  RedditIcon,
-  TwitterShareButton,
-  TwitterIcon,
-  WhatsappShareButton,
-  WhatsappIcon,
-} from 'react-share';
 import Img from 'gatsby-image';
-import { Popup } from 'semantic-ui-react';
+import SharePost from '../component/SharePost/SharePost';
 import Helmet from '../component/Helmet/Helmet';
 import withErrorBoundary from '../component/withErrorBoundary/withErrorBoundary';
 import profilePic from '../images/profile.jpg';
@@ -84,34 +72,7 @@ export default withErrorBoundary(
             <h1 className="text-center text-2xl md:text-3xl">{title}</h1>
             <div className="flex justify-between mt-8 mb-4">
               <div className="hidden md:block text-sm font-normal text-gray-900">{date}</div>
-              <div className="flex">
-                <Popup
-                  position="top left"
-                  style={{
-                    border: '1px solid black', background: 'black', color: '#fff', marginBottom: 4, padding: 8,
-                  }}
-                  trigger={(
-                    <WhatsappShareButton className="mx-1" title={shareTitle} url={pageUrl}>
-                      <WhatsappIcon size={25} round />
-                    </WhatsappShareButton>
-)}
-                  content="Share on whatsapp"
-                />
-
-                <LinkedinShareButton className="mx-1" title={shareTitle} url={pageUrl}>
-                  <LinkedinIcon size={25} round />
-                </LinkedinShareButton>
-                <RedditShareButton className="mx-1" title={shareTitle} url={pageUrl}>
-                  <RedditIcon size={25} round />
-                </RedditShareButton>
-
-                <TwitterShareButton className="mx-1" title={shareTitle} url={pageUrl}>
-                  <TwitterIcon size={25} round />
-                </TwitterShareButton>
-                <FacebookShareButton className="mx-1" title={shareTitle} url={pageUrl}>
-                  <FacebookIcon size={25} round />
-                </FacebookShareButton>
-              </div>
+              <SharePost pageUrl={pageUrl} shareTitle={shareTitle} />
             </div>
             {image && <figure><Img fluid={sources} alt={title} className="my-4" /></figure>}
             <div

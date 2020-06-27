@@ -11,11 +11,15 @@ import siteConfig from '../../config/site-config.json';
 export default withErrorBoundary(({ data }) => {
   const edges = data?.allMarkdownRemark?.edges;
 
-  const tags = [];
+  const tags: Array<string> = [];
   for (let i = 0; i < siteConfig['index-page'].tags.length; i += 1) {
-    if (i === 0)tags.push(siteConfig['index-page'].tags[i]);
-    else tags.push(<
-      CircularDot top={-3} key={siteConfig['index-page'].tags[i]} />, siteConfig['index-page'].tags[i]);
+    if (i === 0) tags.push(siteConfig['index-page'].tags[i]);
+    else {
+      tags.push(
+        <CircularDot top={-3} key={siteConfig['index-page'].tags[i]} />,
+        siteConfig['index-page'].tags[i],
+      );
+    }
   }
 
   return (
@@ -33,9 +37,7 @@ export default withErrorBoundary(({ data }) => {
             <h1 className="text-3xl flex flex-col justify-center mb-0">
               {siteConfig['index-page'].title}
             </h1>
-            <h2 className="text-gray-600">
-              {tags}
-            </h2>
+            <h2 className="text-gray-600">{tags}</h2>
           </div>
         </header>
 
@@ -51,7 +53,7 @@ export default withErrorBoundary(({ data }) => {
                     path,
                     slug,
                     date,
-                    tags,
+                    tags: t,
                     featuredImage: {
                       childImageSharp: { fluid: image },
                     },
@@ -65,7 +67,7 @@ export default withErrorBoundary(({ data }) => {
                   date={date}
                   timeToRead={timeToRead}
                   excerpt={excerpt}
-                  tags={tags}
+                  tags={t}
                   image={image}
                   key={slug || path || title}
                 />

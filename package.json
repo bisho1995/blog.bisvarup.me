@@ -82,7 +82,12 @@
     "type": "git",
     "url": "git@github.com:bisho1995/blog.bisvarup.me.git"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
   "lint-staged": {
-    "*": "yarn lint"
+    "src/**/*.{js,ts,jsx,tsx}": ["eslint --fix"]
   }
 }

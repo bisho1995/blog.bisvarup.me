@@ -23,9 +23,7 @@ export default function SharePost({ shareTitle, pageUrl }:Props) {
     <div className="flex">
       <Popup
         position="top left"
-        style={{
-          border: '1px solid black', background: 'black', color: '#fff', marginBottom: 4, padding: 8,
-        }}
+        className="text-xs border-solid border-4 border-black rounded p-1 mb-1 text-white bg-black"
         trigger={(
           <WhatsappShareButton className="mx-1" title={shareTitle} url={pageUrl}>
             <WhatsappIcon size={25} round />
@@ -36,9 +34,7 @@ export default function SharePost({ shareTitle, pageUrl }:Props) {
 
       <Popup
         position="top left"
-        style={{
-          border: '1px solid black', background: 'black', color: '#fff', marginBottom: 4, padding: 8,
-        }}
+        className="text-xs border-solid border-4 border-black rounded p-1 mb-1 text-white bg-black"
         trigger={(
           <LinkedinShareButton className="mx-1" title={shareTitle} url={pageUrl}>
             <LinkedinIcon size={25} round />
@@ -49,9 +45,7 @@ export default function SharePost({ shareTitle, pageUrl }:Props) {
 
       <Popup
         position="top left"
-        style={{
-          border: '1px solid black', background: 'black', color: '#fff', marginBottom: 4, padding: 8,
-        }}
+        className="text-xs border-solid border-4 border-black rounded p-1 mb-1 text-white bg-black"
         trigger={(
           <RedditShareButton className="mx-1" title={shareTitle} url={pageUrl}>
             <RedditIcon size={25} round />
@@ -62,9 +56,7 @@ export default function SharePost({ shareTitle, pageUrl }:Props) {
 
       <Popup
         position="top left"
-        style={{
-          border: '1px solid black', background: 'black', color: '#fff', marginBottom: 4, padding: 8,
-        }}
+        className="text-xs border-solid border-4 border-black rounded p-1 mb-1 text-white bg-black"
         trigger={(
           <TwitterShareButton className="mx-1" title={shareTitle} url={pageUrl}>
             <TwitterIcon size={25} round />
@@ -75,9 +67,7 @@ export default function SharePost({ shareTitle, pageUrl }:Props) {
 
       <Popup
         position="top left"
-        style={{
-          border: '1px solid black', background: 'black', color: '#fff', marginBottom: 4, padding: 8,
-        }}
+        className="text-xs border-solid border-4 border-black rounded p-1 mb-1 text-white bg-black"
         trigger={(
           <FacebookShareButton className="mx-1" title={shareTitle} url={pageUrl}>
             <FacebookIcon size={25} round />

@@ -69,7 +69,7 @@ export default withErrorBoundary(
         </header>
         <div className={`flex flex-col ${styles.wrapper} mx-auto lg:flex-row`}>
           <div className={`${styles.template} container mx-auto p-4`}>
-            <h1 className="text-center text-2xl md:text-3xl">{title}</h1>
+            <h1 className="text-center text-2xl md:text-3xl cursor-pointer">{title}</h1>
             <div className="flex justify-between mt-8 mb-4">
               <div className="hidden md:block text-sm font-normal text-gray-900">{date}</div>
               <SharePost pageUrl={pageUrl} shareTitle={shareTitle} />
@@ -78,7 +78,7 @@ export default withErrorBoundary(
             <div
               dangerouslySetInnerHTML={{ __html: content }}
             />
-            <div className="text-center my-4 text-gray-600">-- X -- X -- X --</div>
+            <HashTags className="my-8 font-medium" tags={tags} />
 
             <Disqus.DiscussionEmbed
               shortname={disqusShortname}

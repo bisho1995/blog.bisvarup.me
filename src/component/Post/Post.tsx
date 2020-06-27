@@ -20,31 +20,32 @@ export default function ({
 }:Props) {
   return (
     <div className="my-12 w-full md:w-2/5 relative">
-      <div
-        className="p-1 absolute bg-gray-900 text-white rounded z-10"
-        style={{
-          top: 10, left: 10,
-        }}
-      >
-        {date}
-      </div>
-      <figure>
-        <Img fluid={image} alt={title} className="rounded block shadow-xl" />
-        <figcaption className="mt-8">
-          <div className="flex justify-between mb-4">
-            <HashTags tags={tags} />
-            <div className="text-xs text-gray-600 text-right" style={{ minWidth: 85 }}>
-              {timeToRead}
-              {' '}
-              min read ⏱
+      <Link to={`${path || `/${slug}`}`} className="text-lg font-medium" style={{ color: config.color.primary_color }}>
+        <div
+          className="p-1 absolute bg-gray-900 text-white rounded z-10"
+          style={{
+            top: 10, left: 10,
+          }}
+        >
+          {date}
+        </div>
+        <figure>
+          <Img fluid={image} alt={title} className="rounded block shadow-xl" />
+          <figcaption className="mt-8">
+            <div className="flex justify-between mb-4">
+              <HashTags tags={tags} />
+              <div className="text-xs text-gray-600 text-right" style={{ minWidth: 85 }}>
+                {timeToRead}
+                {' '}
+                min read ⏱
+              </div>
             </div>
-          </div>
-          <Link to={`${path || `/${slug}`}`} className="text-lg font-medium" style={{ color: config.color.primary_color }}>
+
             {title}
             <p className="text-gray-700 text-sm">{excerpt}</p>
-          </Link>
-        </figcaption>
-      </figure>
+          </figcaption>
+        </figure>
+      </Link>
     </div>
   );
 }

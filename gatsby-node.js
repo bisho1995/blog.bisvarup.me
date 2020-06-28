@@ -13,7 +13,7 @@ exports.createPages = async ({actions, graphql}) => {
               featuredImage {
                 relativePath
                 childImageSharp {
-                  fixed(width: 150, height:150, quality: 90) {
+                  fixed(width: 150, height: 150, quality: 90) {
                     src
                   }
                 }
@@ -29,7 +29,7 @@ exports.createPages = async ({actions, graphql}) => {
   if (!results.errors) {
     const {allMarkdownRemark} = results.data;
 
-    const res = [];
+    const allPosts = [];
     allMarkdownRemark.edges.forEach(
       ({
         node: {
@@ -48,7 +48,7 @@ exports.createPages = async ({actions, graphql}) => {
         },
       }) => {
         if (!path) return;
-        res.push({
+        allPosts.push({
           date,
           title,
           slug,
@@ -59,7 +59,7 @@ exports.createPages = async ({actions, graphql}) => {
       },
     );
 
-    const newPosts = res
+    const newPosts = allPosts
       .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
       .slice(0, 10 + 1);
 
@@ -90,6 +90,7 @@ exports.createPages = async ({actions, graphql}) => {
             image: relativePath,
             tags,
             url: path,
+            allPosts,
           },
         });
       },

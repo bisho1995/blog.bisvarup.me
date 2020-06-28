@@ -3,6 +3,11 @@ import { Link, graphql } from 'gatsby';
 import { Helmet as ReactHelmet } from 'react-helmet';
 import Disqus from 'disqus-react';
 import Img from 'gatsby-image';
+
+import OutlinedInput from '@material-ui/core/OutlinedInput';
+import InputAdornment from '@material-ui/core/InputAdornment';
+import SearchIcon from '@material-ui/icons/Search';
+
 import SharePost from '../component/SharePost/SharePost';
 import Helmet from '../component/Helmet/Helmet';
 import withErrorBoundary from '../component/withErrorBoundary/withErrorBoundary';
@@ -32,7 +37,7 @@ interface Props {
 export default withErrorBoundary(
   ({
     pageContext: {
-      content, date, title, slug, newPosts = [], image = '', tags = '', url,
+      content, date, title, slug, newPosts = [], image = '', tags = '', url, allPosts,
     },
     data = {},
   }: Props) => {
@@ -102,6 +107,16 @@ export default withErrorBoundary(
                   </Link>
                 ))}
               </div>
+            </AsideBlock>
+            <AsideBlock header="Search Posts">
+              <OutlinedInput
+                className="w-full"
+                endAdornment={(
+                  <InputAdornment position="end">
+                    <SearchIcon />
+                  </InputAdornment>
+          )}
+              />
             </AsideBlock>
             {/* <AsideBlock header="Tags">
               <div>

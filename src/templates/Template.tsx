@@ -1,12 +1,11 @@
 import React from 'react';
-import { Link, graphql } from 'gatsby';
+import { Link, graphql, navigate } from 'gatsby';
 import { Helmet as ReactHelmet } from 'react-helmet';
 import Disqus from 'disqus-react';
 import Img from 'gatsby-image';
 
-import OutlinedInput from '@material-ui/core/OutlinedInput';
-import InputAdornment from '@material-ui/core/InputAdornment';
-import SearchIcon from '@material-ui/icons/Search';
+import Autocomplete from '@material-ui/lab/Autocomplete';
+import TextField from '@material-ui/core/TextField';
 
 import SharePost from '../component/SharePost/SharePost';
 import Helmet from '../component/Helmet/Helmet';
@@ -30,6 +29,7 @@ interface Props {
     newPosts?:Object[]
     image?:string
     tags?:string | string[]
+    allPosts: Array<{date: string, image?: string, path: string, tags?: string, title: string}>
   }
   data?:any
 }
@@ -109,13 +109,12 @@ export default withErrorBoundary(
               </div>
             </AsideBlock>
             <AsideBlock header="Search Posts">
-              <OutlinedInput
+              <Autocomplete
+                onChange={(_, obj) => { if (obj)navigate(obj.path); }}
+                options={allPosts}
+                getOptionLabel={(option) => option.title}
                 className="w-full"
-                endAdornment={(
-                  <InputAdornment position="end">
-                    <SearchIcon />
-                  </InputAdornment>
-          )}
+                renderInput={(params) => <TextField {...params} label="Search" variant="outlined" fullWidth />}
               />
             </AsideBlock>
             {/* <AsideBlock header="Tags">

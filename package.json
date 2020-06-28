@@ -8,6 +8,7 @@
   "dependencies": {
     "@material-ui/core": "^4.10.2",
     "@material-ui/icons": "^4.9.1",
+    "@material-ui/lab": "^4.0.0-alpha.56",
     "@types/marked": "^0.7.4",
     "@types/react-helmet": "^6.0.0",
     "add": "^2.0.6",

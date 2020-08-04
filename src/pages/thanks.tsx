@@ -53,6 +53,10 @@ const images = [
     attribution: 'Photo by Miltiadis Fragkidis on Unsplash',
     url: 'https://unsplash.com/photos/2zGTh-S5moM',
   },
+  {
+    attribution: 'Photo by Samuel Foster on Unsplash',
+    url: 'https://unsplash.com/photos/lWSnXGwlfMY',
+  },
 ];
 
 export default function Thanks() {

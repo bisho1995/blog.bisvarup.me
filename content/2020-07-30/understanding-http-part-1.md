@@ -6,7 +6,12 @@ tags: tcp, http
 featuredImage: ../../static/images/samuel-foster-lWSnXGwlfMY-unsplash.jpg
 ---
 
-In this post, we try to understand the evolution of HTTP to HTTP 1.1 and a brief on HTTP connection.
+In this post, we try to understand the evolution of HTTP to HTTP 1.1 and a brief on HTTP connection1.
+
+## Table of Contents
+
+```toc
+```
 
 ## HTTP/0.9
 

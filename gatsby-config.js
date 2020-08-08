@@ -73,5 +73,22 @@ module.exports = {
       },
     },
     'gatsby-plugin-offline',
+    {
+      resolve: 'gatsby-transformer-remark',
+      options: {
+        plugins: [
+          'gatsby-remark-autolink-headers',
+          {
+            resolve: 'gatsby-remark-table-of-contents',
+            options: {
+              exclude: 'Table of Contents',
+              tight: false,
+              fromHeading: 2,
+              toHeading: 6,
+            },
+          },
+        ],
+      },
+    },
   ],
 };

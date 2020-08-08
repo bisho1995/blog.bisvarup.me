@@ -77,7 +77,12 @@ module.exports = {
       resolve: 'gatsby-transformer-remark',
       options: {
         plugins: [
-          'gatsby-remark-autolink-headers',
+          {
+            resolve: 'gatsby-remark-autolink-headers',
+            options: {
+              offsetY: 50,
+            },
+          },
           {
             resolve: 'gatsby-remark-table-of-contents',
             options: {
@@ -88,6 +93,12 @@ module.exports = {
             },
           },
         ],
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-anchor-links',
+      options: {
+        offset: -100,
       },
     },
   ],

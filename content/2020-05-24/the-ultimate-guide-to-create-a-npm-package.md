@@ -7,6 +7,13 @@ featuredImage: ../../static/images/nicolas-hans-u2LV_WJdBfQ-unsplash.jpg
 ---
 
 
+## Table of Contents
+
+```toc
+```
+
+# Introduction
+
 The following is the `package.json` file which I used for my [ReadMore](https://www.npmjs.com/package/@bisvarup/react-read-more) project.
 
 **Sample package json**

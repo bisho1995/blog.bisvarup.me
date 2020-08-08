@@ -6,6 +6,12 @@ tags: webpack, tree-shaking
 featuredImage: ../../static/images/trevor-pye-KyaoT3NKN2s-unsplash.jpg
 ---
 
+
+## Table of Contents
+
+```toc
+```
+
 ## Problem statement & example
 
 Turns out tree shaking, which is compiler removing unused code is pretty hard. So by default webpack 4 does few checks to remove unused code, but it is very basic. 

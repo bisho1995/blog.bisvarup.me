@@ -6,6 +6,14 @@ tags: npm, npm-integrity, checksum
 featuredImage: ../../static/images/miltiadis-fragkidis-2zGTh-S5moM-unsplash.jpg
 ---
 
+
+## Table of Contents
+
+```toc
+```
+
+## Introduction
+
 Suppose you want to install a node module like this,
 npm i oauth-sign
 You may encounter such an  EINTEGRITY error. It would look something like this.

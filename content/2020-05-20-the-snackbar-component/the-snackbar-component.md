@@ -6,14 +6,18 @@ tags: react, npm, react-component
 featuredImage: ../../static/images/daniel-fazio-JBN6FHP5VXk-unsplash.jpg
 ---
 
- 
+
+## Table of Contents
+
+```toc
+```
+
+## Introduction 
 
 So for your app, you need a good old snackbar component. How difficult can it be? This was my initial thought as well.
 Let's find out 🙄
 
 *__A note of caution:__ I was trying to find a quick solution for this, as another team was already developing the snackbar component.*
-
----
 
 ## The hidden PRD
 

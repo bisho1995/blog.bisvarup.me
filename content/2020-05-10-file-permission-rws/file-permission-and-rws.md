@@ -6,7 +6,11 @@ tags: linux, file-permissions
 featuredImage: ../../static/images/wesley-tingey-snNHKZ-mGfE-unsplash.jpg
 ---
 
- 
+
+## Table of Contents
+
+```toc
+``` 
 
 ## File Permissions
 

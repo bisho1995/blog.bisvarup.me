@@ -18,18 +18,18 @@ module.exports = {
       resolve: 'gatsby-transformer-remark',
       options: {
         plugins: [
-          {
-            resolve: 'gatsby-remark-embed-snippet',
-            options: {
-              directory: `${__dirname}`,
-            },
-          },
-          {
-            resolve: 'gatsby-remark-prismjs',
-            options: {
-              directory: `${__dirname}`,
-            },
-          },
+          // {
+          //   resolve: 'gatsby-remark-embed-snippet',
+          //   options: {
+          //     directory: `${__dirname}`,
+          //   },
+          // },
+          // {
+          //   resolve: 'gatsby-remark-prismjs',
+          //   options: {
+          //     directory: `${__dirname}`,
+          //   },
+          // },
         ],
       },
     },
@@ -92,7 +92,19 @@ module.exports = {
               toHeading: 6,
             },
           },
+          {
+            resolve: 'gatsby-remark-prismjs',
+            options: {
+              directory: `${__dirname}`,
+            },
+          },
         ],
+      },
+    },
+    {
+      resolve: 'gatsby-remark-embed-snippet',
+      options: {
+        directory: `${__dirname}`,
       },
     },
     {

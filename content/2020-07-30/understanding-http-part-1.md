@@ -6,8 +6,6 @@ tags: tcp, http
 featuredImage: ../../static/images/samuel-foster-lWSnXGwlfMY-unsplash.jpg
 ---
 
-In this post, we try to understand the evolution of HTTP to HTTP 1.1 and a brief on HTTP connection1.
-
 ## Table of Contents
 
 ```toc
@@ -39,9 +37,9 @@ The server serves the whole document then disconnects the client, aka end the TC
 In the simplest form HTTP connections are established between a user agent and a server, but there can be more complicated situations also. 
 
 For example
-1. Proxy
-2. Gateway
-3. Tunnel
+1. [Proxy](#proxy)
+2. [Gateway](#gateway)
+3. [Tunnel](#tunnel)
 
 ### Proxy
 

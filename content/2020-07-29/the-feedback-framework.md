@@ -6,6 +6,13 @@ tags: react, javascript, read-more
 featuredImage: ../../static/images/adam-jang-8pOTAtyd_Mc-unsplash.jpg
 ---
 
+## Table of Contents
+
+```toc
+```
+
+## Backstory
+
 So recently in my current company, I went through a mid-year review process, and here is what I loved about it.
 
 ## Overall breakdown

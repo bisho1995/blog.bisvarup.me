@@ -9,6 +9,14 @@ featuredImage: ../../static/images/alberto-bigoni-S25lkmUwTk8-unsplash.jpg
 
 ---
 
+
+## Table of Contents
+
+```toc
+```
+
+## Introduction
+
 Here is an example of how the component behaves. I figured rather than writing and trying to figure how this component works, it would be better if I show how this component works.
 
 <iframe

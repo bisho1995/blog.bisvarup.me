@@ -56,7 +56,8 @@ const images = [
   {
     attribution: 'Photo by Samuel Foster on Unsplash',
     url: 'https://unsplash.com/photos/lWSnXGwlfMY',
-  }, {
+  },
+  {
     attribution: 'Photo by Markus Winkler on Unsplash',
     url: 'https://unsplash.com/photos/gLdJnQFcIXE',
   },
@@ -66,9 +67,11 @@ export default function Thanks() {
   return (
     <>
       {images.map(({ attribution, url }) => (
-        <a href={url} target="_blank" rel="noopener noreferrer nofollow">
-          {attribution}
-        </a>
+        <div>
+          <a href={url} target="_blank" rel="noopener noreferrer nofollow">
+            {attribution}
+          </a>
+        </div>
       ))}
     </>
   );

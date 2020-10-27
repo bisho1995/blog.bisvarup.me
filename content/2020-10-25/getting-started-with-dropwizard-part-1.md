@@ -3,7 +3,7 @@ title: Getting started with Dropwizard Part 1
 date: 2020-10-25
 path: /getting-started-with-dropwizard-part-1
 tags: java, dropwizard
-featuredImage: ../../static/images/markus-winkler-gLdJnQFcIXE-unsplash.jpg
+featuredImage: ../../static/images/problem-solving.jpg
 ---
 
 ## Table of Contents
@@ -57,3 +57,38 @@ The other concept is just like creating any react project/nodejs project we need
 So, we can put any type of config data, say which ports to use or what are the database configurations in this config file. 
 <br/><br/>
 Then we need to create a configuration class that extends the Configuration class.
+
+![Dropwizard Configuration extended](/images/dropwizard_configuration.png)
+
+Remember Jackson converts Json from POJO (plain old java objects, aka Java classes) to JSON and back. That is used here to pick up some database config from the config.yml file and adding it to an instance of the class.
+<br/><br/>
+We can use a similar technique for pulling in any config.
+
+## Application 
+
+We need to create the main application file now, for running our dropwizard application. We need to extend the Application and use our configuration for this.
+
+![Dropwizard Application extended](/images/dropwizard_application.png)
+
+As we can see, this is a simple class with public static void main, and in the main method we call the run method. That’s it.
+<br/><br/>
+In the run method, we register our **RESOURCE**. If we do not do that, dropwizard will not know what our resource is, right?
+
+## Conclusion
+
+This is not a tutorial per se, but an approach to how a front-end developer may take to learn dropwizard. I broke down dropwizard into fundamental building blocks and tried to explain why it is needed.
+<br/><br/>
+So to summarise:
+1. Maven == npm.js
+2. Pom.xml == package.json
+3. Config from Configuration class which reads config.yml file
+4. Main application starting code/starting point from Application class.
+5. Creating resources to create endpoints.
+
+There is more to it when I created a basic todo endpoint which adds todos and a URL to populate all the todo(s), but if we understand the fundamentals then the rest is easy. 
+<br/><br/>
+If we know how to keep data in-memory, we can replace that with a database or file storage, it does not matter. That is not a concept of dropwizard, but a part of core java, the how.
+<br/><br/>
+Usually, we create interfaces and write implementations of those interfaces, we do this so that in case we need to change from an in-memory database to a SQL database we need not change the interface but just the implementation of the interface. Similarly, we can use an interface for the resource as well and then write a concrete implementation for it later on.
+<br/><br/>
+I would suggest not to spend time on folder structure or clean code when trying to get started with a new framework, but just get coding and building something. 

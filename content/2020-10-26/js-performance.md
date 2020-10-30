@@ -6,6 +6,7 @@ tags: javascript, optimization, performance
 featuredImage: ../../static/images/problem-solving.jpg
 ---
 
+## Some Performance tips in no specific order
 
 1. **getElementsByClassName** & **getElementsByTagName** are faster than **querySelecterAll**
 <br/><br/>

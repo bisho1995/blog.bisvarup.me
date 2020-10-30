@@ -1,4 +1,4 @@
-# Bisvarup's blog
+# UI Space
 
 This repo contains the source code and contents of [blog.bisvarup.me](https://blog.bisvarup.me/)
 

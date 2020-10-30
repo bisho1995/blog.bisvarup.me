@@ -1,9 +1,9 @@
 {
     "site-metadata": {
         "owner":"Bisvarup Mukherjee",
-        "name": "bisvarup's blog",
-        "short_name": "bisvarup's blog",
-        "title":"bisvarup's blog",
+        "name": "UI Space",
+        "short_name": "UI Space",
+        "title":"UI Space",
         "description":"Technical blog regarding bisvarup's views and experiences. Subscribe now to get the best industry standard information delivered to you."
     },
     "analytics": {
@@ -21,7 +21,7 @@
     },
     "index-page": {
         "pic_alt": "bisvarup mukherjee",
-        "title":"bisvarup's blog",
+        "title":"UI Space",
         "tags": ["Developer","Story teller","Polyglot Programmer"]
     },
     "social-urls": [

@@ -1,5 +1,5 @@
 import React from 'react';
-import {Helmet} from 'react-helmet';
+import { Helmet } from 'react-helmet';
 import siteConfig from '../../../config/site-config.json';
 
 export default function AppHelmet() {
@@ -18,10 +18,11 @@ export default function AppHelmet() {
         gtag('config', '${siteConfig.analytics.google.trackingId}');
       `,
         },
-      ]}>
+      ]}
+    >
       <meta
         name="viewport"
-        content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+        content="width=device-width, initial-scale=1, user-scalable=yes"
       />
       <meta
         name="description"

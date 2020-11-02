@@ -42,3 +42,8 @@ ul {
 ul,ol {
   padding: revert !important;
 }
+
+.toc > ul {
+  // todo: make this configurable
+  border-left: 4px solid #44337a;
+}

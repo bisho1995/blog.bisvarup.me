@@ -64,7 +64,7 @@ export default withErrorBoundary(
               <img
                 src={profilePic}
                 alt={siteConfig['index-page'].pic_alt}
-                className="h-24 rounded-full m-auto md:m-0 md:mr-4 block"
+                className=" sm:h-12 md:h-12 h-24 rounded-full m-auto md:m-0 md:mr-4 block"
               />
               <span className="justify-center text-2xl no-underline text-grey-900 hidden md:flex md:flex-col">
                 {siteConfig['index-page'].title}

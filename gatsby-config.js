@@ -7,6 +7,9 @@ module.exports = {
   },
   plugins: [
     {
+      /**
+       * This is for import aliasing
+       */
       resolve: 'gatsby-plugin-root-import',
       /**
        * Make sure the list in tsconfig.json "paths" is same as
@@ -80,7 +83,6 @@ module.exports = {
         short_name: siteConfig['site-metadata'].short_name,
         start_url: '/',
         icon: 'src/images/profile-circle.png',
-        /** todo: use my colors */
         background_color: siteConfig.pwa.background_color,
         theme_color: siteConfig.pwa.theme_color,
         display: siteConfig.pwa.display,

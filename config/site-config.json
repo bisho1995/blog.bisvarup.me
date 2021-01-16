@@ -15,7 +15,7 @@
         }
     },
     "pwa": {
-        "display": "standalong",
+        "display": "standalone",
         "theme_color":"#44337a",
         "background_color":"#f7f0eb"
     },

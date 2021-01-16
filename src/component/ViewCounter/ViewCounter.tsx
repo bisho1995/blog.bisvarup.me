@@ -1,5 +1,5 @@
 import React from 'react';
-import siteConfig from '../../../config/site-config.json';
+import siteConfig from '@config/site-config.json';
 
 export interface Props {
   className?: string;

@@ -7,17 +7,16 @@ import Img from 'gatsby-image';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import TextField from '@material-ui/core/TextField';
 
-import SharePost from '../component/SharePost/SharePost';
-import Helmet from '../component/Helmet/Helmet';
-import withErrorBoundary from '../component/withErrorBoundary/withErrorBoundary';
-import profilePic from '../images/profile.jpg';
+import SharePost from '@components/SharePost/SharePost';
+import Helmet from '@components/Helmet/Helmet';
+import withErrorBoundary from '@components/withErrorBoundary/withErrorBoundary';
+import AsideBlock from '@components/AsideBlock/AsideBlock';
+import Footer from '@components/Footer/Footer';
+import HashTags from '@components/HashTags/HashTags';
+import config from '@/config/config';
+import siteConfig from '@config/site-config.json';
 import styles from './template.module.scss';
-import AsideBlock from '../component/AsideBlock/AsideBlock';
-import Footer from '../component/Footer/Footer';
-import HashTags from '../component/HashTags/HashTags';
-import config from '../config/config';
-
-import siteConfig from '../../config/site-config.json';
+import profilePic from '../images/profile.jpg';
 
 interface Props {
   pageContext: {

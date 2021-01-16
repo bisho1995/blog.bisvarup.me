@@ -1,7 +1,7 @@
 import React from 'react';
 import { SocialIcon } from 'react-social-icons';
-import ViewCounter from '../ViewCounter/ViewCounter';
-import siteConfig from '../../../config/site-config.json';
+import ViewCounter from '@components/ViewCounter/ViewCounter';
+import siteConfig from '@config/site-config.json';
 
 const socialUrls = siteConfig['social-urls'];
 

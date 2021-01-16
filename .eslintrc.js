@@ -1,3 +1,5 @@
+const path = require('path');
+
 module.exports = {
   env: {
     browser: true,
@@ -19,6 +21,8 @@ module.exports = {
   settings: {
     // https://stackoverflow.com/questions/55198502/using-eslint-with-typescript-unable-to-resolve-path-to-module/56696478#56696478
     'import/resolver': {
+      // https://www.mrozilla.cz/blog/gatsby-eslint-vscode-import-alias/
+      alias: [['@', path.join(__dirname, 'src')]],
       node: {
         extensions: ['.js', '.jsx', '.ts', '.tsx'],
       },
@@ -41,5 +45,6 @@ module.exports = {
     ],
     'react/jsx-props-no-spreading': 0,
     'no-unused-vars': 0,
+    'import/no-unresolved': 0,
   },
 };

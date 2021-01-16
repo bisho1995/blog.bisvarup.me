@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'gatsby';
 import Img from 'gatsby-image';
-import HashTags from '../HashTags/HashTags';
-import config from '../../../config/site-config.json';
+import HashTags from '@components/HashTags/HashTags';
+import config from '@config/site-config.json';
 
 export interface Props{
     title:string

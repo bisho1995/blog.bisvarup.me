@@ -1,3 +1,4 @@
+const path = require('path');
 const siteConfig = require('./config/site-config.json');
 
 module.exports = {
@@ -5,6 +6,19 @@ module.exports = {
     title: siteConfig['site-metadata'].title,
   },
   plugins: [
+    {
+      resolve: 'gatsby-plugin-root-import',
+      /**
+       * Make sure the list in tsconfig.json "paths" is same as
+       * this list!!
+       */
+      options: {
+        '@': path.join(__dirname, 'src'),
+        '@components': path.join(__dirname, 'src', 'component'),
+        '@pages': path.join(__dirname, 'src', 'pages'),
+        '@config': path.join(__dirname, 'config'),
+      },
+    },
     'gatsby-plugin-react-helmet',
     {
       resolve: 'gatsby-plugin-google-analytics',

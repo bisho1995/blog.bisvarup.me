@@ -1,17 +1,17 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-import withErrorBoundary from '../component/withErrorBoundary/withErrorBoundary';
-import profilePic from '../images/profile.jpg';
-import Helmet from '../component/Helmet/Helmet';
-import CircularDot from '../component/CircularDot/CircularDot';
-import Post from '../component/Post/Post';
-import Footer from '../component/Footer/Footer';
-import siteConfig from '../../config/site-config.json';
+import RenderPosts from '@components/RenderPosts/index';
+import withErrorBoundary from '@components/withErrorBoundary/withErrorBoundary';
+import profilePic from '@/images/profile.jpg';
+import Helmet from '@components/Helmet/Helmet';
+import CircularDot from '@components/CircularDot/CircularDot';
+import Footer from '@components/Footer/Footer';
+import siteConfig from '@config/site-config.json';
 
 export default withErrorBoundary(({ data }) => {
   const edges = data?.allMarkdownRemark?.edges;
 
-  const tags: Array<string> = [];
+  const tags: Array<string | JSX.Element> = [];
   for (let i = 0; i < siteConfig['index-page'].tags.length; i += 1) {
     if (i === 0) tags.push(siteConfig['index-page'].tags[i]);
     else {
@@ -43,36 +43,7 @@ export default withErrorBoundary(({ data }) => {
 
         <div className="text-left">
           <div className="leading-normal flex flex-wrap justify-around">
-            {edges.map(
-              ({
-                node: {
-                  excerpt,
-                  timeToRead,
-                  frontmatter: {
-                    title,
-                    path,
-                    slug,
-                    date,
-                    tags: t,
-                    featuredImage: {
-                      childImageSharp: { fluid: image },
-                    },
-                  },
-                },
-              }) => (
-                <Post
-                  path={path}
-                  slug={slug}
-                  title={title}
-                  date={date}
-                  timeToRead={timeToRead}
-                  excerpt={excerpt}
-                  tags={t}
-                  image={image}
-                  key={slug || path || title}
-                />
-              ),
-            )}
+            <RenderPosts data={edges} />
           </div>
         </div>
       </main>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { graphql } from 'gatsby';
+import { graphql, Link } from 'gatsby';
 import RenderPosts from '@components/RenderPosts/index';
 import withErrorBoundary from '@components/withErrorBoundary/withErrorBoundary';
 import profilePic from '@/images/profile.jpg';
@@ -38,6 +38,21 @@ export default withErrorBoundary(({ data }) => {
               {siteConfig['index-page'].title}
             </h1>
             <h2 className="text-gray-600">{tags}</h2>
+            <div>
+              <Link to="/about" style={{ color: '#0076ff' }}>
+                About
+              </Link>
+              {' '}
+              &#8231;
+              {' '}
+              <Link
+                to="https://github.com/bisho1995/blog.bisvarup.me/"
+                style={{ color: '#0076ff' }}
+                target="_blank"
+              >
+                GitHub
+              </Link>
+            </div>
           </div>
         </header>
 

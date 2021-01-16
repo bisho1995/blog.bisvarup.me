@@ -1,5 +1,5 @@
 import React from 'react';
-import { graphql, Link } from 'gatsby';
+import {graphql, Link} from 'gatsby';
 import RenderPosts from '@components/RenderPosts/index';
 import withErrorBoundary from '@components/withErrorBoundary/withErrorBoundary';
 import profilePic from '@/images/profile.jpg';
@@ -8,7 +8,36 @@ import CircularDot from '@components/CircularDot/CircularDot';
 import Footer from '@components/Footer/Footer';
 import siteConfig from '@config/site-config.json';
 
-export default withErrorBoundary(({ data }) => {
+const Header = ({tags}) => (
+  <header className="flex-row justify-center md:m-16 sm:block md:flex text-center">
+    <img
+      src={profilePic}
+      alt={siteConfig['index-page'].pic_alt}
+      height={130}
+      className="h-32 m-auto md:mr-4 md:ml-0 rounded-full"
+    />
+    <div className="m-0">
+      <h1 className="text-3xl flex flex-col justify-center mb-0">
+        {siteConfig['index-page'].title}
+      </h1>
+      <h2 className="text-gray-600">{tags}</h2>
+      <div>
+        <Link to="/about" style={{color: '#0076ff'}}>
+          About
+        </Link>{' '}
+        &#8231;{' '}
+        <Link
+          to="https://github.com/bisho1995/blog.bisvarup.me/"
+          style={{color: '#0076ff'}}
+          target="_blank">
+          GitHub
+        </Link>
+      </div>
+    </div>
+  </header>
+);
+
+export default withErrorBoundary(({data}) => {
   const edges = data?.allMarkdownRemark?.edges;
 
   const tags: Array<string | JSX.Element> = [];
@@ -23,39 +52,11 @@ export default withErrorBoundary(({ data }) => {
   }
 
   return (
-    <>
+    <article>
       <main className="p-4 container mx-auto">
+        <div> blue</div>
         <Helmet />
-        <header className="flex-row justify-center md:m-16 sm:block md:flex">
-          <img
-            src={profilePic}
-            alt={siteConfig['index-page'].pic_alt}
-            height={130}
-            className="h-32 m-auto md:mr-4 md:ml-0 rounded-full"
-          />
-          <div className="m-0">
-            <h1 className="text-3xl flex flex-col justify-center mb-0">
-              {siteConfig['index-page'].title}
-            </h1>
-            <h2 className="text-gray-600">{tags}</h2>
-            <div>
-              <Link to="/about" style={{ color: '#0076ff' }}>
-                About
-              </Link>
-              {' '}
-              &#8231;
-              {' '}
-              <Link
-                to="https://github.com/bisho1995/blog.bisvarup.me/"
-                style={{ color: '#0076ff' }}
-                target="_blank"
-              >
-                GitHub
-              </Link>
-            </div>
-          </div>
-        </header>
-
+        <Header tags={tags} />
         <div className="text-left">
           <div className="leading-normal flex flex-wrap justify-around">
             <RenderPosts data={edges} />
@@ -63,7 +64,7 @@ export default withErrorBoundary(({ data }) => {
         </div>
       </main>
       <Footer />
-    </>
+    </article>
   );
 });
 

@@ -88,7 +88,7 @@ module.exports = {
         display: siteConfig.pwa.display,
       },
     },
-    // 'gatsby-plugin-offline',
+    'gatsby-plugin-offline',
     {
       resolve: 'gatsby-transformer-remark',
       options: {

@@ -49,7 +49,7 @@ export default function withRipple(Component: any): any {
                   parentElement?.click()
               }
             // ripple.classList.remove(styles.ripple)
-          }, 500),
+          }, 150),
         );
         // @ts-ignore
         const { width, height } = currentTarget.getBoundingClientRect();

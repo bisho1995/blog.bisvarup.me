@@ -7,6 +7,7 @@ import Helmet from '@components/Helmet/Helmet';
 import CircularDot from '@components/CircularDot/CircularDot';
 import Footer from '@components/Footer/Footer';
 import siteConfig from '@config/site-config.json';
+import Container from '@components/Container/Container';
 
 interface SiteLinksProps {
   siteLinks: Array<{to: string, text: string, target?: string}>;
@@ -66,17 +67,15 @@ export default withErrorBoundary(({ data }) => {
   return (
     <>
       <div
-        className="bg-purple-800"
+        className="bg-purple-800 absolute left-0 w-screen h-1/2 rounded-b-sm"
         style={{
-          position: 'absolute',
-          left: 0,
-          width: '100vw',
           height: '50vh',
           borderBottomRightRadius: 10,
           borderBottomLeftRadius: 10,
         }}
       />
-      <article
+      <Container
+        showTopMenu={false}
         style={{
           position: 'absolute',
           zIndex: 1,
@@ -86,17 +85,13 @@ export default withErrorBoundary(({ data }) => {
           maxWidth: 1200,
         }}
       >
-        <main className="p-4 container mx-auto">
-          <Helmet />
-          <Header tags={tags} />
-          <div className="text-left">
-            <div className="leading-normal flex flex-wrap justify-around">
-              <RenderPosts data={edges} />
-            </div>
+        <Header tags={tags} />
+        <div className="text-left">
+          <div className="leading-normal flex flex-wrap justify-around">
+            <RenderPosts data={edges} />
           </div>
-        </main>
-        <Footer />
-      </article>
+        </div>
+      </Container>
     </>
   );
 });

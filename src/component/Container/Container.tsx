@@ -8,16 +8,20 @@ import siteConfig from '@config/site-config.json';
 interface Props {
   children: JSX.Element | Array<JSX.Element>;
   pageTitle?: String;
+  style?: Record<string, unknown>;
+  showTopMenu?: boolean;
 }
 
 export default function Container({
   children,
   pageTitle = siteConfig['site-metadata'].title,
+  style = {},
+  showTopMenu = true,
 }: Props): JSX.Element {
   return (
-    <article>
+    <article style={style}>
       <header>
-        <TopMenuBar />
+        {showTopMenu ? <TopMenuBar /> : null}
         <Helmet />
         <ReactHelmet>
           <title>{pageTitle}</title>

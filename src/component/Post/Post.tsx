@@ -19,7 +19,7 @@ export default function ({
   path, slug, title, date, timeToRead, excerpt, tags, image,
 }:Props) {
   return (
-    <div className="pl-4 pr-4 my-12 w-full md:w-2/5 relative">
+    <div className="my-12 w-full md:w-2/5 relative bg-white">
       <Link to={`${path || `/${slug}`}`} className="text-lg font-medium" style={{ color: config.color.primary_color }}>
         <div
           className="p-1 absolute bg-gray-900 text-white rounded z-10"
@@ -31,7 +31,7 @@ export default function ({
         </div>
         <figure>
           <Img fluid={image} alt={title} className="rounded block shadow-xl" />
-          <figcaption className="mt-8">
+          <figcaption className="mt-8 pl-4 pr-4">
             <div className="flex justify-between mb-4">
               <HashTags tags={tags} />
               <div className="text-xs text-gray-600 text-right" style={{ minWidth: 85 }}>

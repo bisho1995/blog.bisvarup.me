@@ -17,18 +17,14 @@ const Header = ({tags}) => (
       className="h-32 m-auto md:mr-4 md:ml-0 rounded-full"
     />
     <div className="m-0">
-      <h1 className="text-3xl flex flex-col justify-center mb-0">
+      <h1 className="text-3xl text-white flex flex-col justify-center mb-0">
         {siteConfig['index-page'].title}
       </h1>
-      <h2 className="text-gray-600">{tags}</h2>
-      <div>
-        <Link to="/about" style={{color: '#0076ff'}}>
-          About
-        </Link>{' '}
-        &#8231;{' '}
+      <h2 className="text-gray-400">{tags}</h2>
+      <div className="text-blue-400">
+        <Link to="/about">About</Link> &#8231;{' '}
         <Link
           to="https://github.com/bisho1995/blog.bisvarup.me/"
-          style={{color: '#0076ff'}}
           target="_blank">
           GitHub
         </Link>
@@ -52,18 +48,37 @@ export default withErrorBoundary(({data}) => {
   }
 
   return (
-    <article>
-      <main className="pt-4 container mx-auto">
-        <Helmet />
-        <Header tags={tags} />
-        <div className="text-left">
-          <div className="leading-normal flex flex-wrap justify-around">
-            <RenderPosts data={edges} />
+    <>
+      <div
+        className="bg-purple-800 "
+        style={{
+          position: 'absolute',
+          left: 0,
+          width: '100vw',
+          height: '50vh',
+        }}
+      />
+      <article
+        style={{
+          position: 'absolute',
+          zIndex: 1,
+          left: '50%',
+          transform: 'translateX(-50%)',
+          width: '100%',
+          maxWidth: 1200,
+        }}>
+        <main className="p-4 container mx-auto">
+          <Helmet />
+          <Header tags={tags} />
+          <div className="text-left">
+            <div className="leading-normal flex flex-wrap justify-around">
+              <RenderPosts data={edges} />
+            </div>
           </div>
-        </div>
-      </main>
-      <Footer />
-    </article>
+        </main>
+        <Footer />
+      </article>
+    </>
   );
 });
 

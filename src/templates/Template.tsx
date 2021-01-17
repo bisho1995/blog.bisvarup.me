@@ -1,22 +1,24 @@
 import React from 'react';
 import { Link, graphql, navigate } from 'gatsby';
-import { Helmet as ReactHelmet } from 'react-helmet';
 import Disqus from 'disqus-react';
 import Img from 'gatsby-image';
-
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import TextField from '@material-ui/core/TextField';
-
 import SharePost from '@components/SharePost/SharePost';
-import Helmet from '@components/Helmet/Helmet';
 import withErrorBoundary from '@components/withErrorBoundary/withErrorBoundary';
 import AsideBlock from '@components/AsideBlock/AsideBlock';
-import Footer from '@components/Footer/Footer';
 import HashTags from '@components/HashTags/HashTags';
 import config from '@/config/config';
 import siteConfig from '@config/site-config.json';
+import TopMenuBar from '@components/TopMenuBar/TopMenuBar';
+import Container from '@components/Container/Container';
 import styles from './template.module.scss';
-import profilePic from '../images/profile.jpg';
+
+const PostHeader = () => (
+  <header>
+    <TopMenuBar />
+  </header>
+);
 
 interface Props {
   pageContext: {
@@ -52,25 +54,7 @@ export default withErrorBoundary(
     const sources = data.file?.childImageSharp?.fluid;
 
     return (
-      <div>
-        <Helmet />
-        <ReactHelmet>
-          <title>{title}</title>
-        </ReactHelmet>
-        <header>
-          <Link to="/" className="no-underline">
-            <div className="flex justify-start p-4 select-none">
-              <img
-                src={profilePic}
-                alt={siteConfig['index-page'].pic_alt}
-                className=" sm:h-12 md:h-12 h-24 rounded-full m-auto md:m-0 md:mr-4 block"
-              />
-              <span className="justify-center text-2xl no-underline text-grey-900 hidden md:flex md:flex-col">
-                {siteConfig['index-page'].title}
-              </span>
-            </div>
-          </Link>
-        </header>
+      <Container pageTitle={title}>
         <div className={`flex flex-col ${styles.wrapper} mx-auto lg:flex-row`}>
           <div className={`${styles.template} container mx-auto p-4`}>
             <h1 className="text-center text-2xl md:text-3xl cursor-pointer">{title}</h1>
@@ -123,8 +107,7 @@ export default withErrorBoundary(
             </AsideBlock> */}
           </aside>
         </div>
-        <Footer />
-      </div>
+      </Container>
     );
   },
 );

@@ -1,9 +1,9 @@
 {
     "site-metadata": {
         "owner":"Bisvarup Mukherjee",
-        "name": "UI Space",
-        "short_name": "UI Space",
-        "title":"UI Space",
+        "name": "Bisvarup Mukherjee",
+        "short_name": "Bisvarup Mukherjee",
+        "title":"Bisvarup Mukherjee",
         "description":"Technical blog regarding bisvarup's views and experiences. Subscribe now to get the best industry standard information delivered to you."
     },
     "analytics": {
@@ -21,7 +21,7 @@
     },
     "index-page": {
         "pic_alt": "bisvarup mukherjee",
-        "title":"UI Space",
+        "title":"Bisvarup Mukherjee",
         "tags": ["Developer","Story teller","Polyglot Programmer"]
     },
     "social-urls": [
@@ -37,5 +37,10 @@
       },
       "color": {
           "primary_color":"#44337a"
-      }
+      },
+      "siteLinks" : [
+        {"to": "/about", "text": "About"},
+        {"to": "/videos", "text": "Videos"},
+        {"to": "https://github.com/bisho1995/blog.bisvarup.me/", "text": "GitHub", "target": "_blank"}
+      ]
 }

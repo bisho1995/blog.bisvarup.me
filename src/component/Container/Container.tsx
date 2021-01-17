@@ -20,6 +20,7 @@ export default function Container({
 }: Props): JSX.Element {
   return (
     <article style={style}>
+      <span id="ripple" />
       <header>
         {showTopMenu ? <TopMenuBar /> : null}
         <Helmet />

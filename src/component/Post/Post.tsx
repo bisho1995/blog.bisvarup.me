@@ -23,8 +23,8 @@ function Post({
 }: Props) {
  
   return (
-    <div className="mt-12 w-full md:w-2/5 relative bg-white rounded-t-lg" role="button" tabIndex={0}>
-      <Link to={`${path || `/${slug}`}`} className="text-lg font-medium" style={{ color: config.color.primary_color }} ref={setRef}>
+    <div className="mt-12 w-full md:w-2/5 relative bg-white rounded-t-lg  overflow-hidden" role="button" tabIndex={0} ref={setRef}>
+      <Link to={`${path || `/${slug}`}`} className="text-lg font-medium" style={{ color: config.color.primary_color }}>
         <div
           className="p-1 absolute bg-gray-900 text-white rounded z-10"
           style={{

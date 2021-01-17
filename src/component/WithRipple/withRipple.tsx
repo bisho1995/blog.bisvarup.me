@@ -1,54 +1,52 @@
-import React, {useState, MouseEvent, useEffect, createRef} from 'react';
-import Ripple from '@components/Ripple/Ripple';
-import {createDocumentRegistry} from 'typescript';
+import React, {
+  useState, MouseEvent, useEffect, createRef,
+} from 'react';
+import styles from './ripple.module.scss';
 
-// todo: ref not working
 export default function withRipple(Component: any): any {
   return function WithRippleContainer(props): JSX.Element {
     const [showRipple, setShowRipple] = useState(false);
-    const [rippleProps, setRippleProps] = useState({
-      x: 0,
-      y: 0,
-      dimension: 0,
-    });
+    
     const [timerRef, setTimerRef] = useState<null | number>(null);
     const ref = createRef<HTMLElement>();
-    const rippleRef = createRef();
 
     const createRipple = (e: MouseEvent) => {
       e.stopPropagation();
       e.preventDefault();
       if (showRipple) return;
+        let ripple = document.getElementById('ripple') as HTMLSpanElement;
+        if (!ripple) {
+            ripple = document.createElement("span")
+            ripple.setAttribute("id","ripple")
+        }
+        ripple.parentElement?.removeChild(ripple)
+        const { currentTarget } = e;
+        currentTarget.appendChild(ripple);
+        ripple.classList.add(styles.ripple);
 
-      const {currentTarget} = e;
 
-      setShowRipple(true);
+        setShowRipple(true);
 
-      setTimerRef(
-        window.setTimeout(() => {
-          setShowRipple(false);
-          setTimerRef(null);
-        }, 500),
-      );
+        setTimerRef(
+          window.setTimeout(() => {
+            setShowRipple(false);
+            setTimerRef(null);
+            // ripple.classList.remove(styles.ripple)
+          }, 500),
+        );
+        // @ts-ignore
+        const { width, height } = currentTarget.getBoundingClientRect();
+        const dim = Math.max(width, height);
 
-      // @ts-ignore
-      const {width, height} = currentTarget.getBoundingClientRect();
-      const dim = Math.max(width, height);
+        const radius = dim / 2;
+        const x = Math.floor(e.clientX)-currentTarget.getBoundingClientRect().left - (radius);
+      
+        const y = Math.floor(e.clientY)-currentTarget.getBoundingClientRect().top - radius;
 
-      const radius = dim / 2;
-      const x = Math.floor(e.clientX) - radius;
-      /**
-       * Client y gives the offset WRT viewport which means if the
-       * element scrolled past viewport height clientY will still be
-       * less than viewport height
-       */
-      const y = window.pageYOffset + e.clientY - radius;
-
-      setRippleProps({
-        x,
-        y,
-        dimension: dim,
-      });
+        ripple.style.top = `${y}px`;
+        ripple.style.left = `${x}px`;
+        ripple.style.width = `${dim}px`;
+        ripple.style.height = `${dim}px`;
     };
 
     /** didMount */
@@ -63,7 +61,6 @@ export default function withRipple(Component: any): any {
 
     return (
       <>
-        {showRipple ? <Ripple {...rippleProps} ref={rippleRef} /> : null}
         <Component ref={ref} {...props} />
       </>
     );

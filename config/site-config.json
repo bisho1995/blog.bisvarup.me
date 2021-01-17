@@ -37,5 +37,10 @@
       },
       "color": {
           "primary_color":"#44337a"
-      }
+      },
+      "siteLinks" : [
+        {"to": "/about", "text": "About"},
+        {"to": "/videos", "text": "Videos"},
+        {"to": "https://github.com/bisho1995/blog.bisvarup.me/", "text": "GitHub", "target": "_blank"}
+      ]
 }

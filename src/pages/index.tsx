@@ -1,5 +1,5 @@
 import React from 'react';
-import {graphql, Link} from 'gatsby';
+import { graphql, Link } from 'gatsby';
 import RenderPosts from '@components/RenderPosts/index';
 import withErrorBoundary from '@components/withErrorBoundary/withErrorBoundary';
 import profilePic from '@/images/profile.jpg';
@@ -8,7 +8,28 @@ import CircularDot from '@components/CircularDot/CircularDot';
 import Footer from '@components/Footer/Footer';
 import siteConfig from '@config/site-config.json';
 
-const Header = ({tags}) => (
+interface SiteLinksProps {
+  siteLinks: Array<{to: string, text: string, target?: string}>;
+}
+
+const SiteLinks = ({ siteLinks }: SiteLinksProps) => (
+  <>
+    {siteLinks.map(({ to, text, target }, i) => (
+      <span key={`${text}`}>
+        <Link to={to} target={target || 'self'} tabIndex={0}>
+          <span className="px-2 py-2">{text}</span>
+        </Link>
+        {i !== siteLinks.length - 1 ? <> &#8231; </> : null}
+      </span>
+    ))}
+  </>
+);
+
+interface HeaderProps {
+  tags: Array<string>;
+}
+
+const Header = ({ tags }: HeaderProps) => (
   <header className="flex-row justify-center md:m-16 sm:block md:flex text-center">
     <img
       src={profilePic}
@@ -21,19 +42,14 @@ const Header = ({tags}) => (
         {siteConfig['index-page'].title}
       </h1>
       <h2 className="text-gray-400">{tags}</h2>
-      <div className="text-blue-400">
-        <Link to="/about">About</Link> &#8231;{' '}
-        <Link
-          to="https://github.com/bisho1995/blog.bisvarup.me/"
-          target="_blank">
-          GitHub
-        </Link>
+      <div className="text-blue-300">
+        <SiteLinks siteLinks={siteConfig.siteLinks} />
       </div>
     </div>
   </header>
 );
 
-export default withErrorBoundary(({data}) => {
+export default withErrorBoundary(({ data }) => {
   const edges = data?.allMarkdownRemark?.edges;
 
   const tags: Array<string | JSX.Element> = [];
@@ -50,12 +66,14 @@ export default withErrorBoundary(({data}) => {
   return (
     <>
       <div
-        className="bg-purple-800 "
+        className="bg-purple-800"
         style={{
           position: 'absolute',
           left: 0,
           width: '100vw',
           height: '50vh',
+          borderBottomRightRadius: 10,
+          borderBottomLeftRadius: 10,
         }}
       />
       <article
@@ -66,7 +84,8 @@ export default withErrorBoundary(({data}) => {
           transform: 'translateX(-50%)',
           width: '100%',
           maxWidth: 1200,
-        }}>
+        }}
+      >
         <main className="p-4 container mx-auto">
           <Helmet />
           <Header tags={tags} />

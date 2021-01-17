@@ -1,1 +1,22 @@
-.ripple{}
+.ripple {
+    position: absolute;
+    background: rgba(230, 230, 230, 0.6);
+    box-sizing: border-box;
+    opacity: 1;
+    transform: scale(0);
+    border-radius: 50%;
+    z-index: 1024;
+    
+    animation: fabRipple infinite 500ms ease-out;
+  }
+  
+  @keyframes fabRipple {
+    0% {
+      transform: scale(0);
+    }
+    100% {
+      opacity: 0;
+      transform: scale(2);
+    }
+  }
+  

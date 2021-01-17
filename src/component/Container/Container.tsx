@@ -1,7 +1,7 @@
 import React from 'react';
 import Helmet from '@components/Helmet/Helmet';
 import TopMenuBar from '@components/TopMenuBar/TopMenuBar';
-import { Helmet as ReactHelmet } from 'react-helmet';
+import {Helmet as ReactHelmet} from 'react-helmet';
 import Footer from '@components/Footer/Footer';
 import siteConfig from '@config/site-config.json';
 

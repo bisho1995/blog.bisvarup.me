@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { MouseEvent, forwardRef } from 'react';
 import { Link } from 'gatsby';
 import Img from 'gatsby-image';
 import HashTags from '@components/HashTags/HashTags';
@@ -10,17 +10,25 @@ export interface Props{
     date:string
     timeToRead:number
     excerpt:string
+    createRipple: Function
     path?:string
     slug?:string
     tags?:string
-    image?:string
+  image?: string
+    ref?:any
 }
 
 function Post({
-  path, slug, title, date, timeToRead, excerpt, tags, image,
-}:Props) {
+  path, slug, title, date, timeToRead, excerpt, tags, image, createRipple,ref
+}: Props) {
+  const handleTouch = (e:MouseEvent) => {
+    createRipple(e);
+  };
+  // todo: ref not working
+  // console.log("ref",ref)
+
   return (
-    <div className="mt-12 w-full md:w-2/5 relative bg-white rounded-t-lg" role="button" tabIndex={0}>
+    <div ref={ref} className="mt-12 w-full md:w-2/5 relative bg-white rounded-t-lg" role="button" tabIndex={0} onTouchStartCapture={handleTouch} onClickCapture={handleTouch}>
       <Link to={`${path || `/${slug}`}`} className="text-lg font-medium" style={{ color: config.color.primary_color }}>
         <div
           className="p-1 absolute bg-gray-900 text-white rounded z-10"
@@ -51,6 +59,7 @@ function Post({
   );
 }
 
-export default Post;
+// export default Post;
 // todo: enable this
-// export default withRipple(Post)
+const PostWithRipple = withRipple(Post);
+export default forwardRef((props:Props, ref) => <PostWithRipple ref={ref} {...props} />);

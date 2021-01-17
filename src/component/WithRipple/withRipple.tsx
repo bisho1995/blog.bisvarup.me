@@ -1,61 +1,49 @@
-import React, {
-  useState, MouseEvent, useEffect, createRef,
-} from 'react';
+import React, {useState, MouseEvent, useEffect, createRef} from 'react';
 import Ripple from '@components/Ripple/Ripple';
+import {createDocumentRegistry} from 'typescript';
 
 // todo: ref not working
 export default function withRipple(Component: any): any {
   return function WithRippleContainer(props): JSX.Element {
     const [showRipple, setShowRipple] = useState(false);
-    const [customClick, setCustomClick] = useState(null);
     const [rippleProps, setRippleProps] = useState({
-      x: 970,
-      y: 772,
-      dimension: 500,
+      x: 0,
+      y: 0,
+      dimension: 0,
     });
     const [timerRef, setTimerRef] = useState<null | number>(null);
-    const ref = createRef();
-
-    /** didMount */
-    useEffect(() => {
-      console.log('didMount', ref);
-      return () => {
-        // @ts-ignore
-        if (timerRef) window.clearTimeout(timerRef);
-      };
-    }, []);
+    const ref = createRef<HTMLElement>();
+    const rippleRef = createRef();
 
     const createRipple = (e: MouseEvent) => {
+      e.stopPropagation();
       e.preventDefault();
       if (showRipple) return;
+
+      const {currentTarget} = e;
 
       setShowRipple(true);
 
       setTimerRef(
-        // @ts-ignore
         window.setTimeout(() => {
-          //   setShowRipple(false);
+          setShowRipple(false);
           setTimerRef(null);
         }, 500),
       );
-      console.log(e.currentTarget);
+
       // @ts-ignore
-      const { width, height } = e.currentTarget.getBoundingClientRect();
-      const x = Math.floor(e.clientX) - width / 2;
-      const y = e.currentTarget.offsetTop;
+      const {width, height} = currentTarget.getBoundingClientRect();
       const dim = Math.max(width, height);
 
-      console.log(
-        `{x:${e.clientX}, y:${e.clientY}, newX:${x}, newY: ${y}}, screenX: ${e.screenX}, screenY: ${e.screenY}`,
-        e.currentTarget.getBoundingClientRect(),
-      );
-
       const radius = dim / 2;
+      const x = Math.floor(e.clientX) - radius;
+      /**
+       * Client y gives the offset WRT viewport which means if the
+       * element scrolled past viewport height clientY will still be
+       * less than viewport height
+       */
+      const y = window.pageYOffset + e.clientY - radius;
 
-      //   // todo: fix the position coords
-      //   console.log(
-      //     `x: ${e.clientX} y: ${e.clientY} width: ${elementWidth} height: ${elementHeight}`,
-      //   );
       setRippleProps({
         x,
         y,
@@ -63,12 +51,20 @@ export default function withRipple(Component: any): any {
       });
     };
 
-    // if (showRipple) console.log(rippleProps);
+    /** didMount */
+    useEffect(() => {
+      if (ref.current) {
+        ref.current.addEventListener('click', createRipple);
+      }
+      return () => {
+        if (timerRef) window.clearTimeout(timerRef);
+      };
+    }, []);
 
     return (
       <>
-        {showRipple ? <Ripple {...rippleProps} /> : null}
-        <Component ref={ref} {...props} createRipple={createRipple} />
+        {showRipple ? <Ripple {...rippleProps} ref={rippleRef} /> : null}
+        <Component ref={ref} {...props} />
       </>
     );
   };

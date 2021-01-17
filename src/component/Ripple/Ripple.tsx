@@ -1,14 +1,20 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import styles from './ripple.module.scss';
 
 interface Props {
   dimension: number
   x: number
   y: number
+  setRef?:any
 }
-export default function Ripple({ x, y, dimension }:Props): JSX.Element {
+function Ripple({
+  x, y, dimension, setRef,
+}:Props): JSX.Element {
   return (
     <span
+      ref={e => {
+        setRef.current = e
+      }}
       className={styles.ripple}
       style={{
         left: x, top: y, width: dimension, height: dimension,
@@ -16,3 +22,7 @@ export default function Ripple({ x, y, dimension }:Props): JSX.Element {
     />
   );
 }
+export default forwardRef((props: Props, ref) => {
+  console.log(ref);
+  return <Ripple {...props} setRef={ref} />
+});

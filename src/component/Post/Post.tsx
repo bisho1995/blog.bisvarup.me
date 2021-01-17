@@ -15,20 +15,18 @@ export interface Props{
     slug?:string
     tags?:string
   image?: string
-    ref?:any
+    setRef?:any
 }
 
 function Post({
-  path, slug, title, date, timeToRead, excerpt, tags, image, createRipple,ref
+  path, slug, title, date, timeToRead, excerpt, tags, image, createRipple, setRef,
 }: Props) {
   const handleTouch = (e:MouseEvent) => {
     createRipple(e);
   };
-  // todo: ref not working
-  // console.log("ref",ref)
 
   return (
-    <div ref={ref} className="mt-12 w-full md:w-2/5 relative bg-white rounded-t-lg" role="button" tabIndex={0} onTouchStartCapture={handleTouch} onClickCapture={handleTouch}>
+    <div ref={setRef} className="mt-12 w-full md:w-2/5 relative bg-white rounded-t-lg" role="button" tabIndex={0} onTouchStartCapture={handleTouch} onClickCapture={handleTouch}>
       <Link to={`${path || `/${slug}`}`} className="text-lg font-medium" style={{ color: config.color.primary_color }}>
         <div
           className="p-1 absolute bg-gray-900 text-white rounded z-10"
@@ -60,6 +58,8 @@ function Post({
 }
 
 // export default Post;
-// todo: enable this
-const PostWithRipple = withRipple(Post);
-export default forwardRef((props:Props, ref) => <PostWithRipple ref={ref} {...props} />);
+const PostWithForwardRef = forwardRef((props: Props, ref) => <Post setRef={ref} {...props} />);
+
+const PostWithRipple = withRipple(PostWithForwardRef);
+
+export default PostWithRipple;

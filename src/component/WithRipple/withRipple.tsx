@@ -1,4 +1,6 @@
-import React, {useState, MouseEvent, useEffect, createRef} from 'react';
+import React, {
+  useState, MouseEvent, useEffect, createRef,
+} from 'react';
 import Ripple from '@components/Ripple/Ripple';
 
 // todo: ref not working
@@ -14,13 +16,14 @@ export default function withRipple(Component: any): any {
     const [timerRef, setTimerRef] = useState<null | number>(null);
     const ref = createRef();
 
-    useEffect(
-      () => () => {
+    /** didMount */
+    useEffect(() => {
+      console.log('didMount', ref);
+      return () => {
         // @ts-ignore
         if (timerRef) window.clearTimeout(timerRef);
-      },
-      [],
-    );
+      };
+    }, []);
 
     const createRipple = (e: MouseEvent) => {
       e.preventDefault();
@@ -37,7 +40,7 @@ export default function withRipple(Component: any): any {
       );
       console.log(e.currentTarget);
       // @ts-ignore
-      const {width, height, ...rest} = e.currentTarget.getBoundingClientRect();
+      const { width, height } = e.currentTarget.getBoundingClientRect();
       const x = Math.floor(e.clientX) - width / 2;
       const y = e.currentTarget.offsetTop;
       const dim = Math.max(width, height);

@@ -11,6 +11,7 @@ export default function Videos(): JSX.Element {
       <div className="text-gray-700 text-center">
         Videos about JavaScript, React and in general software engineering
       </div>
+      <p>More content coming soon...</p>
     </Container>
   );
 }

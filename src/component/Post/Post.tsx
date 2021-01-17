@@ -19,7 +19,7 @@ export default function ({
   path, slug, title, date, timeToRead, excerpt, tags, image,
 }:Props) {
   return (
-    <div className="my-12 w-full md:w-2/5 relative">
+    <div className="pl-4 pr-4 my-12 w-full md:w-2/5 relative">
       <Link to={`${path || `/${slug}`}`} className="text-lg font-medium" style={{ color: config.color.primary_color }}>
         <div
           className="p-1 absolute bg-gray-900 text-white rounded z-10"

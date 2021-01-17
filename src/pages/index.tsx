@@ -53,8 +53,7 @@ export default withErrorBoundary(({data}) => {
 
   return (
     <article>
-      <main className="p-4 container mx-auto">
-        <div> blue</div>
+      <main className="pt-4 container mx-auto">
         <Helmet />
         <Header tags={tags} />
         <div className="text-left">

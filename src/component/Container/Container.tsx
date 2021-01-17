@@ -28,7 +28,7 @@ export default function Container({
           <title>{pageTitle}</title>
         </ReactHelmet>
       </header>
-      <main>{children}</main>
+      <main className="px-4">{children}</main>
       <footer>
         <Footer />
       </footer>

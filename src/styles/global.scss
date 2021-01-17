@@ -2,9 +2,11 @@ body {
   font-family:  Roboto,Droid Sans,Helvetica Neue,Arial,Helvetica,sans-serif;
   letter-spacing: 0.02rem;
 }
+
 main {
   align-content: center;
   box-sizing: border-box;
+  display: -ms-grid;
   display: grid;
   hyphens: auto;
   line-height: 1.65;

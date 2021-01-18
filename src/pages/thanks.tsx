@@ -61,12 +61,16 @@ const images = [
     attribution: 'Photo by Markus Winkler on Unsplash',
     url: 'https://unsplash.com/photos/gLdJnQFcIXE',
   },
+  {
+    attribution: 'Icons made by Roundicons',
+    url: 'https://www.flaticon.com/',
+  },
 ];
 
 export default function Thanks() {
   return (
     <>
-      {images.map(({ attribution, url }) => (
+      {images.map(({attribution, url}) => (
         <div>
           <a href={url} target="_blank" rel="noopener noreferrer nofollow">
             {attribution}

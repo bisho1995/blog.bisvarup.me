@@ -8,3 +8,9 @@
 require('prismjs/themes/prism-tomorrow.css');
 require('./src/styles/global.scss');
 require('./src/styles/tailwind.global.css');
+
+export const onServiceWorkerUpdateReady = () => {
+  window.location.reload();
+};
+
+export default undefined;

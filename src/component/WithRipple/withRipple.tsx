@@ -4,21 +4,21 @@ import React, {
 import styles from './ripple.module.scss';
 
 /**
- * The target node should have position relative 
+ * The target node should have position relative
  * and display block/inline-block for this to work
- * 
+ *
  * @param Component React Component
  */
 export default function withRipple(Component: any): any {
   return function WithRippleContainer(props): JSX.Element {
     const [showRipple, setShowRipple] = useState(false);
-      let secondClick = false;
+    let secondClick = false;
     const [timerRef, setTimerRef] = useState<null | number>(null);
     const ref = createRef<HTMLElement>();
 
     const createRipple = (e: MouseEvent) => {
       if (secondClick) {
-          secondClick = false;
+        secondClick = false;
         return;
       }
       e.stopPropagation();
@@ -40,14 +40,13 @@ export default function withRipple(Component: any): any {
           window.setTimeout(() => {
             setShowRipple(false);
             setTimerRef(null);
-              secondClick = true;
-              const parentElement = ripple.parentElement
-              if (parentElement?.querySelector("a")) {
-                  
-                  parentElement?.querySelector("a")?.click()
-              } else {
-                  parentElement?.click()
-              }
+            secondClick = true;
+            const { parentElement } = ripple;
+            if (parentElement?.querySelector('a')) {
+                  parentElement?.querySelector('a')?.click();
+            } else {
+                  parentElement?.click();
+            }
             // ripple.classList.remove(styles.ripple)
           }, 150),
         );

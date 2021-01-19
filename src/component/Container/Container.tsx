@@ -18,6 +18,10 @@ export default function Container({
   style = {},
   showTopMenu = true,
 }: Props): JSX.Element {
+  /**
+   * *tip: For position sticky to work the parent needs to have a fixed height so for mobile
+   * * doing height as 100vh
+   */
   return (
     <article
       className={`overflow-auto ${showTopMenu ? 'h-screen' : 'h-auto'}`}

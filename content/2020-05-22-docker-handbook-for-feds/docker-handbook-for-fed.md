@@ -7,80 +7,75 @@ featuredImage: ../../static/images/guillaume-bolduc-uBe2mknURG4-unsplash.jpg
 ---
 
  
+## General dcoker commands
 
-Pulling an image from dockerhub
-
+* Pulling an image from dockerhub
 ``` 
 docker pull ubuntu
 ```
-<br />
-<br />
-Login to your own dockerhub account (optional)
-
+* Login to your own dockerhub account (optional)
 ```
 docker login --username bisvarup
 ```
-<br />
-<br />
-List your docker contains, which you have installed
-
+* List your docker contains, which you have installed
 ```
 docker image ls
 docker images
 ```
-<br />
-<br />
-Create an instance of the image, and run it in detached (-d), -i (interactive) and attach a psudo tty (-t)
-
+* Create an instance of the image, and run it in detached (-d), -i (interactive) and attach a psudo tty (-t)
 ```
 docker run -it -d ubuntu
 ```
-<br />
-<br />
-List the image containers
-
+* List the image containers
 ```
 docker ps -a
 ```
-<br />
-<br />
-Log into an container
-
+* List all containers with just their numeric id
+```sh
+docker container ls –aq 
+```
+* Remove a container
+```
+docker container rm [container_id]
+```
+* Remove all stopped containers
+```
+docker container rm $(docker container ls –aq)
+```
+* Log into an container
 ```
 docker exec -it 45ceac9df55c bash
 ```
-<br />
-<br />
-Stop an instance
-
+* Stop a container
 ```
 docker stop 45ceac9df55c
 ```
-<br />
-<br />
-Delete an container
-
+* stop all containers
+```
+docker container stop $(docker container ls –aq)
+```
+* Delete an container
 ```
 docker rm 45ceac9df55c
 ```
-<br />
-<br />
-Delete a container
-
+* Delete a container
 ```
 docker rmi ubuntu
 ```
-<br />
-<br />
-Create a new image
-
+* Create a new image
 ```
 docker commit container_id username/image_name
 ```
-<br />
-<br />
-Push a new image to dockerhub
-
+* Push a new image to dockerhub
 ```
 docker push bisvarup/image_name
 ```
+* Stop all containers
+
+## Popular docker commands
+
+* Create a mysql container from mysql image
+```sh
+docker run --name mysql-5.7 -e MYSQL_ROOT_PASSWORD=password -p 0.0.0.0:3306:3306 -d mysql:5.7
+```
+This assumes you already have mysql:5.7 image installed in your system. There seems to be some issue with mysql 8.0 and that does not work well with sequelpro. Hence using mysql 5.7

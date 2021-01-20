@@ -7,7 +7,7 @@ featuredImage: ../../static/images/guillaume-bolduc-uBe2mknURG4-unsplash.jpg
 ---
 
  
-## General dcoker commands
+## General docker commands
 
 * Pulling an image from dockerhub
 ``` 

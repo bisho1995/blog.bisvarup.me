@@ -71,6 +71,18 @@ docker commit container_id username/image_name
 docker push bisvarup/image_name
 ```
 * Stop all containers
+* Docker disk usage for active containers
+```
+docker ps --size
+```
+* Detailed docker disk usage
+```
+docker system df
+```
+* Create a docker container from a Dockerfile
+```
+docker build -t container-name .
+```
 
 ## Popular docker commands
 

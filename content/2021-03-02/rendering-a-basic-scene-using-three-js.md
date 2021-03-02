@@ -54,13 +54,13 @@ const object = new THREE.mesh(geometry, material)
 ```
 
 ## Math Terms
-To represent a point on a 1D plane we use *real numbers*.
+To represent a point on a 1D plane we use **real numbers**.
 
-To represent a point on a 2D plane we use *complex numbers*.
+To represent a point on a 2D plane we use **complex numbers**.
 
-To represent a point on a 3D plane we use *quaternion*.
-
-
+To represent a point on a 3D plane we use **quaternion**.
+<br/>
+<br/>
 To rotate a point in space we can use quaternion and Euler angles.
 
 ## The AXES

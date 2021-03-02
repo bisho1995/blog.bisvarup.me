@@ -30,6 +30,7 @@ export default function Container({
       <span id="ripple" />
       <Helmet />
       <ReactHelmet>
+        <br />
         <title>{pageTitle}</title>
       </ReactHelmet>
       {showTopMenu ? <TopMenuBar /> : null}

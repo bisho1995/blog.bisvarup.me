@@ -35,7 +35,7 @@ export default function Container({
       </ReactHelmet>
       {showTopMenu ? <TopMenuBar /> : null}
       <main className="px-4">{children}</main>
-      <footer className="mt-1">
+      <footer className="mt-8">
         <Footer />
       </footer>
     </article>

@@ -3,7 +3,7 @@ title: Rendering a basic scene using Three.js
 date: 2021-03-02
 path: /rendering-a-basic-scene-using-threejs
 tags: frontend, ui, threejs, ar, webxr
-featuredImage: ../../static/images/problem-solving.jpg
+featuredImage: ../../static/images/martin-widenka-Je6OqQ_qahs-unsplash.jpg
 ---
 
 ## Introduction

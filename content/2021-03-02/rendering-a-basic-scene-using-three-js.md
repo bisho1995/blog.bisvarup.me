@@ -29,7 +29,7 @@ The camera is like a camera in our world and we can see through the camera to ou
 4. Far view
 
 So we define the near view and the far view of the camera and the camera can show objects which are inside the view. If an object lies outside the view then the object would not be shown. For example, if the near is 1 and far is 1000 and you place an object at 0, then the object would not be seen.
-*This is one common source of confusion that users face.*
+**This is one common source of confusion that users face.**
 
 ## Scene
 The scene is like a tiny universe. We add object/items in the scene as in cat/dog/human/assets/circles/boxes/lines everything. 
@@ -39,7 +39,7 @@ Until there is a light we won't be able to view any assets in our world, which m
 
 <mark>So it may happen that you have placed an object in the scene, but the object is not visible, chances are you forgot to add light in your scene.</mark>
 
-*One exception to this rule is MeshBasicMaterial which can render without light.*
+**One exception to this rule is MeshBasicMaterial which can render without light.**
 
 ## Object
 By object, I mean any 3D object in your scene. This means box/torus/lines etc.

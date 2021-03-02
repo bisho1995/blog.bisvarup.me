@@ -14,7 +14,7 @@ To render any scene in Three.js we need the following things:
 * Light
 * Object
     1. The geometry of the object
-    2.The material of the object
+    2. The material of the object
     3. Mesh of the object
 
 Let us try to understand each of the components one by one.

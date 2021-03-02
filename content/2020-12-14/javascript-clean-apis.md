@@ -17,7 +17,11 @@ const number3 = number2.addOne();
 const number4 = number3.addOne().addOne();
 ```
 
-Admit it, this looks so clean. We are not writing APIs like `generateRandom().addOne().getNumber()`.  Let's see how we create such APIs.
+Admit it, this looks so clean. We are not writing APIs like 
+```
+generateRandom().addOne().getNumber()
+``` 
+Let's see how we create such APIs.
 
 ## Working demo
 https://codepen.io/pritammukherjee16/pen/ZEpLVWq?editors=0010

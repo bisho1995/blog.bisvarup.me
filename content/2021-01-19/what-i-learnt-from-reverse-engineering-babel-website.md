@@ -6,7 +6,6 @@ tags: babel, html, react, web worker
 featuredImage: ../../static/images/problem-solving.jpg
 ---
 
-# Learnings from Reverse Engineering the Babel website
 
 Here are the points:
 

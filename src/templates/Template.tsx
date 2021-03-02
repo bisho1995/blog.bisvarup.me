@@ -73,7 +73,7 @@ export default withErrorBoundary(
               config={disqusConfig}
             />
           </div>
-          <aside className="w-full md:w-auto m-4 lg:mr-4 flex flex-col">
+          <aside className="w-full md:w-auto md:m-4 m-auto lg:mr-4 flex flex-col">
             <AsideBlock header="Latest Posts">
               <div>
                 {newPosts.filter(({ title: pageTitle }) => pageTitle !== title).map(({

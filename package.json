@@ -80,7 +80,7 @@
     "lint:fix": "eslint src/ --ext=ts,tsx,js,jsx --fix"
   },
   "engines": {
-    "node": "12.x.x",
+    "node": "12.x",
     "yarn": "^1.2.x"
   },
   "homepage": "https://blog.bisvarup.me/",

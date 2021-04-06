@@ -69,6 +69,11 @@ const images = [
     attribution: 'Photo by Martin Widenka on Unsplash',
     url: 'https://unsplash.com/photos/Je6OqQ_qahs',
   },
+  {
+    attribution: 'Photo by UNIBOA on Unsplash',
+    url:
+      'https://unsplash.com/photos/NrMGL5MR8uk?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink',
+  },
 ];
 
 export default function Thanks() {

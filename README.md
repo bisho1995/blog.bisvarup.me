@@ -21,3 +21,8 @@ This repo contains the source code and contents of [blog.bisvarup.me](https://bl
 
 1. `yarn dev` to start the hot-reloading development server (powered by [Gatsby](https://www.gatsbyjs.org))
 2. `open http://localhost:8000` to open the site in your favorite browser
+
+## Todo
+
+1. I need a WYSIWYG for markdown, crafting the markdown is a pain
+2. I need to make the images smaller at times

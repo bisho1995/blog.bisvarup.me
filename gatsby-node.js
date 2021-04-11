@@ -21,6 +21,7 @@ exports.createPages = async ({actions, graphql}) => {
               tags
             }
             html
+            excerpt(format: PLAIN)
           }
         }
       }
@@ -45,6 +46,7 @@ exports.createPages = async ({actions, graphql}) => {
             },
             tags,
           },
+          excerpt,
         },
       }) => {
         if (!path) return;
@@ -55,6 +57,7 @@ exports.createPages = async ({actions, graphql}) => {
           path,
           image: src,
           tags,
+          excerpt,
         });
       },
     );
@@ -75,6 +78,7 @@ exports.createPages = async ({actions, graphql}) => {
             featuredImage: {relativePath},
             tags,
           },
+          excerpt,
         },
       }) => {
         if (!path) return;
@@ -91,6 +95,7 @@ exports.createPages = async ({actions, graphql}) => {
             tags,
             url: path,
             allPosts,
+            excerpt,
           },
         });
       },

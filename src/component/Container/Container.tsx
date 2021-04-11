@@ -2,7 +2,6 @@ import React from 'react';
 import Helmet, { IProps as IHelmetProps } from '@components/Helmet/Helmet';
 import TopMenuBar from '@components/TopMenuBar/TopMenuBar';
 import Footer from '@components/Footer/Footer';
-import siteConfig from '@config/site-config.json';
 
 interface Props extends IHelmetProps {
   children: JSX.Element | Array<JSX.Element>;
@@ -12,9 +11,10 @@ interface Props extends IHelmetProps {
 
 export default function Container({
   children,
-  pageTitle = siteConfig['site-metadata'].title,
+  pageTitle,
   style = {},
   showTopMenu = true,
+  pageDescription,
 }: Props): JSX.Element {
   /**
    * *tip: For position sticky to work the parent needs to have a fixed height so for mobile
@@ -26,7 +26,7 @@ export default function Container({
       style={style}
     >
       <span id="ripple" />
-      <Helmet pageTitle={pageTitle} />
+      <Helmet pageTitle={pageTitle} pageDescription={pageDescription} />
       {showTopMenu ? <TopMenuBar /> : null}
       <main className="px-4">{children}</main>
       <footer className="mt-8">

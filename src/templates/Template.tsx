@@ -26,11 +26,12 @@ interface Props {
     date: string,
     title:string,
     slug:string,
-    url:string,
+    url: string,
+    excerpt: string,
     newPosts?:Object[]
     image?:string
     tags?:string | string[]
-    allPosts: Array<{date: string, image?: string, path: string, tags?: string, title: string}>
+    allPosts: Array<{ date: string, image?: string, path: string, tags?: string, title: string }>,
   }
   data?:any
 }
@@ -38,7 +39,7 @@ interface Props {
 export default withErrorBoundary(
   ({
     pageContext: {
-      content, date, title, slug, newPosts = [], image = '', tags = '', url, allPosts,
+      content, date, title, slug, newPosts = [], image = '', tags = '', url, allPosts, excerpt,
     },
     data = {},
   }: Props) => {
@@ -54,7 +55,7 @@ export default withErrorBoundary(
     const sources = data.file?.childImageSharp?.fluid;
 
     return (
-      <Container pageTitle={title}>
+      <Container pageTitle={title} pageDescription={excerpt}>
         <div className={`flex flex-col ${styles.wrapper} mx-auto lg:flex-row`}>
           <div className={`${styles.template} container mx-auto`}>
             <h1 className="text-center text-2xl md:text-3xl cursor-pointer">{title}</h1>

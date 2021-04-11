@@ -91,10 +91,10 @@ module.exports = {
     },
     {
       resolve: 'gatsby-plugin-offline',
-      // options: {
-      //   precachePages: ['*'],
-      //   appendScript: require.resolve('./src/custom-sw'),
-      // },
+      options: {
+        precachePages: ['*'],
+        appendScript: require.resolve('./src/custom-sw'),
+      },
     },
     {
       resolve: 'gatsby-transformer-remark',

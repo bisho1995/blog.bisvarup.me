@@ -34,6 +34,10 @@ export default function AppHelmet({
       />
       <meta name="description" content={description} />
       <title>{title}</title>
+      <meta
+        property="og:image"
+        content="https://user-images.githubusercontent.com/12195877/114293171-ad298380-9ab1-11eb-8725-b758d0dab2c7.jpg"
+      />
       <script
         async
         src={`https://www.googletagmanager.com/gtag/js?id=${siteConfig.analytics.google.trackingId}`}

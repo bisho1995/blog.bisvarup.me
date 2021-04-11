@@ -58,7 +58,7 @@ export default withErrorBoundary(
       <Container
         pageTitle={title}
         pageDescription={excerpt}
-        ogImage={sources.base64}
+        ogImage={`${config.base_path}${sources.src}`}
         ogUrl={pageUrl}
       >
         <div className={`flex flex-col ${styles.wrapper} mx-auto lg:flex-row`}>

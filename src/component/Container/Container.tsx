@@ -1,13 +1,11 @@
 import React from 'react';
-import Helmet from '@components/Helmet/Helmet';
+import Helmet, { IProps as IHelmetProps } from '@components/Helmet/Helmet';
 import TopMenuBar from '@components/TopMenuBar/TopMenuBar';
-import { Helmet as ReactHelmet } from 'react-helmet';
 import Footer from '@components/Footer/Footer';
 import siteConfig from '@config/site-config.json';
 
-interface Props {
+interface Props extends IHelmetProps {
   children: JSX.Element | Array<JSX.Element>;
-  pageTitle?: String;
   style?: Record<string, unknown>;
   showTopMenu?: boolean;
 }
@@ -28,11 +26,7 @@ export default function Container({
       style={style}
     >
       <span id="ripple" />
-      <Helmet />
-      <ReactHelmet>
-        <br />
-        <title>{pageTitle}</title>
-      </ReactHelmet>
+      <Helmet pageTitle={pageTitle} />
       {showTopMenu ? <TopMenuBar /> : null}
       <main className="px-4">{children}</main>
       <footer className="mt-8">

@@ -55,7 +55,12 @@ export default withErrorBoundary(
     const sources = data.file?.childImageSharp?.fluid;
 
     return (
-      <Container pageTitle={title} pageDescription={excerpt}>
+      <Container
+        pageTitle={title}
+        pageDescription={excerpt}
+        ogImage={sources.base64}
+        ogUrl={pageUrl}
+      >
         <div className={`flex flex-col ${styles.wrapper} mx-auto lg:flex-row`}>
           <div className={`${styles.template} container mx-auto`}>
             <h1 className="text-center text-2xl md:text-3xl cursor-pointer">{title}</h1>

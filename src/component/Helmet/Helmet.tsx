@@ -5,11 +5,15 @@ import siteConfig from '@config/site-config.json';
 export interface IProps {
   pageTitle?: string;
   pageDescription?: string;
+  ogImage?: string;
+  ogUrl?: string;
 }
 
 export default function AppHelmet({
   pageTitle: title = siteConfig['site-metadata'].title,
   pageDescription: description = siteConfig['site-metadata'].description,
+  ogImage = 'https://user-images.githubusercontent.com/12195877/114293171-ad298380-9ab1-11eb-8725-b758d0dab2c7.jpg',
+  ogUrl,
 }: IProps): JSX.Element {
   return (
     <Helmet
@@ -34,16 +38,13 @@ export default function AppHelmet({
       />
       <meta name="description" content={description} />
       <title>{title}</title>
-      <meta
-        property="og:image"
-        content="https://user-images.githubusercontent.com/12195877/114293171-ad298380-9ab1-11eb-8725-b758d0dab2c7.jpg"
-      />
+      <meta property="og:image" content={ogImage} />
       <meta property="og:site_name" content="Bisvarup Mukherjee's Blog" />
       <meta property="og:type" content="Article" />
       <meta property="og:locale" content="en_Us" />
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
-      <meta property="og:url" content={window.location.href} />
+      {ogUrl ? <meta property="og:url" content={ogUrl} /> : null}
       <script
         async
         src={`https://www.googletagmanager.com/gtag/js?id=${siteConfig.analytics.google.trackingId}`}

@@ -1,5 +1,6 @@
 const path = require('path');
 const siteConfig = require('./config/site-config.json');
+const customSw = require('./src/custom-sw');
 
 module.exports = {
   siteMetadata: {
@@ -88,7 +89,13 @@ module.exports = {
         display: siteConfig.pwa.display,
       },
     },
-    'gatsby-plugin-offline',
+    {
+      resolve: 'gatsby-plugin-offline',
+      // options: {
+      //   precachePages: ['*'],
+      //   appendScript: require.resolve('./src/custom-sw'),
+      // },
+    },
     {
       resolve: 'gatsby-transformer-remark',
       options: {

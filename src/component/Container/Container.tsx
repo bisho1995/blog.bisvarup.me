@@ -16,6 +16,7 @@ export default function Container({
   showTopMenu = true,
   pageDescription,
   ogUrl,
+  ogImage,
 }: Props): JSX.Element {
   /**
    * *tip: For position sticky to work the parent needs to have a fixed height so for mobile
@@ -31,6 +32,7 @@ export default function Container({
         pageTitle={pageTitle}
         pageDescription={pageDescription}
         ogUrl={ogUrl}
+        ogImage={ogImage}
       />
       {showTopMenu ? <TopMenuBar /> : null}
       <main className="px-4">{children}</main>

@@ -74,6 +74,10 @@ const images = [
     url:
       'https://unsplash.com/photos/NrMGL5MR8uk?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink',
   },
+  {
+    attribution: 'Photo by Danil Shostak on Unsplash',
+    url: 'https://unsplash.com/photos/5akbdhWHqs8',
+  },
 ];
 
 export default function Thanks() {
